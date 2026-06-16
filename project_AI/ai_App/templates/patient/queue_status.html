@@ -1,0 +1,208 @@
+{% extends "base.html" %}
+
+{% block title %}Live Queue Tracker{% endblock %}
+
+{% block content %}
+<div class="container-fluid px-0">
+    <div class="row mb-4">
+        <div class="col-12">
+            <h2 class="fw-bold mb-1">Live Queue Tracker</h2>
+            <p class="text-secondary">Track your active consultation tokens, real-time wait times, and hospital ward triage lists.</p>
+        </div>
+    </div>
+
+    <div class="row g-4">
+        {% if queues %}
+            {% for queue in queues %}
+            <div class="col-md-6 col-lg-4">
+                <div class="glass-card d-flex flex-column justify-content-between p-4" style="min-height: 250px;">
+                    <div>
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <span class="badge bg-primary-subtle text-primary border border-primary-subtle px-2.5 py-1.5 rounded-pill fw-semibold">Token #{{ queue.appointment.token_number }}</span>
+                            <span class="badge {% if queue.priority_level == 'Emergency' %}bg-danger{% elif queue.priority_level == 'Urgent' %}bg-warning text-dark{% else %}bg-success{% endif %} status-badge">
+                                {{ queue.priority_level }}
+                            </span>
+                        </div>
+                        <h4 class="fw-bold text-dark mb-1">{{ queue.appointment.doctor }}</h4>
+                        <p class="text-secondary small mb-3"><i class="bi bi-hospital me-1"></i>{{ queue.appointment.department.name }}</p>
+                    </div>
+
+                    <div class="border-top pt-3">
+                        <div class="row text-center">
+                            <div class="col-6 border-end">
+                                <span class="d-block small text-muted text-uppercase fw-semibold" style="font-size: 11px;">Queue Position</span>
+                                <h3 class="fw-bold text-primary mb-0 mt-1">{{ queue.appointment.queue_position }}</h3>
+                            </div>
+                            <div class="col-6">
+                                <span class="d-block small text-muted text-uppercase fw-semibold" style="font-size: 11px;">Wait Time</span>
+                                <h3 class="fw-bold text-info mb-0 mt-1">{{ queue.formatted_wait_time }}</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        {% else %}
+            <div class="col-12">
+                <div class="glass-card text-center py-5">
+                    <i class="bi bi-list-stars text-muted" style="font-size: 3rem;"></i>
+                    <p class="text-secondary mt-3 mb-4">No active queue tokens registered under this account.</p>
+                    <a href="{% url 'book_appointment' %}" class="btn-custom-primary">
+                        <i class="bi bi-plus-circle me-1"></i>Book Appointment Token
+                    </a>
+                </div>
+            </div>
+        {% endif %}
+    </div>
+</div>
+
+{% block extra_js %}
+{% if queues %}
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        // Collect all active queue appointment IDs
+        const appointmentIds = [
+            {% for queue in queues %}
+                "{{ queue.appointment.id }}",
+            {% endfor %}
+        ];
+        
+        const checkInterval = 5000;
+        let isResolved = false;
+
+        // Custom style injected dynamically for sleek animations
+        const styleSheet = document.createElement("style");
+        styleSheet.innerText = `
+            @keyframes toastSlideIn {
+                from { transform: translateY(-50px) scale(0.95); opacity: 0; }
+                to { transform: translateY(0) scale(1); opacity: 1; }
+            }
+            .animate-toast-slide-in {
+                animation: toastSlideIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            }
+        `;
+        document.head.appendChild(styleSheet);
+
+        function checkQueues() {
+            if (isResolved) return;
+
+            // Run a parallel status check for all loaded appointments
+            Promise.all(
+                appointmentIds.map(id => 
+                    fetch(`/api/appointment-status/${id}/`)
+                        .then(res => res.json())
+                        .catch(err => console.error("Error fetching queue status:", err))
+                )
+            ).then(results => {
+                const completedOrCancelled = results.find(
+                    data => data && (data.status === 'Completed' || data.status === 'Cancelled')
+                );
+
+                if (completedOrCancelled) {
+                    isResolved = true;
+                    showCompletionToast(completedOrCancelled);
+                }
+            });
+        }
+
+        function showCompletionToast(data) {
+            const isCompleted = data.status === 'Completed';
+            const badgeText = isCompleted ? 'Consultation Completed' : 'Appointment Cancelled';
+            const titleText = isCompleted ? 'Visit Resolved!' : 'Slot Cancelled';
+            const colorTheme = isCompleted ? '#10b981' : '#ef4444';
+            const bgSubtle = isCompleted ? 'rgba(209, 250, 229, 0.96)' : 'rgba(254, 226, 226, 0.96)';
+            const borderTheme = isCompleted ? '#10b981 !important' : '#ef4444 !important';
+            const iconClass = isCompleted ? 'fa-solid fa-file-prescription animate-pulse' : 'fa-solid fa-calendar-xmark';
+            const message = isCompleted 
+                ? `<strong>${data.doctor_name}</strong> has successfully finalized your consultation and logged your digital prescription in your history.`
+                : `Your appointment with <strong>${data.doctor_name}</strong> has been cancelled by the administrative system.`;
+
+            const toastContainer = document.createElement('div');
+            toastContainer.id = 'appointment-resolved-toast';
+            toastContainer.className = 'position-fixed top-0 end-0 p-4';
+            toastContainer.style.zIndex = '99999';
+            toastContainer.style.maxWidth = '420px';
+            
+            toastContainer.innerHTML = `
+                <div class="glass-card p-4 shadow-lg animate-toast-slide-in" 
+                     style="background: ${bgSubtle}; border: 2px solid ${borderTheme}; border-radius: 20px; backdrop-filter: blur(12px); box-shadow: 0 20px 40px rgba(15, 23, 42, 0.15) !important;">
+                    <div class="d-flex align-items-start gap-3">
+                        <div class="rounded-circle text-white p-2 d-flex justify-content-center align-items-center" 
+                             style="width: 44px; height: 44px; font-size: 20px; background-color: ${colorTheme}; box-shadow: 0 4px 12px ${colorTheme}66;">
+                            <i class="${iconClass}"></i>
+                        </div>
+                        <div class="flex-grow-1">
+                            <span class="badge mb-2 px-2.5 py-1.5 status-badge" style="background-color: ${colorTheme}22; color: ${colorTheme}; border: 1px solid ${colorTheme}44;">
+                                ${badgeText}
+                            </span>
+                            <h5 class="fw-bold mb-1 text-dark">${titleText}</h5>
+                            <p class="mb-3 text-secondary" style="font-size: 13.5px; line-height: 1.5; color: #475569 !important;">
+                                ${message}
+                            </p>
+                            <div class="d-flex align-items-center gap-2 pt-2 border-top border-secondary-subtle">
+                                <span class="spinner-border spinner-border-sm" role="status" style="width: 14px; height: 14px; border-width: 2px; color: ${colorTheme};"></span>
+                                <span class="small text-secondary" style="font-size: 12.5px;">Auto-refreshing dynamic tracker in <strong id="reload-timer" class="text-dark">3</strong> seconds...</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            document.body.appendChild(toastContainer);
+
+            // Audio chime synthesis
+            try {
+                const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+                if (audioCtx) {
+                    const osc = audioCtx.createOscillator();
+                    const gain = audioCtx.createGain();
+                    osc.connect(gain);
+                    gain.connect(audioCtx.destination);
+                    osc.type = 'sine';
+                    if (isCompleted) {
+                        osc.frequency.setValueAtTime(587.33, audioCtx.currentTime); // D5
+                        gain.gain.setValueAtTime(0.1, audioCtx.currentTime);
+                        osc.start();
+                        osc.stop(audioCtx.currentTime + 0.15);
+                        setTimeout(() => {
+                            const osc2 = audioCtx.createOscillator();
+                            const gain2 = audioCtx.createGain();
+                            osc2.connect(gain2);
+                            gain2.connect(audioCtx.destination);
+                            osc2.type = 'sine';
+                            osc2.frequency.setValueAtTime(880, audioCtx.currentTime); // A5
+                            gain2.gain.setValueAtTime(0.1, audioCtx.currentTime);
+                            osc2.start();
+                            osc2.stop(audioCtx.currentTime + 0.25);
+                        }, 180);
+                    } else {
+                        osc.frequency.setValueAtTime(330, audioCtx.currentTime); // E4
+                        gain.gain.setValueAtTime(0.1, audioCtx.currentTime);
+                        osc.start();
+                        osc.stop(audioCtx.currentTime + 0.3);
+                    }
+                }
+            } catch (e) {
+                console.log("Audio feedback ignored or blocked by user guest settings.");
+            }
+
+            let secondsLeft = 3;
+            const timerEl = document.getElementById("reload-timer");
+            const countdownInterval = setInterval(() => {
+                secondsLeft--;
+                if (timerEl) timerEl.textContent = secondsLeft;
+                if (secondsLeft <= 0) {
+                    clearInterval(countdownInterval);
+                    window.location.reload();
+                }
+            }, 1000);
+        }
+
+        setInterval(checkQueues, checkInterval);
+        setTimeout(checkQueues, 1000);
+    });
+</script>
+{% endif %}
+{% endblock %}
+{% endblock %}
+

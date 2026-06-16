@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+
+{% block title %}Emergency Bed Registry{% endblock %}
+
+{% block content %}
+<div class="container-fluid px-0">
+    <div class="row mb-4 align-items-center">
+        <div class="col-md-8">
+            <h2 class="fw-bold mb-1">Emergency Bed Resource Registry</h2>
+            <p class="text-secondary">Register emergency bed resources, track occupied status, and control hospital capacities in real-time.</p>
+        </div>
+    </div>
+
+    <div class="row g-4">
+        <!-- Add Bed Resource Form Card -->
+        <div class="col-lg-4">
+            <div class="glass-card p-4">
+                <h5 class="fw-bold mb-4">Register Bed Resource</h5>
+                <form method="POST" action="{% url 'add_bed' %}">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label class="form-label">Ward Name / Area</label>
+                        {{ form.ward_name }}
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Bed Number / Code</label>
+                        {{ form.bed_number }}
+                    </div>
+                    <div class="form-check mb-4">
+                        {{ form.occupied }}
+                        <label class="form-check-label fw-semibold ms-1" for="id_occupied">
+                            Mark as Occupied
+                        </label>
+                    </div>
+                    <button type="submit" class="btn-custom-primary w-100 border-0">
+                        <i class="bi bi-plus-circle me-2"></i>Register Bed
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Bed Registry List Grid -->
+        <div class="col-lg-8">
+            <div class="glass-card p-4">
+                <h5 class="fw-bold mb-4">Live Bed Occupancies</h5>
+                {% if beds %}
+                    <div class="row g-3">
+                        {% for bed in beds %}
+                        <div class="col-md-6 col-xxl-4">
+                            <div class="p-3 border rounded-3 bg-light bg-opacity-70 d-flex flex-column justify-content-between" style="min-height: 140px;">
+                                <div class="d-flex justify-content-between align-items-start mb-2">
+                                    <div>
+                                        <h6 class="fw-bold text-dark mb-0">{{ bed.bed_number }}</h6>
+                                        <span class="text-secondary small text-uppercase" style="font-size: 11px; letter-spacing: 0.5px;">{{ bed.ward_name }}</span>
+                                    </div>
+                                    <span class="status-badge {% if bed.occupied %}badge-cancelled{% else %}badge-completed{% endif %}">
+                                        {% if bed.occupied %}Occupied{% else %}Available{% endif %}
+                                    </span>
+                                </div>
+                                <div class="d-flex gap-2 justify-content-end mt-3 border-top pt-2">
+                                    <a href="{% url 'toggle_bed_occupancy' bed.id %}" class="btn btn-sm {% if bed.occupied %}btn-outline-success{% else %}btn-outline-danger{% endif %} py-1.5" style="border-radius: 8px; font-size: 12px;">
+                                        {% if bed.occupied %}<i class="bi bi-check-circle me-1"></i>Free Bed{% else %}<i class="bi bi-door-closed me-1"></i>Occupy{% endif %}
+                                    </a>
+                                    <a href="{% url 'delete_bed' bed.id %}" class="btn btn-sm btn-outline-secondary py-1.5" onclick="return confirm('Remove this bed resource?');" style="border-radius: 8px; font-size: 12px;" title="Delete">
+                                        <i class="bi bi-trash3-fill"></i>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    <div class="text-center py-5">
+                        <i class="bi bi-bed-pulse text-muted" style="font-size: 3rem;"></i>
+                        <p class="text-secondary mt-3 mb-0">No emergency bed resources have been registered inside this hub.</p>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

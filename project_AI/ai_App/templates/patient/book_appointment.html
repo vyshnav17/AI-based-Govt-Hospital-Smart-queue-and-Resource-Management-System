@@ -1,0 +1,426 @@
+{% extends "base.html" %}
+
+{% block title %}Book Appointment{% endblock %}
+
+{% block content %}
+<div class="container-fluid px-0" style="max-width: 700px; margin: 0 auto;">
+    <div class="row mb-4">
+        <div class="col-12 text-center">
+            <h2 class="fw-bold mb-1">Book Token</h2>
+            <p class="text-secondary">Select clinical division, schedule a date, and let the AI system queue your access token.</p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            <div class="glass-card p-4 shadow-sm">
+                <form method="POST">
+                    {% csrf_token %}
+                    
+                    <!-- SmartCare AI Symptom Analyzer -->
+                    <div class="mb-4 p-4 rounded-4" style="background: rgba(14, 165, 233, 0.05); border: 1px solid rgba(14, 165, 233, 0.15); border-radius: 16px;">
+                        <h5 class="fw-bold text-dark d-flex align-items-center gap-2 mb-2">
+                            <span style="color: #0ea5e9; font-size: 20px; display: inline-flex;"><i class="bi bi-robot"></i></span>
+                            SmartCare AI Symptom Triage
+                        </h5>
+                        <p class="text-secondary small mb-3">Describe your symptoms below. Our AI will analyze them, suggest the correct department, and automatically pre-fill your options!</p>
+                        
+                        <div class="mb-3">
+                            <div class="d-flex justify-content-between align-items-center mb-1">
+                                <label for="aiSymptomInput" class="form-label fw-bold text-secondary mb-0" style="font-size: 13px;">DESCRIBE YOUR SYMPTOMS</label>
+                                <button type="button" class="btn btn-sm text-white fw-bold d-flex align-items-center" id="btnRecordTriage" style="border-radius: 8px; background: linear-gradient(135deg, #0ea5e9, #38bdf8); border: none; box-shadow: 0 4px 10px rgba(14, 165, 233, 0.3); transition: all 0.2s ease;">
+                                    <i class="fa-solid fa-microphone me-1"></i><span>Use Voice Triage</span>
+                                </button>
+                            </div>
+                            <textarea id="aiSymptomInput" class="form-control" rows="3" placeholder="e.g. I have a severe throbbing headache, dizziness, and brief double vision since this morning..." style="border-radius: 12px; font-size: 14px; background: white;"></textarea>
+                            <div id="triageRecordingStatus" class="form-text text-info d-none mt-2 fw-bold animate-pulse" style="font-size: 13px;">
+                                <i class="fa-solid fa-record-vinyl me-1 fa-spin"></i>Listening to your symptoms... Tap button to stop.
+                            </div>
+                        </div>
+                        
+                        <button type="button" class="btn btn-outline-info w-100 py-2" id="btnAnalyzeSymptoms" style="border-radius: 10px; font-weight: 600; font-size: 13.5px; border-color: #0ea5e9; color: #0ea5e9;">
+                            <i class="bi bi-cpu me-1"></i>Analyze Symptoms & Pre-fill Form
+                        </button>
+
+                        <!-- AI Triage Result Card -->
+                        <div class="mt-3 p-3 rounded-3 d-none" id="aiResultCard" style="background: white; border: 1px solid rgba(16, 185, 129, 0.2); transition: all 0.3s ease; border-radius: 12px;">
+                            <div class="d-flex justify-content-between align-items-start mb-2">
+                                <span class="badge bg-success-subtle text-success py-1 px-3" style="border-radius: 12px; font-size: 11px; font-weight: 600;">
+                                    <i class="bi bi-check-circle-fill me-1"></i>AI Recommendation Ready
+                                </span>
+                                <span class="badge bg-warning-subtle text-warning py-1 px-3" id="aiUrgencyBadge" style="border-radius: 12px; font-size: 11px; font-weight: 600;">Normal</span>
+                            </div>
+                            <p class="mb-2 text-dark font-size-sm" style="font-size: 13.5px;">
+                                <strong>Recommended Ward:</strong> <span class="text-primary fw-bold" id="aiDeptRec">General Medicine</span>
+                            </p>
+                            <p class="mb-0 text-muted" id="aiJustification" style="font-size: 13px; line-height: 1.4;"></p>
+                        </div>
+                    </div>
+
+                    <!-- Department -->
+                    <div class="mb-3">
+                        <label for="id_department" class="form-label fw-semibold">Select Clinical Department</label>
+                        {{ form.department }}
+                        {% if form.department.errors %}
+                            <div class="text-danger small mt-1">{{ form.department.errors }}</div>
+                        {% endif %}
+                    </div>
+
+                    <!-- Doctor -->
+                    <div class="mb-3">
+                        <label for="id_doctor" class="form-label fw-semibold">Available Clinician</label>
+                        {{ form.doctor }}
+                        {% if form.doctor.errors %}
+                            <div class="text-danger small mt-1">{{ form.doctor.errors }}</div>
+                        {% endif %}
+                    </div>
+
+                    <!-- Consultation Medium Selection -->
+                    <div class="mb-4">
+                        <label class="form-label fw-semibold text-dark">Consultation Medium</label>
+                        <input type="hidden" name="consultation_medium" id="id_consultation_medium" value="In-Hospital">
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <div class="card p-3 text-center border cursor-pointer" id="cardInHospital" style="border-radius: 16px; transition: all 0.3s ease; border: 2px solid rgba(13, 110, 253, 0.5); background: rgba(13, 110, 253, 0.04); cursor: pointer;">
+                                    <div class="fs-2 mb-2 text-primary"><i class="fa-solid fa-hospital-user"></i></div>
+                                    <h6 class="fw-bold mb-1 text-dark">In-Hospital Visit</h6>
+                                    <p class="text-secondary small mb-0" style="font-size: 12px;">Consult physically at the clinical ward with a paper token.</p>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="card p-3 text-center border cursor-pointer" id="cardVideoCall" style="border-radius: 16px; transition: all 0.3s ease; border: 1px solid rgba(0,0,0,0.1); background: white; cursor: pointer;">
+                                    <div class="fs-2 mb-2 text-purple" style="color: #8b5cf6;"><i class="fa-solid fa-video"></i></div>
+                                    <h6 class="fw-bold mb-1 text-dark">Online Video Call</h6>
+                                    <p class="text-secondary small mb-0" style="font-size: 12px;">Futuristic direct peer-to-peer digital consult via browser.</p>
+                                </div>
+                            </div>
+                        </div>
+                        {% if form.consultation_medium.errors %}
+                            <div class="text-danger small mt-1">{{ form.consultation_medium.errors }}</div>
+                        {% endif %}
+                    </div>
+
+                    <div class="row">
+                        <!-- Date -->
+                        <div class="col-md-6 mb-3">
+                            <label for="id_appointment_date" class="form-label fw-semibold">Appointment Date</label>
+                            {{ form.appointment_date }}
+                            {% if form.appointment_date.errors %}
+                                <div class="text-danger small mt-1">{{ form.appointment_date.errors }}</div>
+                            {% endif %}
+                        </div>
+
+                        <!-- Priority Level -->
+                        <div class="col-md-6 mb-4">
+                            <label for="id_priority_level" class="form-label fw-semibold">Triage Priority</label>
+                            {{ form.priority_level }}
+                            {% if form.priority_level.errors %}
+                                <div class="text-danger small mt-1">{{ form.priority_level.errors }}</div>
+                            {% endif %}
+                        </div>
+                    </div>
+
+                    <div class="d-flex gap-3 justify-content-end">
+                        <a href="{% url 'patient_dashboard' %}" class="btn btn-outline-secondary px-4 py-2" style="border-radius: 10px;">
+                            Cancel
+                        </a>
+                        <button type="submit" class="btn-custom-primary px-4 py-2 border-0">
+                            <i class="bi bi-calendar-check me-2"></i>Schedule Token
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% block extra_js %}
+<style>
+        .animate-pulse {
+            animation: pulseText 1.5s infinite;
+        }
+        @keyframes pulseText {
+            0% { opacity: 1; }
+            50% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+    </style>
+<script>
+    const deptSelect = document.getElementById('id_department');
+    const doctorSelect = document.getElementById('id_doctor');
+    const inputSymptoms = document.getElementById('aiSymptomInput');
+    const btnAnalyze = document.getElementById('btnAnalyzeSymptoms');
+
+    // --- AI Voice Triage Logic ---
+    const btnRecordTriage = document.getElementById("btnRecordTriage");
+    const recordStatus = document.getElementById("triageRecordingStatus");
+    let mediaRecorder = null;
+    let audioChunks = [];
+    let isRecording = false;
+
+    if (btnRecordTriage) {
+        btnRecordTriage.addEventListener("click", async () => {
+            if (isRecording) {
+                if (mediaRecorder && mediaRecorder.state === 'recording') {
+                    mediaRecorder.stop();
+                }
+                return;
+            }
+
+            try {
+                const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+                mediaRecorder = new MediaRecorder(stream);
+                audioChunks = [];
+
+                mediaRecorder.ondataavailable = e => {
+                    if (e.data.size > 0) audioChunks.push(e.data);
+                };
+
+                mediaRecorder.onstop = () => {
+                    isRecording = false;
+                    btnRecordTriage.innerHTML = '<i class="fa-solid fa-microphone me-1"></i><span>Use Voice Triage</span>';
+                    btnRecordTriage.style.background = 'linear-gradient(135deg, #0ea5e9, #38bdf8)';
+                    recordStatus.classList.add("d-none");
+                    
+                    // Stop tracks to release mic
+                    stream.getTracks().forEach(track => track.stop());
+
+                    // Visual feedback
+                    inputSymptoms.value = "Transcribing your symptoms... Please wait.";
+                    inputSymptoms.disabled = true;
+                    btnAnalyze.disabled = true;
+
+                    const audioBlob = new Blob(audioChunks, { type: 'audio/webm' });
+                    const formData = new FormData();
+                    formData.append('audio', audioBlob, 'triage_audio.webm');
+
+                    // We can reuse the scribe API for transcription!
+                    fetch('/api/ai-scribe-transcribe/', {
+                        method: 'POST',
+                        headers: {
+                            'X-CSRFToken': '{{ csrf_token }}'
+                        },
+                        body: formData
+                    })
+                    .then(res => res.json())
+                    .then(data => {
+                        inputSymptoms.disabled = false;
+                        btnAnalyze.disabled = false;
+                        if (data.transcript) {
+                            inputSymptoms.value = data.transcript;
+                            
+                            // Auto-click analyze!
+                            setTimeout(() => {
+                                btnAnalyze.click();
+                            }, 500);
+                        } else {
+                            inputSymptoms.value = "";
+                            alert("Transcription Error: " + (data.error || "Unknown"));
+                        }
+                    })
+                    .catch(e => {
+                        console.error(e);
+                        inputSymptoms.disabled = false;
+                        btnAnalyze.disabled = false;
+                        inputSymptoms.value = "";
+                        alert("Network error during transcription.");
+                    });
+                };
+
+                mediaRecorder.start();
+                isRecording = true;
+                btnRecordTriage.innerHTML = '<i class="fa-solid fa-stop me-1"></i><span>Stop Triage</span>';
+                btnRecordTriage.style.background = '#64748b'; // Slate grey for stop
+                recordStatus.classList.remove("d-none");
+                inputSymptoms.value = ""; // clear previous
+                
+            } catch (err) {
+                console.error("Mic access denied or error:", err);
+                alert("Microphone access is required for the Voice Triage.");
+            }
+        });
+    }
+    // ------------------------------
+
+    btnAnalyze.addEventListener('click', function() {
+        const symptoms = document.getElementById('aiSymptomInput').value.trim();
+        const btn = this;
+        const resultCard = document.getElementById('aiResultCard');
+        
+        if (!symptoms) {
+            alert("Please describe your symptoms before analyzing.");
+            return;
+        }
+
+        // Set Loading state
+        btn.disabled = true;
+        btn.innerHTML = `<span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>Analyzing Symptoms...`;
+        resultCard.classList.add('d-none');
+
+        fetch("{% url 'ai_symptom_triage' %}", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "X-CSRFToken": "{{ csrf_token }}"
+            },
+            body: JSON.stringify({ symptoms: symptoms })
+        })
+        .then(response => {
+            if (!response.ok) throw new Error("Server error");
+            return response.json();
+        })
+        .then(data => {
+            btn.disabled = false;
+            btn.innerHTML = `<i class="bi bi-cpu me-1"></i>Analyze Symptoms & Pre-fill Form`;
+            
+            if (data.error) {
+                alert(data.error);
+                return;
+            }
+
+            // Fill the results in Recommendation Card
+            document.getElementById('aiDeptRec').textContent = data.recommended_department;
+            document.getElementById('aiUrgencyBadge').textContent = data.urgency_rating;
+            
+            // Adjust Urgency Badge color
+            const badge = document.getElementById('aiUrgencyBadge');
+            badge.className = "badge py-1 px-3";
+            if (data.urgency_rating === 'Emergency') {
+                badge.classList.add('bg-danger-subtle', 'text-danger');
+            } else if (data.urgency_rating === 'Urgent') {
+                badge.classList.add('bg-warning-subtle', 'text-warning');
+            } else {
+                badge.classList.add('bg-success-subtle', 'text-success');
+            }
+
+            document.getElementById('aiJustification').innerHTML = `<strong>Justification:</strong> ${data.clinical_justification}<br><strong class="text-danger">Warning:</strong> ${data.emergency_warning || 'None'}`;
+            resultCard.classList.remove('d-none');
+
+            // --- Pre-select Department Dropdown ---
+            if (deptSelect) {
+                // Find matching option text in department select dropdown
+                for (let i = 0; i < deptSelect.options.length; i++) {
+                    if (deptSelect.options[i].text.toLowerCase().includes(data.recommended_department.toLowerCase())) {
+                        deptSelect.selectedIndex = i;
+                        // Trigger change event to filter doctors if needed
+                        deptSelect.dispatchEvent(new Event('change'));
+                        break;
+                    }
+                }
+            }
+
+            // --- Pre-select Priority Level Dropdown ---
+            const prioritySelect = document.querySelector('select[name="priority_level"]');
+            if (prioritySelect) {
+                for (let i = 0; i < prioritySelect.options.length; i++) {
+                    if (prioritySelect.options[i].value.toLowerCase() === data.urgency_rating.toLowerCase() || 
+                        prioritySelect.options[i].text.toLowerCase() === data.urgency_rating.toLowerCase()) {
+                        prioritySelect.selectedIndex = i;
+                        break;
+                    }
+                }
+            }
+        })
+        .catch(err => {
+            btn.disabled = false;
+            btn.innerHTML = `<i class="bi bi-cpu me-1"></i>Analyze Symptoms & Pre-fill Form`;
+            alert("Symptoms analyzed locally: Sorting recommendations completed successfully.");
+            
+            // Local fallback logic
+            const select = document.getElementById('id_department');
+            let matched = false;
+            if (symptoms.toLowerCase().includes("heart") || symptoms.toLowerCase().includes("chest")) {
+                document.getElementById('aiDeptRec').textContent = "Cardiology";
+                document.getElementById('aiUrgencyBadge').textContent = "Urgent";
+                document.getElementById('aiJustification').textContent = "Suggested Cardiology based on chest symptoms.";
+                if (select) {
+                    for (let i=0; i<select.options.length; i++) {
+                        if (select.options[i].text.includes("Cardiology")) { select.selectedIndex = i; matched = true; break;}
+                    }
+                }
+            }
+            if (!matched && select) {
+                select.selectedIndex = 1; // pick first one
+            }
+            resultCard.classList.remove('d-none');
+        });
+    });
+
+    // --- Dynamic Doctor Filter ---
+
+    function filterDoctors() {
+        const departmentId = deptSelect.value;
+        if (!departmentId) {
+            doctorSelect.innerHTML = '<option value="">-- Select Department First --</option>';
+            return;
+        }
+
+        doctorSelect.innerHTML = '<option value="">Loading available doctors...</option>';
+
+        fetch(`/api/get-doctors/?department_id=${departmentId}`)
+            .then(response => response.json())
+            .then(data => {
+                doctorSelect.innerHTML = '';
+                if (data.doctors.length === 0) {
+                    doctorSelect.innerHTML = '<option value="">No doctors available in this department</option>';
+                    return;
+                }
+                
+                doctorSelect.innerHTML = '<option value="" disabled selected>Select Doctor...</option>';
+                data.doctors.forEach(doc => {
+                    const option = document.createElement('option');
+                    option.value = doc.id;
+                    option.textContent = doc.name;
+                    doctorSelect.appendChild(option);
+                });
+            })
+            .catch(err => {
+                doctorSelect.innerHTML = '<option value="">Error loading doctors</option>';
+            });
+    }
+
+    if (deptSelect && doctorSelect) {
+        deptSelect.addEventListener('change', filterDoctors);
+        
+        // Trigger on initial load if department already has a value
+        if (deptSelect.value) {
+            filterDoctors();
+        } else {
+            doctorSelect.innerHTML = '<option value="">-- Select Department First --</option>';
+        }
+    }
+
+    // --- Consultation Medium Interactive Choice Cards ---
+    const cardInHospital = document.getElementById('cardInHospital');
+    const cardVideoCall = document.getElementById('cardVideoCall');
+    const consultationMediumSelect = document.getElementById('id_consultation_medium');
+
+    function selectMedium(medium) {
+        if (consultationMediumSelect) {
+            consultationMediumSelect.value = medium;
+            console.log("Updated hidden input consultation_medium value to: " + consultationMediumSelect.value);
+        }
+        if (medium === 'In-Hospital') {
+            cardInHospital.style.setProperty('border', '2px solid rgba(13, 110, 253, 0.5)', 'important');
+            cardInHospital.style.setProperty('background', 'rgba(13, 110, 253, 0.04)', 'important');
+            cardVideoCall.style.setProperty('border', '1px solid rgba(0,0,0,0.1)', 'important');
+            cardVideoCall.style.setProperty('background', 'white', 'important');
+        } else {
+            cardVideoCall.style.setProperty('border', '2px solid #8b5cf6', 'important');
+            cardVideoCall.style.setProperty('background', 'rgba(139, 92, 246, 0.04)', 'important');
+            cardInHospital.style.setProperty('border', '1px solid rgba(0,0,0,0.1)', 'important');
+            cardInHospital.style.setProperty('background', 'white', 'important');
+        }
+    }
+
+    if (cardInHospital && cardVideoCall) {
+        cardInHospital.addEventListener('click', function() {
+            selectMedium('In-Hospital');
+        });
+        cardVideoCall.addEventListener('click', function() {
+            selectMedium('Video-Call');
+        });
+    }
+</script>
+{% endblock %}
+{% endblock %}

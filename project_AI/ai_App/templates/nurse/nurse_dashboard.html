@@ -1,0 +1,309 @@
+{% extends 'base.html' %}
+{% block title %}Nurse Portal - Dashboard{% endblock %}
+
+{% block content %}
+<div class="container-fluid px-0">
+    <div class="row mb-4">
+        <div class="col-12">
+            <h2 class="fw-bold text-info">Nurse Triage Control</h2>
+            <p class="text-secondary">Manage department live queues, update patient vitals, and coordinate ward bed availability.</p>
+        </div>
+    </div>
+
+    <!-- Stats Widgets -->
+    <div class="row g-4 mb-5">
+        <div class="col-md-6 col-lg-4">
+            <div class="kims-card">
+                <div class="d-flex align-items-center">
+                    <div class="bg-primary text-white rounded p-3 me-3"><i class="fa-solid fa-clipboard-user fs-4"></i></div>
+                    <div>
+                        <h6 class="text-muted mb-1">Active Triage Queue</h6>
+                        <h3 class="fw-bold mb-0">{{ active_queues.count|default:"0" }}</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-lg-4">
+            <div class="kims-card">
+                <div class="d-flex align-items-center">
+                    <div class="bg-success text-white rounded p-3 me-3"><i class="fa-solid fa-bed fs-4"></i></div>
+                    <div>
+                        <h6 class="text-muted mb-1">Total Ward Beds</h6>
+                        <h3 class="fw-bold mb-0">{{ beds.count|default:"0" }}</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row g-4">
+        <!-- Vitals Entry Form -->
+        <div class="col-lg-5">
+            <div class="kims-card h-100">
+                <h5 class="fw-bold mb-4" style="color: var(--kims-blue);"><i class="fa-solid fa-heart-pulse me-2"></i>Log Patient Vitals</h5>
+                <form method="POST" action="{% url 'nurse_dashboard' %}">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label class="form-label text-muted small fw-bold">Select Patient from Queue</label>
+                        <select class="form-select" name="patient_id" required>
+                            <option value="">-- Select Patient --</option>
+                            {% for q in active_queues %}
+                            <option value="{{ q.appointment.patient.id }}">#{{ q.appointment.token_number }} - {{ q.appointment.patient.user.get_full_name|default:q.appointment.patient.user.username }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    
+                    <div class="row g-3 mb-3">
+                        <div class="col-6">
+                            <label class="form-label text-muted small fw-bold">Heart Rate (bpm)</label>
+                            <input type="number" class="form-control" name="heart_rate" placeholder="e.g. 72">
+                        </div>
+                        <div class="col-6">
+                            <label class="form-label text-muted small fw-bold">Blood Pressure</label>
+                            <input type="text" class="form-control" name="blood_pressure" placeholder="e.g. 120/80">
+                        </div>
+                        <div class="col-6">
+                            <label class="form-label text-muted small fw-bold">Temperature (°F)</label>
+                            <input type="number" step="0.1" class="form-control" name="temperature" placeholder="e.g. 98.6">
+                        </div>
+                        <div class="col-6">
+                            <label class="form-label text-muted small fw-bold">Blood Oxygen (%)</label>
+                            <input type="number" class="form-control" name="blood_oxygen" placeholder="e.g. 98">
+                        </div>
+                    </div>
+                    
+                    <button type="submit" name="log_vitals" class="btn btn-primary w-100 fw-bold rounded-pill shadow-sm">
+                        <i class="fa-solid fa-file-medical me-2"></i>Save Vitals to Chart
+                    </button>
+                </form>
+            </div>
+            
+            <!-- Smart AI Vitals Scanner -->
+            <div class="kims-card mt-4">
+                <h5 class="fw-bold mb-3" style="color: var(--kims-blue);"><i class="fa-solid fa-brain me-2 text-primary"></i>Smart AI Vitals Scanner</h5>
+                <p class="small text-muted mb-3">Quickly analyze a patient's Heart Rate and O2 levels using AI to predict clinical risk.</p>
+                <div class="row g-2 mb-3">
+                    <div class="col-6">
+                        <input type="number" id="aiScannerHr" class="form-control form-control-sm" placeholder="HR (bpm)">
+                    </div>
+                    <div class="col-6">
+                        <input type="number" id="aiScannerO2" class="form-control form-control-sm" placeholder="O2 (%)">
+                    </div>
+                </div>
+                <button type="button" id="btnRunAiScanner" class="btn btn-outline-primary w-100 fw-bold btn-sm">
+                    <i class="fa-solid fa-bolt me-1"></i>Run AI Analysis
+                </button>
+                <div id="aiScannerResult" class="mt-3 d-none p-3 rounded text-center border">
+                    <h6 class="fw-bold mb-1" id="aiScannerStatus"></h6>
+                    <p class="small mb-0 text-muted" id="aiScannerMessage"></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Live Queue List -->
+        <div class="col-lg-7">
+            <div class="kims-card h-100">
+                <h5 class="fw-bold mb-4" style="color: var(--kims-blue);"><i class="fa-solid fa-list-ol me-2"></i>Live Department Queue</h5>
+                <div class="table-responsive">
+                    <table class="table table-hover align-middle border-top">
+                        <thead class="table-light">
+                            <tr>
+                                <th>Token</th>
+                                <th>Patient</th>
+                                <th>Priority</th>
+                                <th>Age/Gender</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for q in active_queues %}
+                            <tr>
+                                <td><span class="badge bg-primary rounded-pill">#{{ q.appointment.token_number }}</span></td>
+                                <td><span class="fw-bold">{{ q.appointment.patient.user.get_full_name|default:q.appointment.patient.user.username }}</span></td>
+                                <td>
+                                    {% if q.priority_level == 'Emergency' %}<span class="badge bg-danger">Emergency</span>
+                                    {% elif q.priority_level == 'Urgent' %}<span class="badge bg-warning text-dark">Urgent</span>
+                                    {% else %}<span class="badge bg-success">Normal</span>{% endif %}
+                                </td>
+                                <td>{{ q.appointment.patient.age }} / {{ q.appointment.patient.gender|slice:":1" }}</td>
+                            </tr>
+                            {% empty %}
+                            <tr><td colspan="4" class="text-center text-muted py-4">No active patients in your department queue.</td></tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <!-- AI Shift Handover -->
+            <div class="kims-card mt-4">
+                <h5 class="fw-bold mb-3" style="color: var(--kims-blue);"><i class="fa-solid fa-file-signature me-2 text-primary"></i>AI Shift Handover Generator</h5>
+                <p class="small text-muted mb-3">Jot down rough shift notes and let AI format them into a professional SBAR clinical report.</p>
+                <div class="mb-3">
+                    <textarea id="aiHandoverNotes" class="form-control" rows="3" placeholder="e.g. Patient in bed 4 stable, BP was high earlier but gave meds. Complaining of mild pain. Recommend checking on him at 10pm."></textarea>
+                </div>
+                <button type="button" id="btnRunAiHandover" class="btn btn-primary fw-bold w-100">
+                    <i class="fa-solid fa-wand-magic-sparkles me-2"></i>Generate Professional Report
+                </button>
+                <div id="aiHandoverResultContainer" class="mt-3 d-none">
+                    <h6 class="fw-bold text-success mb-2"><i class="fa-solid fa-check-circle me-1"></i>Generated Report</h6>
+                    <div class="p-3 bg-light rounded border text-dark" style="white-space: pre-wrap; font-size: 0.9rem;" id="aiHandoverReportText"></div>
+                    <button type="button" class="btn btn-sm btn-outline-secondary mt-2 w-100" onclick="navigator.clipboard.writeText(document.getElementById('aiHandoverReportText').innerText); alert('Copied to clipboard!')">
+                        <i class="fa-regular fa-copy me-1"></i>Copy to Clipboard
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Interactive Ward Bed Management -->
+    <div class="row mt-4">
+        <div class="col-12">
+            <div class="kims-card">
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <h5 class="fw-bold mb-0" style="color: var(--kims-blue);"><i class="fa-solid fa-bed-pulse me-2"></i>Ward Bed Occupancy Overview</h5>
+                </div>
+                <div class="row g-3">
+                    {% for b in beds %}
+                    <div class="col-md-4 col-lg-3">
+                        <div class="card shadow-sm border-0 h-100 {% if b.occupied %}bg-danger-subtle{% else %}bg-success-subtle{% endif %}">
+                            <div class="card-body text-center d-flex flex-column justify-content-center">
+                                <h5 class="fw-bold mb-2"><i class="fa-solid fa-bed me-2"></i>{{ b.ward_name }} - {{ b.bed_number }}</h5>
+                                {% if b.occupied %}
+                                    <span class="badge bg-danger mb-2 align-self-center px-3 py-2 rounded-pill">Occupied</span>
+                                    {% if b.current_patient %}
+                                        <div class="small fw-bold text-dark mt-auto">{{ b.current_patient.user.get_full_name|default:b.current_patient.user.username }}</div>
+                                        <div class="small text-muted">{{ b.current_patient.age }} yrs / {{ b.current_patient.gender }}</div>
+                                    {% endif %}
+                                {% else %}
+                                    <span class="badge bg-success mb-2 align-self-center px-3 py-2 rounded-pill">Available</span>
+                                    <div class="small text-muted mt-auto">Ready for admission</div>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                    {% empty %}
+                    <div class="col-12 text-center text-muted py-3">No beds configured.</div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    const btnScanner = document.getElementById("btnRunAiScanner");
+    const resultDiv = document.getElementById("aiScannerResult");
+    const statusText = document.getElementById("aiScannerStatus");
+    const msgText = document.getElementById("aiScannerMessage");
+
+    if(btnScanner) {
+        btnScanner.addEventListener("click", function() {
+            const hr = document.getElementById("aiScannerHr").value;
+            const o2 = document.getElementById("aiScannerO2").value;
+            
+            if(!hr || !o2) {
+                alert("Please enter both Heart Rate and Blood Oxygen to run the AI scanner.");
+                return;
+            }
+
+            btnScanner.disabled = true;
+            btnScanner.innerHTML = '<i class="fa-solid fa-spinner fa-spin me-1"></i>Analyzing...';
+            
+            fetch('/api/ai-vitals-analyze/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': '{{ csrf_token }}'
+                },
+                body: JSON.stringify({hr: hr, o2: o2})
+            })
+            .then(res => res.json())
+            .then(data => {
+                btnScanner.disabled = false;
+                btnScanner.innerHTML = '<i class="fa-solid fa-bolt me-1"></i>Run AI Analysis';
+                
+                resultDiv.classList.remove("d-none");
+                resultDiv.className = "mt-3 p-3 rounded text-center border "; // reset classes
+                
+                if(data.error) {
+                    statusText.innerText = "Analysis Failed";
+                    msgText.innerText = data.error;
+                    resultDiv.classList.add("bg-danger-subtle", "border-danger");
+                    statusText.className = "fw-bold mb-1 text-danger";
+                    return;
+                }
+                
+                statusText.innerText = data.status + " Risk Detected";
+                msgText.innerText = data.message;
+                
+                if(data.status === "Normal") {
+                    resultDiv.classList.add("bg-success-subtle", "border-success");
+                    statusText.className = "fw-bold mb-1 text-success";
+                } else if(data.status === "Warning") {
+                    resultDiv.classList.add("bg-warning-subtle", "border-warning");
+                    statusText.className = "fw-bold mb-1 text-warning text-dark";
+                } else {
+                    resultDiv.classList.add("bg-danger-subtle", "border-danger");
+                    statusText.className = "fw-bold mb-1 text-danger";
+                }
+            })
+            .catch(err => {
+                console.error(err);
+                btnScanner.disabled = false;
+                btnScanner.innerHTML = '<i class="fa-solid fa-bolt me-1"></i>Run AI Analysis';
+                alert("Network error occurred.");
+            });
+        });
+    }
+
+    const btnHandover = document.getElementById("btnRunAiHandover");
+    const handoverNotes = document.getElementById("aiHandoverNotes");
+    const handoverResultContainer = document.getElementById("aiHandoverResultContainer");
+    const handoverReportText = document.getElementById("aiHandoverReportText");
+
+    if(btnHandover) {
+        btnHandover.addEventListener("click", function() {
+            const notes = handoverNotes.value;
+            if(!notes.trim()) {
+                alert("Please enter some rough notes first.");
+                return;
+            }
+
+            btnHandover.disabled = true;
+            btnHandover.innerHTML = '<i class="fa-solid fa-spinner fa-spin me-2"></i>Generating Report...';
+            
+            fetch('/api/ai-shift-handover/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': '{{ csrf_token }}'
+                },
+                body: JSON.stringify({notes: notes})
+            })
+            .then(res => res.json())
+            .then(data => {
+                btnHandover.disabled = false;
+                btnHandover.innerHTML = '<i class="fa-solid fa-wand-magic-sparkles me-2"></i>Generate Professional Report';
+                
+                if(data.error) {
+                    alert("Error: " + data.error);
+                    return;
+                }
+                
+                handoverResultContainer.classList.remove("d-none");
+                handoverReportText.innerText = data.report;
+            })
+            .catch(err => {
+                console.error(err);
+                btnHandover.disabled = false;
+                btnHandover.innerHTML = '<i class="fa-solid fa-wand-magic-sparkles me-2"></i>Generate Professional Report';
+                alert("Network error occurred.");
+            });
+        });
+    }
+});
+</script>
+{% endblock %}

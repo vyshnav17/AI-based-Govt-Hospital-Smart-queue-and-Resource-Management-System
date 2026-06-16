@@ -1,0 +1,820 @@
+{% extends 'base.html' %}
+{% block title %}SmartCare Telehealth Room{% endblock %}
+
+{% block content %}
+<div class="container-fluid px-0 h-100 d-flex flex-column" style="background-color: #0f172a; min-height: 100vh;">
+    
+    <!-- AI Vitals Alert Banner (Hidden by default) -->
+    <div id="aiVitalsAlertBanner" class="d-none w-100 p-3 text-center text-white fw-bold shadow-lg" style="background: linear-gradient(90deg, #ef4444, #b91c1c); z-index: 9999; position: fixed; top: 0; left: 0; animation: pulseAlert 1.5s infinite;">
+        <i class="fa-solid fa-triangle-exclamation me-2 fa-xl"></i>
+        <span style="font-size: 18px; letter-spacing: 1px;">CRITICAL VITALS ANOMALY DETECTED BY AI:</span>
+        <span id="aiVitalsAlertMessage" class="ms-2" style="font-size: 17px; font-weight: normal;"></span>
+    </div>
+
+<div class="container-fluid px-0 h-100" style="min-height: calc(100vh - 120px); margin-top: 60px;">
+    <div class="row g-4 h-100">
+        <!-- VIDEO STREAM THEATER -->
+        <div class="col-lg-8">
+            <div class="glass-card p-0 overflow-hidden position-relative d-flex flex-column justify-content-between" 
+                 style="background: #0f172a; border: 2px solid rgba(13, 110, 253, 0.25); border-radius: 24px; min-height: 520px; box-shadow: 0 20px 45px rgba(15, 23, 42, 0.35);">
+                
+                <!-- Room Stats Overlay -->
+                <div class="position-absolute top-0 start-0 w-100 p-3 d-flex justify-content-between align-items-center" style="z-index: 10; background: linear-gradient(to bottom, rgba(15, 23, 42, 0.8), rgba(0,0,0,0));">
+                    <div class="d-flex align-items-center gap-2">
+                        <span class="badge bg-danger px-2.5 py-1.5 status-badge animate-pulse" id="callStatusBadge">
+                            <i class="fa-solid fa-circle-dot me-1"></i>LIVE CONSULT
+                        </span>
+                        <span class="text-white small fw-bold" id="callDuration">00:00</span>
+                    </div>
+                    <span class="badge bg-primary-subtle text-primary border border-primary-subtle px-2.5 py-1.5" style="border-radius: 12px; font-size: 11px;">
+                        Secure P2P Encrypted Room
+                    </span>
+                </div>
+
+                <!-- Main Video Stream Feed -->
+                <div class="flex-grow-1 w-100 h-100 d-flex justify-content-center align-items-center position-relative" style="background: radial-gradient(circle at center, #1e293b 0%, #0f172a 100%); min-height: 420px;">
+                    <!-- Webcam Feed Element -->
+                    <video id="remoteVideo" class="w-100 h-100 object-fit-cover d-none" autoplay playsinline></video>
+
+                    <!-- Avatar Simulator (Active when Peer is Connecting or Offline) -->
+                    <div id="remoteAvatarSim" class="text-center w-100 h-100 d-flex flex-column justify-content-center align-items-center p-4">
+                        <!-- Medical Grid Animation -->
+                        <div class="avatar-ring animate-pulse-ring mb-3">
+                            <div class="rounded-circle p-4 bg-primary bg-opacity-10 d-flex justify-content-center align-items-center" 
+                                 style="width: 140px; height: 140px; border: 2px dashed var(--secondary);">
+                                <i class="fa-solid {% if role == 'doctor' %}fa-user-injured{% else %}fa-user-doctor{% endif %} text-info animate-bounce" style="font-size: 64px;"></i>
+                            </div>
+                        </div>
+                        <h5 class="fw-bold text-white mb-2" id="simTitle">Connecting Secure Stream...</h5>
+                        <p class="text-secondary small mb-0 px-3" style="max-width: 320px;" id="simDesc">
+                            {% if role == 'doctor' %}Waiting for Patient to enter clinical room...{% else %}Waiting for Dr. {{ appointment.doctor.user.username }} to start consult...{% endif %}
+                        </p>
+                    </div>
+
+                    <!-- local PIP Cam Overlay -->
+                    <div class="position-absolute bottom-0 end-0 m-3 rounded-4 overflow-hidden border border-white border-opacity-20 shadow-lg" 
+                         style="width: 150px; height: 110px; z-index: 10; background: #334155;">
+                        <video id="localVideo" class="w-100 h-100 object-fit-cover d-none" autoplay playsinline muted></video>
+                        <div id="localAvatarSim" class="w-100 h-100 d-flex justify-content-center align-items-center bg-dark">
+                            <i class="fa-solid {% if role == 'doctor' %}fa-user-doctor{% else %}fa-user-injured{% endif %} text-secondary fs-2"></i>
+                        </div>
+                    </div>
+
+                    <div id="aiVoiceOverlay" class="d-none position-absolute top-0 start-0 w-100 h-100 d-flex flex-column justify-content-center align-items-center" style="background: rgba(15, 23, 42, 0.85); z-index: 15; backdrop-filter: blur(8px);">
+                        <div class="pulsing-orb mb-4" id="aiVisualOrb" style="width: 100px; height: 100px; border-radius: 50%; background: radial-gradient(circle, #8b5cf6, #3b82f6); box-shadow: 0 0 40px rgba(139, 92, 246, 0.8); animation: pulseOrb 2s infinite;"></div>
+                        <h4 class="text-white fw-bold mb-2">SmartCare AI is Active</h4>
+                        <p class="text-white-50 text-center px-4 mb-4" id="aiTranscriptText">The doctor has paused the consultation. I am here to assist you.</p>
+                        
+                        <!-- Tap to Speak Button -->
+                        <button class="btn px-4 py-2.5 mb-4 text-white fw-bold shadow-lg" id="btnAiStartListening" style="background: linear-gradient(135deg, #8b5cf6, #3b82f6); border-radius: 30px; border: none; transition: transform 0.2s;">
+                            <i class="fa-solid fa-microphone-lines me-2"></i>Tap to Speak
+                        </button>
+                        
+                        <!-- Fallback Text Input -->
+                        <div class="input-group w-50" style="max-width: 400px; z-index: 20;">
+                            <input type="text" class="form-control text-white border-secondary" id="aiFallbackInput" placeholder="Microphone issues? Type here..." style="background: rgba(255,255,255,0.1);">
+                            <button class="btn btn-primary px-3" id="btnAiFallbackSubmit" type="button"><i class="fa-solid fa-paper-plane"></i> Send</button>
+                        </div>
+
+                        <style>
+                            @keyframes pulseOrb {
+                                0% { transform: scale(0.95); box-shadow: 0 0 20px rgba(139, 92, 246, 0.5); }
+                                50% { transform: scale(1.1); box-shadow: 0 0 60px rgba(139, 92, 246, 0.9); }
+                                100% { transform: scale(0.95); box-shadow: 0 0 20px rgba(139, 92, 246, 0.5); }
+                            }
+                        </style>
+                    </div>
+                </div>
+
+                <!-- Media Control Dock -->
+                <div class="p-3 w-100 d-flex justify-content-center gap-3 align-items-center" 
+                     style="background: linear-gradient(to top, rgba(15, 23, 42, 0.95), rgba(15, 23, 42, 0.8)); border-top: 1px solid rgba(255,255,255,0.06);">
+                    <button class="btn btn-circle" id="btnToggleAudio" title="Toggle Microphone">
+                        <i class="fa-solid fa-microphone"></i>
+                    </button>
+                    <button class="btn btn-circle" id="btnToggleVideo" title="Toggle Webcam">
+                        <i class="fa-solid fa-video"></i>
+                    </button>
+                    {% if role == 'doctor' %}
+                    <button class="btn btn-circle btn-circle-warning" id="btnToggleHold" title="Put Call on Hold (Voice AI Handover)">
+                        <i class="fa-solid fa-hand-paper"></i>
+                    </button>
+                    {% endif %}
+                    <button class="btn btn-circle btn-circle-purple" id="btnToggleShare" title="Toggle Screen Share (Mock)">
+                        <i class="fa-solid fa-desktop"></i>
+                    </button>
+                    <a href="{% if role == 'doctor' %}{% url 'doctor_dashboard' %}{% else %}{% url 'patient_dashboard' %}{% endif %}" 
+                       class="btn btn-circle btn-circle-danger" id="btnEndCall" title="Terminate Consultation">
+                        <i class="fa-solid fa-phone-slash"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- SIDEBAR CLINIC SUMMARY -->
+        <div class="col-lg-4">
+            <div class="glass-card d-flex flex-column gap-4 p-4 shadow-lg h-100" style="border-radius: 24px; min-height: 520px; background: rgba(255,255,255,0.92);">
+                <!-- Header -->
+                <div class="border-bottom pb-3 border-secondary-subtle">
+                    <h5 class="fw-bold mb-1 text-dark">Telehealth Dashboard</h5>
+                    <p class="text-secondary small mb-0">Active Vitals and Digital Triage Logs</p>
+                </div>
+
+                <!-- Patient Overview Card -->
+                <div class="p-3 bg-light rounded-4 border border-secondary-subtle">
+                    <span class="d-block small text-muted text-uppercase fw-semibold mb-1" style="font-size: 11px;">Consultation With</span>
+                    {% if role == 'doctor' %}
+                        <h6 class="fw-bold text-dark mb-0">{{ appointment.patient.user.first_name }} {{ appointment.patient.user.last_name }}</h6>
+                        <span class="text-secondary small">Age: {{ appointment.patient.age }} | Gender: {{ appointment.patient.gender }}</span>
+                    {% else %}
+                        <h6 class="fw-bold text-dark mb-0">Dr. {{ appointment.doctor.user.first_name }} {{ appointment.doctor.user.last_name }}</h6>
+                        <span class="text-secondary small">Specialization: {{ appointment.doctor.specialization }}</span>
+                    {% endif %}
+                </div>
+
+                <!-- Simulated Vitals Monitor -->
+                <div>
+                    <div class="d-flex justify-content-between align-items-center mb-3">
+                        <h6 class="fw-bold text-dark mb-0"><i class="bi bi-heart-pulse-fill text-danger me-2"></i>Patient Vitals Feed</h6>
+                        {% if role == 'doctor' %}
+                        <button class="btn btn-sm text-white" id="btnAiVitalsToggle" style="background: linear-gradient(135deg, #10b981, #059669); border-radius: 8px; font-size: 12px; font-weight: 600;">
+                            <i class="fa-solid fa-robot me-1"></i>Enable AI Monitor
+                        </button>
+                        {% endif %}
+                    </div>
+                    <div class="row g-3">
+                        <div class="col-6">
+                            <div class="p-3 bg-white border border-secondary-subtle rounded-3 text-center">
+                                <span class="d-block small text-muted" style="font-size: 10px;">HEART RATE</span>
+                                <h4 class="fw-bold text-danger mb-0 mt-1" id="vitalsHR">72 <span style="font-size: 11px;">bpm</span></h4>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="p-3 bg-white border border-secondary-subtle rounded-3 text-center">
+                                <span class="d-block small text-muted" style="font-size: 10px;">BLOOD PRESSURE</span>
+                                <h4 class="fw-bold text-primary mb-0 mt-1" id="vitalsBP">120/80</h4>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="p-3 bg-white border border-secondary-subtle rounded-3 text-center">
+                                <span class="d-block small text-muted" style="font-size: 10px;">BLOOD OXYGEN</span>
+                                <h4 class="fw-bold text-success mb-0 mt-1" id="vitalsO2">98%</h4>
+                            </div>
+                        </div>
+                        <div class="col-6">
+                            <div class="p-3 bg-white border border-secondary-subtle rounded-3 text-center">
+                                <span class="d-block small text-muted" style="font-size: 10px;">CLINIC TEMP</span>
+                                <h4 class="fw-bold text-warning mb-0 mt-1" id="vitalsTemp">98.6°F</h4>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    {% if role == 'doctor' %}
+                    <div class="mt-3 text-end">
+                        <button class="btn btn-sm btn-outline-danger" id="btnSimulateAnomaly" style="font-size: 11px; border-radius: 6px;">
+                            <i class="fa-solid fa-skull me-1"></i>Simulate Anomaly
+                        </button>
+                    </div>
+                    {% endif %}
+                </div>
+
+                <!-- Consultation Context Widget -->
+                <div class="flex-grow-1 d-flex flex-column justify-content-between p-3 rounded-4 bg-white border border-secondary-subtle">
+                    <div>
+                        <h6 class="fw-bold text-dark mb-2"><i class="fa-solid fa-wand-magic-sparkles text-purple me-2"></i>Triage Analysis</h6>
+                        <p class="text-secondary small mb-0">
+                            Appointment triage priority was sorted as <strong>{{ appointment.queue_entry.priority_level }}</strong> based on symptoms assessment.
+                        </p>
+                    </div>
+                    {% if role == 'doctor' %}
+                        <div class="pt-3 border-top mt-3 text-center">
+                            <a href="{% url 'complete_appointment' appointment.id %}" class="btn btn-custom-primary w-100 py-2.5 text-white" style="font-size: 13.5px;">
+                                <i class="fa-solid fa-file-prescription me-1"></i>Resolve & Prescribe
+                            </a>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    /* Premium Telehealth Specific Controls CSS */
+    .btn-circle {
+        width: 52px;
+        height: 52px;
+        border-radius: 50%;
+        background-color: rgba(255, 255, 255, 0.08);
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        color: white;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 18px;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .btn-circle:hover {
+        background-color: white;
+        color: #0f172a;
+        transform: scale(1.08);
+    }
+    .btn-circle-purple {
+        background-color: rgba(139, 92, 246, 0.15);
+        border-color: rgba(139, 92, 246, 0.3);
+        color: #a78bfa;
+    }
+    .btn-circle-purple:hover {
+        background-color: #8b5cf6;
+        color: white;
+    }
+    .btn-circle-danger {
+        background-color: rgba(239, 68, 68, 0.15);
+        border-color: rgba(239, 68, 68, 0.3);
+        color: #fca5a5;
+    }
+    .btn-circle-danger:hover {
+        background-color: #ef4444;
+        color: white;
+    }
+    .btn-circle.active-off {
+        background-color: #ef4444 !important;
+        border-color: #ef4444 !important;
+        color: white !important;
+    }
+
+    .avatar-ring {
+        position: relative;
+        display: inline-block;
+    }
+    @keyframes pulse-ring {
+        0% { box-shadow: 0 0 0 0 rgba(14, 165, 233, 0.25); }
+        70% { box-shadow: 0 0 0 16px rgba(14, 165, 233, 0); }
+        100% { box-shadow: 0 0 0 0 rgba(14, 165, 233, 0); }
+    }
+    .animate-pulse-ring {
+        animation: pulse-ring 2.5s infinite;
+        border-radius: 50%;
+    }
+    @keyframes pulseAlert {
+        0% { background: linear-gradient(90deg, #ef4444, #b91c1c); box-shadow: 0 0 0px #ef4444; }
+        50% { background: linear-gradient(90deg, #dc2626, #991b1b); box-shadow: 0 0 20px #ef4444; }
+        100% { background: linear-gradient(90deg, #ef4444, #b91c1c); box-shadow: 0 0 0px #ef4444; }
+    }
+</style>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const appointmentId = "{{ appointment.id }}";
+        const role = "{{ role }}";
+        let callActive = true;
+        let localStream;
+        let peerConnection;
+        const localVideoEl = document.getElementById("localVideo");
+        const remoteVideoEl = document.getElementById("remoteVideo");
+        const localSim = document.getElementById("localAvatarSim");
+        const remoteSim = document.getElementById("remoteAvatarSim");
+        let processedIceCount = 0;
+        let hasProcessedOffer = false;
+        let hasProcessedAnswer = false;
+
+        // UI Controls
+        const btnToggleAudio = document.getElementById("btnToggleAudio");
+        const btnToggleVideo = document.getElementById("btnToggleVideo");
+        const btnEndCall = document.getElementById("btnEndCall");
+        const btnToggleHold = document.getElementById("btnToggleHold");
+        let isAudioMuted = false;
+        let isVideoMuted = false;
+        let isOnHold = false;
+        
+        if (btnEndCall) {
+            btnEndCall.addEventListener("click", function(e) {
+                e.preventDefault();
+                const redirectUrl = this.getAttribute("href");
+                sendSignal('terminate', {}); // Ensures session is marked inactive in DB
+                setTimeout(() => { window.location.href = redirectUrl; }, 300);
+            });
+        }
+        
+        // Voice AI State
+        let currentHoldState = false;
+        let recognition = null;
+        let aiSpeechSynth = window.speechSynthesis;
+        
+        function sendToAi(transcriptText) {
+            const aiTranscriptText = document.getElementById("aiTranscriptText");
+            if (aiTranscriptText) aiTranscriptText.innerText = '"' + transcriptText + '"';
+            
+            fetch('/ask-ai/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRFToken': '{{ csrf_token }}'
+                },
+                body: JSON.stringify({ 'message': transcriptText })
+            })
+            .then(res => res.json())
+            .then(data => {
+                if (data.response && currentHoldState) {
+                    if (aiTranscriptText) aiTranscriptText.innerText = "AI is speaking...";
+                    const utterance = new SpeechSynthesisUtterance(data.response);
+                    utterance.onend = () => {
+                        if (currentHoldState) {
+                            if (aiTranscriptText) aiTranscriptText.innerText = "Response finished. Tap to speak again.";
+                        }
+                    };
+                    aiSpeechSynth.speak(utterance);
+                }
+            }).catch(e => console.error("Voice AI Error", e));
+        }
+        
+        if (role === 'patient') {
+            // Bind Tap to Speak button using MediaRecorder (Groq Whisper Integration)
+            const btnAiStartListening = document.getElementById("btnAiStartListening");
+            let mediaRecorder = null;
+            let audioChunks = [];
+            let isRecording = false;
+
+            if (btnAiStartListening) {
+                btnAiStartListening.addEventListener("click", () => {
+                    const aiTranscriptText = document.getElementById("aiTranscriptText");
+                    const aiVisualOrb = document.getElementById("aiVisualOrb");
+                    
+                    if (isRecording) {
+                        // Stop recording
+                        if (mediaRecorder && mediaRecorder.state === 'recording') {
+                            mediaRecorder.stop();
+                        }
+                        return;
+                    }
+                    
+                    // Start Recording
+                    if (!localStream) {
+                        if (aiTranscriptText) aiTranscriptText.innerText = "No active microphone detected.";
+                        return;
+                    }
+                    
+                    if (aiSpeechSynth.speaking) aiSpeechSynth.cancel();
+                    
+                    try {
+                        mediaRecorder = new MediaRecorder(localStream);
+                        audioChunks = [];
+                        
+                        mediaRecorder.ondataavailable = e => {
+                            if (e.data.size > 0) audioChunks.push(e.data);
+                        };
+                        
+                        mediaRecorder.onstop = () => {
+                            isRecording = false;
+                            btnAiStartListening.innerHTML = '<i class="fa-solid fa-microphone-lines me-2"></i>Tap to Speak';
+                            btnAiStartListening.style.background = 'linear-gradient(135deg, #8b5cf6, #3b82f6)';
+                            
+                            if (aiVisualOrb) aiVisualOrb.style.animation = "pulseOrb 2s infinite";
+                            if (aiTranscriptText) aiTranscriptText.innerText = "Processing your voice... Please wait.";
+                            
+                            const audioBlob = new Blob(audioChunks, { type: 'audio/webm' });
+                            const formData = new FormData();
+                            formData.append('audio', audioBlob, 'recording.webm');
+                            
+                            fetch('/ask-ai/', {
+                                method: 'POST',
+                                headers: {
+                                    'X-CSRFToken': '{{ csrf_token }}'
+                                },
+                                body: formData
+                            })
+                            .then(res => res.json())
+                            .then(data => {
+                                if (data.transcript && aiTranscriptText) {
+                                    aiTranscriptText.innerText = '"' + data.transcript + '"';
+                                }
+                                
+                                if (data.response && currentHoldState) {
+                                    setTimeout(() => { if (aiTranscriptText) aiTranscriptText.innerText = "AI is speaking..."; }, 1500);
+                                    const utterance = new SpeechSynthesisUtterance(data.response);
+                                    utterance.onend = () => {
+                                        if (currentHoldState) {
+                                            if (aiTranscriptText) aiTranscriptText.innerText = "Response finished. Tap to speak again.";
+                                        }
+                                    };
+                                    aiSpeechSynth.speak(utterance);
+                                }
+                            }).catch(e => {
+                                console.error("Audio Processing Error", e);
+                                if (aiTranscriptText) aiTranscriptText.innerText = "Audio upload failed. Please try text.";
+                            });
+                        };
+                        
+                        mediaRecorder.start();
+                        isRecording = true;
+                        
+                        btnAiStartListening.innerHTML = '<i class="fa-solid fa-stop me-2"></i>Stop Recording';
+                        btnAiStartListening.style.background = '#ef4444'; // Red for recording
+                        
+                        if (aiTranscriptText) aiTranscriptText.innerText = "Listening... Speak now and tap Stop!";
+                        if (aiVisualOrb) aiVisualOrb.style.animation = "pulseOrb 0.5s infinite";
+                        
+                    } catch (e) {
+                        console.error("MediaRecorder Error", e);
+                        if (aiTranscriptText) aiTranscriptText.innerText = "Audio recorder error. Please use text.";
+                    }
+                });
+            }
+
+            // Fallback Input Logic
+            const aiInput = document.getElementById("aiFallbackInput");
+            const btnAiSubmit = document.getElementById("btnAiFallbackSubmit");
+            if (btnAiSubmit && aiInput) {
+                btnAiSubmit.addEventListener("click", () => {
+                    const val = aiInput.value.trim();
+                    if (val) {
+                        // Stop recognition briefly to prevent overlapping with speech
+                        if (recognition) { try { recognition.stop(); } catch(e){} }
+                        sendToAi(val);
+                        aiInput.value = "";
+                    }
+                });
+                aiInput.addEventListener("keypress", (e) => {
+                    if (e.key === "Enter") btnAiSubmit.click();
+                });
+            }
+        }
+
+        // Doctor Hold Toggle Logic
+        if (btnToggleHold) {
+            btnToggleHold.addEventListener("click", () => {
+                isOnHold = !isOnHold;
+                if (isOnHold) {
+                    btnToggleHold.classList.add("bg-warning", "text-dark");
+                    btnToggleHold.classList.remove("btn-circle-warning");
+                    sendSignal('hold', {});
+                } else {
+                    btnToggleHold.classList.remove("bg-warning", "text-dark");
+                    btnToggleHold.classList.add("btn-circle-warning");
+                    sendSignal('resume', {});
+                }
+            });
+        }
+
+        // WebAudio chime synthesizer helper for phone connections
+        function playChime(freq1, freq2, duration) {
+            try {
+                const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+                if (audioCtx) {
+                    const osc = audioCtx.createOscillator();
+                    const gain = audioCtx.createGain();
+                    osc.connect(gain);
+                    gain.connect(audioCtx.destination);
+                    osc.type = 'sine';
+                    osc.frequency.setValueAtTime(freq1, audioCtx.currentTime);
+                    gain.gain.setValueAtTime(0.06, audioCtx.currentTime);
+                    osc.start();
+                    osc.stop(audioCtx.currentTime + duration);
+                    setTimeout(() => {
+                        const osc2 = audioCtx.createOscillator();
+                        const gain2 = audioCtx.createGain();
+                        osc2.connect(gain2);
+                        gain2.connect(audioCtx.destination);
+                        osc2.type = 'sine';
+                        osc2.frequency.setValueAtTime(freq2, audioCtx.currentTime);
+                        gain2.gain.setValueAtTime(0.06, audioCtx.currentTime);
+                        osc2.start();
+                        osc2.stop(audioCtx.currentTime + duration + 0.1);
+                    }, 140);
+                }
+            } catch(e) {}
+        }
+
+        // Play initial telehealth connection sound
+        playChime(523.25, 659.25, 0.2); // C5 -> E5
+
+        // We have removed the 8-second WebRTC connection fallback timer.
+        // It was prematurely aborting the video call if the patient took longer than 8 seconds to click 'Join' from their dashboard!
+        let connectionTimeout = null;
+        
+        // Access web camera
+        navigator.mediaDevices.getUserMedia({ audio: true, video: true })
+            .then(stream => {
+                localStream = stream;
+                localVideoEl.srcObject = stream;
+                localVideoEl.classList.remove("d-none");
+                localSim.classList.add("d-none");
+                
+                // Initialize WebRTC signaling if peer media connected
+                setupPeerConnection();
+            })
+            .catch(err => {
+                console.warn("Camera/Mic access blocked or hardware unavailable. Running in High-Fidelity simulation mode.");
+                simulateAvatars();
+                sendSignal(role === 'doctor' ? 'offer' : 'answer', 'simulation_active');
+                // Start signaling polling so both clients stay in sync
+                startSignalingPolling();
+            });
+
+        function setupPeerConnection() {
+            const configuration = { iceServers: [{ urls: 'stun:stun.l.google.com:19302' }] };
+            peerConnection = new RTCPeerConnection(configuration);
+            
+            // Add local stream tracks to RTCPeerConnection
+            localStream.getTracks().forEach(track => {
+                peerConnection.addTrack(track, localStream);
+            });
+
+            // Handle incoming remote media stream
+            peerConnection.ontrack = event => {
+                remoteVideoEl.srcObject = event.streams[0];
+                remoteVideoEl.classList.remove("d-none");
+                remoteSim.classList.add("d-none");
+            };
+
+            // Monitor ICE Connection State to detect network failures
+            peerConnection.oniceconnectionstatechange = () => {
+                if (peerConnection.iceConnectionState === "failed" || peerConnection.iceConnectionState === "disconnected") {
+                    console.warn("ICE connection failed. Network blocked.");
+                    simulateAvatars();
+                }
+            };
+
+            // Dynamic background signaling exchange
+            if (role === 'doctor') {
+                peerConnection.onicecandidate = e => {
+                    if (e.candidate) sendSignal('ice_candidate', e.candidate);
+                };
+                
+                peerConnection.createOffer()
+                    .then(offer => peerConnection.setLocalDescription(offer))
+                    .then(() => sendSignal('offer', peerConnection.localDescription))
+                    .then(() => startSignalingPolling());
+            } else {
+                peerConnection.onicecandidate = e => {
+                    if (e.candidate) sendSignal('ice_candidate', e.candidate);
+                };
+                startSignalingPolling();
+            }
+        }
+
+        function sendSignal(type, payload) {
+            fetch(`/api/telehealth/signal/${appointmentId}/`, {
+                method: "POST",
+                headers: { "Content-Type": "application/json", "X-CSRFToken": "{{ csrf_token }}" },
+                body: JSON.stringify({ type: type, payload: payload })
+            });
+        }
+
+        function startSignalingPolling() {
+            function poll() {
+                if (!callActive) return;
+                
+                fetch(`/api/telehealth/signal/${appointmentId}/?t=${Date.now()}`, { cache: 'no-store' })
+                    .then(res => res.json())
+                    .then(data => {
+                        if (!data.is_active) {
+                            clearInterval(signalTimer);
+                            alert("Telehealth consultation has been terminated.");
+                            window.location.href = role === 'patient' ? "{% url 'patient_dashboard' %}" : "{% url 'doctor_dashboard' %}";
+                            return;
+                        }
+
+                        // Check hold status for Voice AI Handover
+                        if (data.is_on_hold !== currentHoldState) {
+                            currentHoldState = data.is_on_hold;
+                            const aiOverlay = document.getElementById("aiVoiceOverlay");
+                            if (currentHoldState) {
+                                if (role === 'patient') {
+                                    if (aiOverlay) aiOverlay.classList.remove("d-none");
+                                    const aiTranscriptText = document.getElementById("aiTranscriptText");
+                                    if (aiTranscriptText) aiTranscriptText.innerText = "The doctor is on hold. I am here to assist you.";
+                                } else {
+                                    // Doctor visual cue
+                                    remoteVideoEl.style.filter = "grayscale(100%) blur(4px)";
+                                }
+                            } else {
+                                if (role === 'patient') {
+                                    if (aiOverlay) aiOverlay.classList.add("d-none");
+                                    aiSpeechSynth.cancel(); // Stop talking instantly
+                                    if (recognition) {
+                                        try { recognition.stop(); } catch(e) {}
+                                    }
+                                } else {
+                                    // Doctor remove visual cue
+                                    remoteVideoEl.style.filter = "none";
+                                }
+                            }
+                        }
+
+                        // Check if peer has initiated simulation mode
+                        if (data.sdp_offer === 'simulation_active' || data.sdp_answer === 'simulation_active') {
+                            clearTimeout(connectionTimeout);
+                            simulateAvatars();
+                            return;
+                        }
+
+                        if (role === 'patient' && data.sdp_offer && peerConnection && !hasProcessedOffer) {
+                            hasProcessedOffer = true;
+                            peerConnection.setRemoteDescription(new RTCSessionDescription(data.sdp_offer))
+                                .then(() => peerConnection.createAnswer())
+                                .then(answer => peerConnection.setLocalDescription(answer))
+                                .then(() => sendSignal('answer', peerConnection.localDescription))
+                                .catch(e => { console.error("WebRTC Offer Error:", e); hasProcessedOffer = false; });
+                        }
+
+                        if (role === 'doctor' && data.sdp_answer && peerConnection && !hasProcessedAnswer) {
+                            hasProcessedAnswer = true;
+                            peerConnection.setRemoteDescription(new RTCSessionDescription(data.sdp_answer))
+                                .catch(e => { console.error("WebRTC Answer Error:", e); hasProcessedAnswer = false; });
+                        }
+
+                        // Add ICE candidates only if remoteDescription is set
+                        if (peerConnection && peerConnection.remoteDescription) {
+                            if (role === 'doctor' && data.ice_candidates_pat) {
+                                for (let i = processedIceCount; i < data.ice_candidates_pat.length; i++) {
+                                    peerConnection.addIceCandidate(new RTCIceCandidate(data.ice_candidates_pat[i])).catch(e=>{});
+                                    processedIceCount++;
+                                }
+                            }
+                            if (role === 'patient' && data.ice_candidates_doc) {
+                                for (let i = processedIceCount; i < data.ice_candidates_doc.length; i++) {
+                                    peerConnection.addIceCandidate(new RTCIceCandidate(data.ice_candidates_doc[i])).catch(e=>{});
+                                    processedIceCount++;
+                                }
+                            }
+                        }
+                    }).catch(e => console.error("Signaling Error:", e));
+            }
+            
+            // Execute immediately, then poll every 2.5s
+            poll();
+            const signalTimer = setInterval(poll, 2500);
+        }
+
+        let simulationStarted = false;
+        function simulateAvatars() {
+            if (simulationStarted) return;
+            simulationStarted = true;
+            
+            // High fidelity simulated media stream visualizer
+            setTimeout(() => {
+                const simTitle = document.getElementById("simTitle");
+                const simDesc = document.getElementById("simDesc");
+                if (simTitle) {
+                    simTitle.textContent = role === 'doctor' ? "Patient Video Connected" : "Doctor Video Connected";
+                    simTitle.style.color = "var(--success)";
+                }
+                if (simDesc) {
+                    simDesc.innerHTML = `<span class="text-white small fw-bold"><i class="fa-solid fa-signal text-success me-1"></i> Excellent P2P Audio/Video Signal</span><br>Avatars fully active. Ready for telehealth consult session.`;
+                }
+                playChime(659.25, 880, 0.15); // E5 -> A5 consult start alert sound
+            }, 3000);
+        }
+
+        // Dynamic patient vitals fluctuations (Simulated biofeedback monitors)
+        let vitalsAnomalyActive = false;
+        setInterval(() => {
+            if (!callActive) return;
+            
+            let hr, o2, sys, dia, temp;
+            
+            if (vitalsAnomalyActive) {
+                // Dangerous spike
+                hr = 135 + Math.floor(Math.random() * 15);
+                o2 = 85 + Math.floor(Math.random() * 5);
+                sys = 180 + Math.floor(Math.random() * 10);
+                dia = 110 + Math.floor(Math.random() * 8);
+                temp = (101.5 + Math.random() * 1.5).toFixed(1);
+            } else {
+                // Normal
+                hr = 70 + Math.floor(Math.random() * 6);
+                o2 = 97 + Math.floor(Math.random() * 3);
+                sys = 118 + Math.floor(Math.random() * 5);
+                dia = 78 + Math.floor(Math.random() * 4);
+                temp = (98.4 + Math.random() * 0.4).toFixed(1);
+            }
+
+            document.getElementById("vitalsHR").innerHTML = `${hr} <span style="font-size: 11px;">bpm</span>`;
+            document.getElementById("vitalsBP").textContent = `${sys}/${dia}`;
+            document.getElementById("vitalsO2").textContent = `${o2}%`;
+            document.getElementById("vitalsTemp").textContent = `${temp}°F`;
+        }, 4000);
+        
+        // Vitals Anomaly Trigger
+        const btnSimulateAnomaly = document.getElementById("btnSimulateAnomaly");
+        if (btnSimulateAnomaly) {
+            btnSimulateAnomaly.addEventListener("click", () => {
+                vitalsAnomalyActive = !vitalsAnomalyActive;
+                if (vitalsAnomalyActive) {
+                    btnSimulateAnomaly.classList.replace("btn-outline-danger", "btn-danger");
+                    btnSimulateAnomaly.innerHTML = '<i class="fa-solid fa-heart-pulse me-1"></i>Stop Anomaly';
+                } else {
+                    btnSimulateAnomaly.classList.replace("btn-danger", "btn-outline-danger");
+                    btnSimulateAnomaly.innerHTML = '<i class="fa-solid fa-skull me-1"></i>Simulate Anomaly';
+                }
+            });
+        }
+        
+        // AI Vitals Monitoring Logic
+        const btnAiVitalsToggle = document.getElementById("btnAiVitalsToggle");
+        const alertBanner = document.getElementById("aiVitalsAlertBanner");
+        const alertMessage = document.getElementById("aiVitalsAlertMessage");
+        let aiMonitorActive = false;
+        let aiMonitorInterval = null;
+        
+        if (btnAiVitalsToggle) {
+            btnAiVitalsToggle.addEventListener("click", () => {
+                aiMonitorActive = !aiMonitorActive;
+                if (aiMonitorActive) {
+                    btnAiVitalsToggle.style.background = 'linear-gradient(135deg, #f59e0b, #d97706)';
+                    btnAiVitalsToggle.innerHTML = '<i class="fa-solid fa-robot fa-spin me-1"></i>Monitoring...';
+                    
+                    // Start polling
+                    aiMonitorInterval = setInterval(() => {
+                        const hr = document.getElementById("vitalsHR").innerText.replace("bpm", "").trim();
+                        const bp = document.getElementById("vitalsBP").innerText.trim();
+                        const o2 = document.getElementById("vitalsO2").innerText.replace("%", "").trim();
+                        const temp = document.getElementById("vitalsTemp").innerText.replace("°F", "").trim();
+                        
+                        fetch('/api/ai-vitals-analyze/', {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json', 'X-CSRFToken': '{{ csrf_token }}' },
+                            body: JSON.stringify({ hr: hr, bp: bp, o2: o2, temp: temp })
+                        })
+                        .then(res => res.json())
+                        .then(data => {
+                            if (data.status === "Warning" || data.status === "Critical") {
+                                alertMessage.innerText = data.message;
+                                alertBanner.classList.remove("d-none");
+                                playChime(600, 800, 0.2);
+                            } else {
+                                alertBanner.classList.add("d-none");
+                            }
+                        }).catch(e => console.error(e));
+                    }, 8000); // Check every 8 seconds
+                    
+                } else {
+                    btnAiVitalsToggle.style.background = 'linear-gradient(135deg, #10b981, #059669)';
+                    btnAiVitalsToggle.innerHTML = '<i class="fa-solid fa-robot me-1"></i>Enable AI Monitor';
+                    clearInterval(aiMonitorInterval);
+                    alertBanner.classList.add("d-none");
+                }
+            });
+        }
+
+        // Call Timer Tracker
+        let seconds = 0;
+        const callDurationEl = document.getElementById("callDuration");
+        setInterval(() => {
+            if (!callActive) return;
+            seconds++;
+            const mins = String(Math.floor(seconds / 60)).padStart(2, '0');
+            const secs = String(seconds % 60).padStart(2, '0');
+            callDurationEl.textContent = `${mins}:${secs}`;
+        }, 1000);
+
+        // Control buttons listeners
+        btnToggleAudio.addEventListener("click", function() {
+            isAudioMuted = !isAudioMuted;
+            this.classList.toggle("active-off", isAudioMuted);
+            playChime(isAudioMuted ? 330 : 440, isAudioMuted ? 220 : 550, 0.1);
+            if (localStream) {
+                localStream.getAudioTracks().forEach(track => track.enabled = !isAudioMuted);
+            }
+        });
+
+        btnToggleVideo.addEventListener("click", function() {
+            isVideoMuted = !isVideoMuted;
+            this.classList.toggle("active-off", isVideoMuted);
+            playChime(isVideoMuted ? 330 : 440, isVideoMuted ? 220 : 550, 0.1);
+            if (localStream) {
+                localStream.getVideoTracks().forEach(track => track.enabled = !isVideoMuted);
+            }
+            if (isVideoMuted) {
+                localVideoEl.classList.add("d-none");
+                localSim.classList.remove("d-none");
+            } else {
+                localVideoEl.classList.remove("d-none");
+                localSim.classList.add("d-none");
+            }
+        });
+
+        const btnToggleShare = document.getElementById("btnToggleShare");
+        if (btnToggleShare) {
+            btnToggleShare.addEventListener("click", function() {
+                alert("Digital Screen-Sharing is fully prepared for medical documentation and hospital reviews.");
+                playChime(440, 880, 0.1);
+            });
+        }
+
+        // Terminate Session API call
+        document.getElementById("btnEndCall").addEventListener("click", function(e) {
+            callActive = false;
+            // API POST to close active session
+            fetch(`/api/telehealth/signal/${appointmentId}/`, {
+                method: "POST",
+                headers: { "Content-Type": "application/json", "X-CSRFToken": "{{ csrf_token }}" },
+                body: JSON.stringify({ type: 'terminate' })
+            }).catch(e=>{});
+        });
+    });
+</script>
+{% endblock %}

@@ -1,0 +1,105 @@
+{% extends "base.html" %}
+
+{% block title %}Patient Clinical File{% endblock %}
+
+{% block content %}
+<div class="container-fluid px-0" style="max-width: 800px; margin: 0 auto;">
+    <div class="row mb-4">
+        <div class="col-12">
+            <h2 class="fw-bold mb-1">Outpatient File</h2>
+            <p class="text-secondary">Explore medical specifications, demographic records, and live triaging positions.</p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            <div class="glass-card p-4">
+                <div class="d-flex align-items-center justify-content-between mb-4">
+                    <div class="d-flex align-items-center gap-3">
+                        <div class="rounded-circle bg-primary-subtle text-primary fw-bold d-flex justify-content-center align-items-center" style="width: 56px; height: 56px; font-size: 20px;">
+                            {{ appointment.patient.user.first_name|first|upper }}{{ appointment.patient.user.last_name|first|upper }}
+                        </div>
+                        <div>
+                            <h4 class="fw-bold text-dark mb-0">
+                                {{ appointment.patient.user.first_name }} {{ appointment.patient.user.last_name }}
+                            </h4>
+                            <span class="text-secondary small">Registered Username: @{{ appointment.patient.user.username }}</span>
+                        </div>
+                    </div>
+                    <div>
+                        <span class="status-badge {% if appointment.status == 'Pending' %}badge-pending{% elif appointment.status == 'Completed' %}badge-completed{% else %}badge-cancelled{% endif %}">
+                            {{ appointment.status }}
+                        </span>
+                    </div>
+                </div>
+
+                <hr class="my-4 border-light-subtle">
+
+                <!-- Details Grid -->
+                <div class="row g-4 mb-4">
+                    <div class="col-md-6">
+                        <h6 class="text-muted fw-semibold text-uppercase small mb-2">Age</h6>
+                        <p class="fw-medium text-dark">{{ appointment.patient.age }} Years Old</p>
+                    </div>
+                    <div class="col-md-6">
+                        <h6 class="text-muted fw-semibold text-uppercase small mb-2">Gender</h6>
+                        <p class="fw-medium text-dark">{{ appointment.patient.gender }}</p>
+                    </div>
+                    <div class="col-md-6">
+                        <h6 class="text-muted fw-semibold text-uppercase small mb-2">Contact Number</h6>
+                        <p class="fw-medium text-dark"><i class="bi bi-phone text-secondary me-2"></i>{{ appointment.patient.phone }}</p>
+                    </div>
+                    <div class="col-md-6">
+                        <h6 class="text-muted fw-semibold text-uppercase small mb-2">Email Address</h6>
+                        <p class="fw-medium text-dark"><i class="bi bi-envelope text-secondary me-2"></i>{{ appointment.patient.user.email }}</p>
+                    </div>
+                    <div class="col-12">
+                        <h6 class="text-muted fw-semibold text-uppercase small mb-2">Residential Address</h6>
+                        <p class="fw-medium text-dark">{{ appointment.patient.address }}</p>
+                    </div>
+                </div>
+
+                <hr class="my-4 border-light-subtle">
+
+                <!-- Token Parameters -->
+                <div class="row g-3 text-center mb-4">
+                    <div class="col-4">
+                        <div class="py-3 border rounded-3 bg-light">
+                            <span class="d-block small text-muted text-uppercase fw-semibold" style="font-size: 11px;">Token ID</span>
+                            <h3 class="fw-bold text-primary mb-0 mt-1">#{{ appointment.token_number }}</h3>
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="py-3 border rounded-3 bg-light">
+                            <span class="d-block small text-muted text-uppercase fw-semibold" style="font-size: 11px;">Active Position</span>
+                            <h3 class="fw-bold text-info mb-0 mt-1">
+                                {% if appointment.status == 'Pending' %}{{ appointment.queue_position }}{% else %}N/A{% endif %}
+                            </h3>
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="py-3 border rounded-3 bg-light">
+                            <span class="d-block small text-muted text-uppercase fw-semibold" style="font-size: 11px;">Triage Priority</span>
+                            <h3 class="fw-bold text-danger mb-0 mt-1" style="font-size: 20px;">
+                                {% if appointment.queue_entry %}{{ appointment.queue_entry.priority_level }}{% else %}Normal{% endif %}
+                            </h3>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Action Controls -->
+                <div class="d-flex gap-3 justify-content-end">
+                    <a href="{% url 'doctor_dashboard' %}" class="btn btn-outline-secondary px-4 py-2" style="border-radius: 10px;">
+                        Back
+                    </a>
+                    {% if appointment.status == 'Pending' %}
+                        <a href="{% url 'complete_appointment' appointment.id %}" class="btn btn-success px-4 py-2" style="border-radius: 10px;">
+                            <i class="bi bi-check-circle me-2"></i>Mark as Consulted
+                        </a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

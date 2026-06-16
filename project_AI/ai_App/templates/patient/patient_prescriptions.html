@@ -1,0 +1,404 @@
+{% extends 'base.html' %}
+{% block title %}My Prescriptions{% endblock %}
+
+{% block extra_head %}
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid px-0">
+    <div class="d-flex align-items-center justify-content-between mb-4 pb-3 border-bottom" style="border-color: rgba(0,0,0,0.06) !important;">
+        <div>
+            <h2 class="fw-bold mb-1 text-dark" style="letter-spacing: -0.5px;">My Medical Prescriptions</h2>
+            <p class="text-secondary mb-0">Track and view your verified clinical diagnoses and active prescriptions.</p>
+        </div>
+        <div class="p-3 bg-success-subtle text-success rounded-4" style="font-size: 24px;">
+            <i class="fa-solid fa-prescription-bottle-medical"></i>
+        </div>
+    </div>
+
+    {% if prescriptions %}
+        <div class="row g-4">
+            {% for pres in prescriptions %}
+                <div class="col-lg-6">
+                    <div class="glass-card shadow-sm p-4 h-100" style="border: 1px solid rgba(16, 185, 129, 0.15); background: rgba(255, 255, 255, 0.95); position: relative;">
+                        <!-- Top Date and Doctor -->
+                        <div class="d-flex justify-content-between align-items-start mb-3">
+                            <div>
+                                <span class="badge bg-success-subtle text-success mb-1" style="font-size: 11px; font-weight: 600; text-transform: uppercase;">
+                                    <i class="bi bi-shield-check me-1"></i>Verified Medical Record
+                                </span>
+                                <h5 class="fw-bold mb-0 text-dark">Dr. {{ pres.appointment.doctor.user.first_name }} {{ pres.appointment.doctor.user.last_name }}</h5>
+                                <span class="text-muted" style="font-size: 13px;">Specialization: {{ pres.appointment.doctor.specialization }}</span>
+                            </div>
+                            <div class="text-end">
+                                <span class="text-secondary d-block font-size-sm" style="font-size: 12px; font-weight: 500;">
+                                    <i class="bi bi-calendar3 me-1"></i>{{ pres.created_at|date:"d M Y" }}
+                                </span>
+                                <span class="text-muted" style="font-size: 12px;">Token: #{{ pres.appointment.token_number }}</span>
+                            </div>
+                        </div>
+
+                        <!-- Diagnosis -->
+                        <div class="mb-3 p-3 rounded-3" style="background: rgba(13, 110, 253, 0.04); border-left: 4px solid var(--primary);">
+                            <span class="text-secondary fw-semibold d-block mb-1" style="font-size: 12px; letter-spacing: 0.5px; text-transform: uppercase;">Diagnosis / Symptoms</span>
+                            <p class="mb-0 text-dark" style="line-height: 1.5; font-size: 14.5px;">{{ pres.diagnosis }}</p>
+                        </div>
+
+                        <!-- Medications -->
+                        <div class="mb-3">
+                            <span class="text-secondary fw-semibold d-block mb-2" style="font-size: 12px; letter-spacing: 0.5px; text-transform: uppercase;">Prescribed Medications</span>
+                            <div class="p-3 bg-light rounded-3" style="border: 1px solid rgba(0,0,0,0.03);">
+                                <p class="mb-0 text-dark" style="white-space: pre-line; line-height: 1.6; font-family: monospace; font-size: 13.5px;">{{ pres.medications }}</p>
+                            </div>
+                        </div>
+
+                        <!-- Instructions -->
+                        {% if pres.instructions %}
+                            <div class="mb-3">
+                                <span class="text-secondary fw-semibold d-block mb-1" style="font-size: 12px; letter-spacing: 0.5px; text-transform: uppercase;">Advice & Instructions</span>
+                                <p class="mb-0 text-muted" style="font-size: 13.5px; line-height: 1.5;">{{ pres.instructions }}</p>
+                            </div>
+                        {% endif %}
+
+                        <!-- AI Aftercare Button / Display -->
+                        <div class="mt-4 pt-3 border-top" style="border-color: rgba(0,0,0,0.05) !important;">
+                            <div class="d-flex justify-content-between align-items-center mb-3">
+                                <button class="btn btn-outline-primary btn-sm fw-bold shadow-sm" onclick="downloadPrescriptionPDF({{ pres.id }})">
+                                    <i class="fa-solid fa-file-pdf text-danger me-1"></i> Download Prescription PDF
+                                </button>
+                                
+                                <button class="btn btn-outline-success btn-sm fw-bold shadow-sm d-none" id="btn-download-aftercare-{{ pres.id }}" onclick="downloadAftercarePDF({{ pres.id }})">
+                                    <i class="fa-solid fa-file-pdf text-danger me-1"></i> Download Diet Plan
+                                </button>
+                            </div>
+                            
+                            {% if pres.aftercare_plan %}
+                                <!-- Display existing plan -->
+                                <div id="aftercare-container-{{ pres.id }}" class="mt-3 p-3 rounded-3" style="background: rgba(16, 185, 129, 0.05); border-left: 3px solid #10b981;">
+                                    <div class="d-flex align-items-center mb-2">
+                                        <i class="fa-solid fa-leaf text-success me-2"></i>
+                                        <span class="fw-bold text-dark" style="font-size: 14px;">AI Generated Diet & Aftercare Plan</span>
+                                    </div>
+                                    <div class="text-muted aftercare-markdown" style="font-size: 13px; line-height: 1.6;" data-markdown="{{ pres.aftercare_plan }}">
+                                        <!-- Will be parsed by JS on load -->
+                                        {{ pres.aftercare_plan|linebreaksbr }}
+                                    </div>
+                                </div>
+                                <script>
+                                    // Show button if plan already exists
+                                    document.addEventListener("DOMContentLoaded", function() {
+                                        document.getElementById('btn-download-aftercare-{{ pres.id }}').classList.remove('d-none');
+                                    });
+                                </script>
+                            {% else %}
+                                <!-- Generate Button -->
+                                <button class="btn btn-sm text-white px-3 py-2 generate-aftercare-btn" 
+                                        style="background: linear-gradient(135deg, #10b981 0%, #059669 100%); border: none; border-radius: 8px; font-weight: 500; letter-spacing: 0.3px; box-shadow: 0 4px 12px rgba(16, 185, 129, 0.2);"
+                                        data-pres-id="{{ pres.id }}">
+                                    <i class="fa-solid fa-wand-magic-sparkles me-2"></i>Generate AI Diet & Aftercare
+                                </button>
+                                
+                                <!-- Hidden area for showing the generated plan dynamically -->
+                                <div id="aftercare-container-{{ pres.id }}" class="mt-3 p-3 rounded-3 d-none" style="background: rgba(16, 185, 129, 0.05); border-left: 3px solid #10b981;">
+                                    <div class="d-flex align-items-center mb-2">
+                                        <i class="fa-solid fa-leaf text-success me-2"></i>
+                                        <span class="fw-bold text-dark" style="font-size: 14px;">AI Generated Diet & Aftercare Plan</span>
+                                    </div>
+                                    <div id="aftercare-content-{{ pres.id }}" class="text-muted" style="font-size: 13px; line-height: 1.6;">
+                                        <!-- Content injected here -->
+                                    </div>
+                                </div>
+                            {% endif %}
+                        </div>
+
+                        <!-- HIDDEN PDF TEMPLATES FOR HTML2CANVAS -->
+                        <div style="display: none;">
+                            
+                            <!-- PREMIUM PRESCRIPTION PDF -->
+                            <div id="pdf-prescription-{{ pres.id }}" style="width: 800px; min-height: 1050px; background: #ffffff; position: relative; font-family: 'Inter', Helvetica, Arial, sans-serif; color: #1f2937; padding: 0; box-sizing: border-box;">
+                                <!-- Top Accent Bar -->
+                                <div style="height: 12px; background: linear-gradient(90deg, #2563eb, #3b82f6, #60a5fa); width: 100%;"></div>
+                                
+                                <div style="padding: 50px 60px;">
+                                    <!-- Header Section -->
+                                    <div style="display: flex; justify-content: space-between; align-items: flex-start; border-bottom: 2px solid #e5e7eb; padding-bottom: 25px; margin-bottom: 35px;">
+                                        <div style="display: flex; align-items: center;">
+                                            <div style="width: 50px; height: 50px; background: #2563eb; border-radius: 12px; display: flex; align-items: center; justify-content: center; color: white; font-size: 28px; font-weight: bold; margin-right: 15px;">
+                                                +
+                                            </div>
+                                            <div>
+                                                <h1 style="color: #1e3a8a; margin: 0; font-size: 32px; font-weight: 800; letter-spacing: -0.5px;">SmartCare</h1>
+                                                <p style="margin: 2px 0 0; color: #64748b; font-size: 14px; font-weight: 500; text-transform: uppercase; letter-spacing: 2px;">Advanced Medical Center</p>
+                                            </div>
+                                        </div>
+                                        <div style="text-align: right; color: #475569; font-size: 13px; line-height: 1.6;">
+                                            <p style="margin: 0;"><strong>123 Healthcare Ave, Wellness City</strong></p>
+                                            <p style="margin: 0;">Emergency: (555) 911-0000</p>
+                                            <p style="margin: 0;">Consultation: (555) 123-4567</p>
+                                            <p style="margin: 0;">support@smartcare.hospital</p>
+                                        </div>
+                                    </div>
+
+                                    <!-- Patient & Appointment Details Box -->
+                                    <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 25px; margin-bottom: 40px; display: flex; justify-content: space-between;">
+                                        <div style="flex: 1;">
+                                            <p style="margin: 0 0 10px; font-size: 12px; color: #64748b; text-transform: uppercase; font-weight: 700; letter-spacing: 1px;">Patient Information</p>
+                                            <h3 style="margin: 0 0 5px; color: #0f172a; font-size: 22px; font-weight: 700;">{{ request.user.first_name }} {{ request.user.last_name }}</h3>
+                                            <p style="margin: 0; color: #475569; font-size: 14px;"><strong>Age:</strong> {{ request.user.patient_profile.age }} yrs &nbsp;&nbsp;|&nbsp;&nbsp; <strong>Gender:</strong> {{ request.user.patient_profile.gender }}</p>
+                                        </div>
+                                        
+                                        <div style="width: 1px; background: #cbd5e1; margin: 0 30px;"></div>
+                                        
+                                        <div style="flex: 1;">
+                                            <p style="margin: 0 0 10px; font-size: 12px; color: #64748b; text-transform: uppercase; font-weight: 700; letter-spacing: 1px;">Consultation Details</p>
+                                            <table style="width: 100%; font-size: 14px; color: #334155; border-collapse: collapse;">
+                                                <tr>
+                                                    <td style="padding-bottom: 5px; color: #64748b;">Date:</td>
+                                                    <td style="padding-bottom: 5px; font-weight: 600; text-align: right;">{{ pres.created_at|date:"d M Y, h:i A" }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td style="padding-bottom: 5px; color: #64748b;">Token No:</td>
+                                                    <td style="padding-bottom: 5px; font-weight: 600; text-align: right; color: #2563eb;">#{{ pres.appointment.token_number }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td style="color: #64748b;">Attending:</td>
+                                                    <td style="font-weight: 600; text-align: right;">Dr. {{ pres.appointment.doctor.user.first_name }} {{ pres.appointment.doctor.user.last_name }}</td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                    </div>
+
+                                    <!-- Clinical Information (Rx) -->
+                                    <div style="position: relative; margin-bottom: 50px; min-height: 350px;">
+                                        <!-- Watermark -->
+                                        <div style="position: absolute; top: 40%; left: 50%; transform: translate(-50%, -50%); opacity: 0.02; font-size: 350px; font-weight: 900; font-family: serif; color: #000; pointer-events: none;">
+                                            Rx
+                                        </div>
+                                        
+                                        <div style="display: flex; margin-bottom: 35px; position: relative; z-index: 2; page-break-inside: avoid;">
+                                            <div style="width: 60px;">
+                                                <h2 style="font-size: 54px; margin: -10px 0 0; color: #2563eb; font-weight: 400; font-family: 'Times New Roman', serif;">℞</h2>
+                                            </div>
+                                            <div style="flex: 1;">
+                                                <h4 style="margin: 0 0 8px; color: #0f172a; font-size: 18px; font-weight: 700; border-bottom: 1px solid #e2e8f0; padding-bottom: 5px;">Clinical Diagnosis</h4>
+                                                <p style="margin-top: 0; color: #334155; font-size: 15px; line-height: 1.6;">{{ pres.diagnosis }}</p>
+                                            </div>
+                                        </div>
+                                        
+                                        <div style="margin-left: 60px; margin-bottom: 35px; position: relative; z-index: 2; page-break-inside: avoid;">
+                                            <h4 style="margin: 0 0 15px; color: #0f172a; font-size: 18px; font-weight: 700; border-bottom: 1px solid #e2e8f0; padding-bottom: 5px;">Prescribed Medications</h4>
+                                            <div style="color: #1e293b; font-size: 15px; line-height: 1.8; font-weight: 500;">
+                                                {{ pres.medications|linebreaksbr }}
+                                            </div>
+                                        </div>
+                                        
+                                        {% if pres.instructions %}
+                                        <div style="margin-left: 60px; padding: 20px; background: #fffbeb; border-left: 4px solid #f59e0b; border-radius: 4px; position: relative; z-index: 2; page-break-inside: avoid;">
+                                            <h4 style="margin: 0 0 8px; color: #b45309; font-size: 16px; font-weight: 700;">Doctor's Instructions & Advice</h4>
+                                            <p style="margin: 0; color: #78350f; font-size: 14.5px; line-height: 1.6;">{{ pres.instructions|linebreaksbr }}</p>
+                                        </div>
+                                        {% endif %}
+                                    </div>
+
+                                    <!-- Signature & Footer Section -->
+                                    <div style="margin-top: auto; display: flex; justify-content: space-between; align-items: flex-end;">
+                                        <div>
+                                            <p style="font-size: 11px; color: #94a3b8; font-weight: 600; letter-spacing: 0.5px; margin: 0 0 5px;">CRYPTOGRAPHIC VERIFICATION</p>
+                                            <div style="padding: 10px; border: 1px dashed #cbd5e1; border-radius: 6px; display: inline-block; background: #f8fafc;">
+                                                <p style="margin: 0; font-family: monospace; font-size: 10px; color: #64748b;">ID: {{ pres.id|stringformat:"08d" }}-{{ pres.created_at|date:"U" }}</p>
+                                                <p style="margin: 2px 0 0; font-family: monospace; font-size: 10px; color: #64748b;">AUTH: SHA256-{{ pres.appointment.doctor.id|stringformat:"04d" }}</p>
+                                            </div>
+                                        </div>
+                                        
+                                        <div style="text-align: center; width: 280px;">
+                                            <p style="font-family: 'Dancing Script', cursive; font-size: 42px; color: #0f172a; margin: 0 0 -10px; line-height: 1; position: relative; z-index: 10;">{{ pres.appointment.doctor.user.first_name }} {{ pres.appointment.doctor.user.last_name }}</p>
+                                            <div style="border-top: 2px solid #334155; padding-top: 8px; margin-top: 10px; position: relative; z-index: 5;">
+                                                <strong style="font-size: 16px; color: #0f172a; display: block; margin-bottom: 2px;">Dr. {{ pres.appointment.doctor.user.first_name }} {{ pres.appointment.doctor.user.last_name }}</strong>
+                                                <span style="font-size: 13px; color: #2563eb; font-weight: 600; display: block;">{{ pres.appointment.doctor.specialization }}</span>
+                                                <span style="font-size: 11px; color: #64748b; display: block; margin-top: 2px;">Reg No: MED-{{ pres.appointment.doctor.id|stringformat:"04d" }}-2026</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                                
+                                <!-- Footer accent -->
+                                <div style="position: absolute; bottom: 0; left: 0; width: 100%; height: 6px; background: #e2e8f0;"></div>
+                            </div>
+
+                            <!-- PREMIUM AFTERCARE PDF -->
+                            <div id="pdf-aftercare-{{ pres.id }}" style="width: 800px; min-height: 1050px; background: #ffffff; position: relative; font-family: 'Inter', Helvetica, Arial, sans-serif; color: #1f2937; padding: 0; box-sizing: border-box;">
+                                <!-- Top Accent Bar -->
+                                <div style="height: 12px; background: linear-gradient(90deg, #10b981, #34d399, #6ee7b7); width: 100%;"></div>
+                                
+                                <div style="padding: 50px 60px;">
+                                    <!-- Header Section -->
+                                    <div style="text-align: center; border-bottom: 2px solid #e5e7eb; padding-bottom: 30px; margin-bottom: 35px;">
+                                        <div style="display: inline-flex; align-items: center; justify-content: center; width: 60px; height: 60px; background: rgba(16, 185, 129, 0.1); border-radius: 50%; color: #10b981; font-size: 28px; margin-bottom: 15px;">
+                                            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg>
+                                        </div>
+                                        <h1 style="color: #065f46; margin: 0 0 10px; font-size: 32px; font-weight: 800; letter-spacing: -0.5px;">Clinical Aftercare & Diet Plan</h1>
+                                        <p style="margin: 0; color: #64748b; font-size: 15px;">Personalized recovery protocol for <strong>{{ request.user.first_name }} {{ request.user.last_name }}</strong></p>
+                                    </div>
+
+                                    <!-- Info Box -->
+                                    <div style="background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 12px; padding: 20px 25px; margin-bottom: 40px; display: flex; justify-content: space-between;">
+                                        <div>
+                                            <p style="margin: 0 0 5px; font-size: 12px; color: #047857; text-transform: uppercase; font-weight: 700;">Condition Addressed</p>
+                                            <h3 style="margin: 0; color: #064e3b; font-size: 16px; font-weight: 600;">{{ pres.diagnosis }}</h3>
+                                        </div>
+                                        <div style="text-align: right;">
+                                            <p style="margin: 0 0 5px; font-size: 12px; color: #047857; text-transform: uppercase; font-weight: 700;">Date Generated</p>
+                                            <h3 style="margin: 0; color: #064e3b; font-size: 16px; font-weight: 600;">{{ pres.created_at|date:"d M Y" }}</h3>
+                                        </div>
+                                    </div>
+
+                                    <!-- Content -->
+                                    <div id="pdf-aftercare-content-{{ pres.id }}" style="font-size: 15px; line-height: 1.7; color: #334155;">
+                                        {% if pres.aftercare_plan %}
+                                            {{ pres.aftercare_plan|linebreaksbr }}
+                                        {% endif %}
+                                    </div>
+
+                                    <!-- Footer -->
+                                    <div style="margin-top: 60px; padding-top: 25px; border-top: 1px dashed #cbd5e1; text-align: center;">
+                                        <p style="font-size: 12px; color: #94a3b8; font-weight: 600; letter-spacing: 0.5px; margin: 0 0 5px;">SYSTEM GENERATED DOCUMENT</p>
+                                        <p style="font-size: 12px; color: #64748b; margin: 0; max-width: 600px; display: inline-block;">
+                                            This aftercare protocol is generated by SmartCare Clinical AI based on your physician's diagnosis. It is intended to supplement, not replace, professional medical advice. If you experience severe symptoms, contact emergency services immediately.
+                                        </p>
+                                    </div>
+                                </div>
+                                <div style="position: absolute; bottom: 0; left: 0; width: 100%; height: 6px; background: #e2e8f0;"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <div class="glass-card text-center p-5 mt-4" style="border: 1px solid rgba(0,0,0,0.06); background: white;">
+            <div class="mb-4 text-secondary" style="font-size: 64px;">
+                <i class="bi bi-capsule"></i>
+            </div>
+            <h4 class="fw-bold text-dark">No Prescriptions Registered Yet</h4>
+            <p class="text-secondary max-width-md mx-auto mb-0" style="max-width: 500px;">
+                Your medical prescriptions will appear here immediately after your consulting physician completes your token checkout.
+            </p>
+        </div>
+    {% endif %}
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    const buttons = document.querySelectorAll('.generate-aftercare-btn');
+    
+    buttons.forEach(btn => {
+        btn.addEventListener('click', async function() {
+            const presId = this.getAttribute('data-pres-id');
+            const container = document.getElementById(`aftercare-container-${presId}`);
+            const contentDiv = document.getElementById(`aftercare-content-${presId}`);
+            const pdfContentDiv = document.getElementById(`pdf-aftercare-content-${presId}`);
+            
+            // Show loading state
+            this.disabled = true;
+            const originalText = this.innerHTML;
+            this.innerHTML = '<i class="fa-solid fa-spinner fa-spin me-2"></i>Generating Plan...';
+            
+            try {
+                const response = await fetch(`/api/ai-aftercare/${presId}/`, {
+                    method: 'GET',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                });
+                
+                const data = await response.json();
+                
+                if (response.ok && data.plan) {
+                    // Hide button, show plan
+                    this.style.display = 'none';
+                    container.classList.remove('d-none');
+                    // Use marked.js if available, or just innerText
+                    if (typeof marked !== 'undefined') {
+                        const parsed = marked.parse(data.plan);
+                        contentDiv.innerHTML = parsed;
+                        pdfContentDiv.innerHTML = parsed;
+                    } else {
+                        contentDiv.innerText = data.plan;
+                        pdfContentDiv.innerText = data.plan;
+                    }
+                    // Unhide the download button
+                    document.getElementById(`btn-download-aftercare-${presId}`).classList.remove('d-none');
+                } else {
+                    alert(data.error || "Failed to generate plan.");
+                    this.disabled = false;
+                    this.innerHTML = originalText;
+                }
+            } catch (error) {
+                console.error("Error fetching aftercare plan:", error);
+                alert("An error occurred while generating the plan.");
+                this.disabled = false;
+                this.innerHTML = originalText;
+            }
+        });
+    });
+    
+    // Parse existing plans
+    const existingPlans = document.querySelectorAll('.aftercare-markdown');
+    if (typeof marked !== 'undefined') {
+        existingPlans.forEach(el => {
+            const mdText = el.getAttribute('data-markdown');
+            if (mdText) {
+                el.innerHTML = marked.parse(mdText);
+                // Also update the hidden pdf template if it exists
+                const presIdMatch = el.parentElement.id.match(/\d+/);
+                if (presIdMatch) {
+                    const pdfContent = document.getElementById(`pdf-aftercare-content-${presIdMatch[0]}`);
+                    if (pdfContent) {
+                        pdfContent.innerHTML = marked.parse(mdText);
+                    }
+                }
+            }
+        });
+    }
+});
+
+function downloadPrescriptionPDF(presId) {
+    const element = document.getElementById(`pdf-prescription-${presId}`);
+    
+    const opt = {
+        margin:       0.5,
+        filename:     `Prescription_${presId}.pdf`,
+        image:        { type: 'jpeg', quality: 0.98 },
+        html2canvas:  { scale: 2, useCORS: true },
+        jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
+    };
+    
+    // We pass the OUTER HTML of the element directly to html2pdf!
+    // This allows html2pdf to create its own internal off-screen wrapper 
+    // natively, completely bypassing any browser offset/visibility bugs.
+    const htmlString = element.outerHTML.replace('display: none;', 'display: block;');
+    
+    html2pdf().set(opt).from(htmlString).save();
+}
+
+function downloadAftercarePDF(presId) {
+    const element = document.getElementById(`pdf-aftercare-${presId}`);
+    
+    const opt = {
+        margin:       0.5,
+        filename:     `Diet_Aftercare_${presId}.pdf`,
+        image:        { type: 'jpeg', quality: 0.98 },
+        html2canvas:  { scale: 2, useCORS: true },
+        jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
+    };
+    
+    const htmlString = element.outerHTML.replace('display: none;', 'display: block;');
+    
+    html2pdf().set(opt).from(htmlString).save();
+}
+</script>
+{% endblock %}

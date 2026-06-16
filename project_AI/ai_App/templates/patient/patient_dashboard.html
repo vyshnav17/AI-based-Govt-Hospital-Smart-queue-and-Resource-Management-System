@@ -1,0 +1,520 @@
+{% extends "base.html" %}
+
+{% block title %}Patient Dashboard{% endblock %}
+
+{% block content %}
+<div class="container-fluid px-0">
+    <div class="row mb-4">
+        <div class="col-12">
+            <h2 class="fw-bold mb-1">Welcome, {{ request.user.first_name|default:request.user.username }}</h2>
+            <p class="text-secondary">Access appointments, check queue status, and explore smart medical triage resources.</p>
+        </div>
+    </div>
+
+    <!-- Active/Today's Live Queue Alert Card -->
+    {% if active_queue %}
+    <div class="row mb-4">
+        <div class="col-12">
+            <div class="glass-card border-success bg-success-subtle bg-opacity-10 p-4">
+                <div class="row align-items-center">
+                    <div class="col-md-8">
+                        <div class="d-flex align-items-center gap-3 mb-2">
+                            <span class="badge bg-success status-badge">Live Token Active</span>
+                            <span class="text-secondary small">Scheduled for Today</span>
+                        </div>
+                        <h4 class="fw-bold text-success-emphasis mb-2">
+                            Appointment with {{ active_queue.appointment.doctor }}
+                        </h4>
+                        <p class="text-secondary mb-0">
+                            <strong>Department:</strong> {{ active_queue.appointment.department.name }} | 
+                            <strong>Priority:</strong> {{ active_queue.priority_level }} | 
+                            <strong>Type:</strong> 
+                            {% if active_queue.appointment.consultation_medium == 'Video-Call' %}
+                                <span class="badge bg-purple-subtle text-purple border border-purple-subtle px-2.5 py-1" style="background: rgba(139, 92, 246, 0.1); color: #8b5cf6; border-radius: 8px; font-size: 11px;">
+                                    <i class="bi bi-camera-video-fill me-1"></i>Online Video Call
+                                </span>
+                            {% else %}
+                                <span class="badge bg-primary-subtle text-primary border border-primary-subtle px-2.5 py-1" style="background: rgba(13, 110, 253, 0.1); color: #0d6efd; border-radius: 8px; font-size: 11px;">
+                                    <i class="bi bi-building me-1"></i>In-Hospital Visit
+                                </span>
+                            {% endif %}
+                        </p>
+                    </div>
+                    <div class="col-md-4 text-md-end mt-3 mt-md-0">
+                        <div class="d-inline-block text-center px-4 py-3 bg-white rounded-4 border shadow-sm">
+                            <span class="d-block small text-muted text-uppercase fw-semibold">Token Number</span>
+                            <h2 class="fw-bold text-primary mb-0">#{{ active_queue.appointment.token_number }}</h2>
+                        </div>
+                        <div class="d-inline-block text-center px-4 py-3 bg-white rounded-4 border shadow-sm ms-2">
+                            <span class="d-block small text-muted text-uppercase fw-semibold">Queue Position</span>
+                            <h2 class="fw-bold text-info mb-0">{{ active_queue.appointment.queue_position }}</h2>
+                        </div>
+                    </div>
+                </div>
+                <hr class="my-3 border-success-subtle">
+                <div class="d-flex flex-wrap justify-content-between align-items-center gap-2">
+                    <span class="text-secondary-emphasis">
+                        <i class="bi bi-clock-history me-2 text-info"></i>
+                        Estimated waiting time: <strong class="text-primary">{{ active_queue.formatted_wait_time }}</strong>
+                    </span>
+                    <a href="{% url 'cancel_appointment' active_queue.appointment.id %}" class="btn btn-sm btn-outline-danger" onclick="return confirm('Are you sure you want to cancel this appointment?');">
+                        <i class="bi bi-x-circle me-1"></i>Cancel Slot
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+
+    <!-- Stats Row -->
+    <div class="row g-4 mb-4">
+        <!-- Next Appointment Widget -->
+        <div class="col-md-6 col-lg-4">
+            <div class="glass-card widget-card">
+                <div class="widget-icon">
+                    <i class="fa-solid fa-calendar-check"></i>
+                </div>
+                <h6 class="text-muted fw-semibold text-uppercase small mb-1">Upcoming Tokens</h6>
+                <h3 class="fw-bold">{{ upcoming_appointments.count }}</h3>
+                <p class="text-secondary small mb-0">Active reservations in progress</p>
+            </div>
+        </div>
+        
+        <!-- Live AI Queue Status -->
+        <div class="col-md-6 col-lg-4">
+            <div class="glass-card widget-card">
+                <div class="widget-icon" style="color: #0ea5e9; background-color: #e0f2fe;">
+                    <i class="fa-solid fa-list-ol"></i>
+                </div>
+                <h6 class="text-muted fw-semibold text-uppercase small mb-1">Live Position</h6>
+                <h3 class="fw-bold">
+                    {% if active_queue %}
+                        #{{ active_queue.appointment.queue_position }}
+                    {% else %}
+                        N/A
+                    {% endif %}
+                </h3>
+                <p class="text-secondary small mb-0">Current queue status for today</p>
+            </div>
+        </div>
+
+        <!-- System Notifications Widget -->
+        <div class="col-md-12 col-lg-4">
+            <div class="glass-card widget-card">
+                <div class="widget-icon" style="color: #10b981; background-color: #d1fae5;">
+                    <i class="fa-solid fa-bell"></i>
+                </div>
+                <h6 class="text-muted fw-semibold text-uppercase small mb-1">System Status</h6>
+                <h3 class="fw-bold text-success" style="font-size: 20px;"><i class="bi bi-cloud-check me-2"></i>AI Server Online</h3>
+                <p class="text-secondary small mb-0">Resource allocation algorithms fully active</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Outpatient Grid -->
+    <div class="row g-4">
+        <!-- Upcoming Appointments Table -->
+        <div class="col-lg-8">
+            <div class="glass-card">
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <h5 class="fw-bold mb-0">Active Schedule</h5>
+                    <a href="{% url 'book_appointment' %}" class="btn-custom-primary btn-sm px-3 py-2" style="font-size: 13px;">
+                        <i class="bi bi-plus-circle me-1"></i>Book Appointment
+                    </a>
+                </div>
+
+                {% if upcoming_appointments %}
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Doctor</th>
+                                    <th>Department</th>
+                                    <th>Date</th>
+                                    <th>Type</th>
+                                    <th>Token</th>
+                                    <th>Queue Pos</th>
+                                    <th>Status</th>
+                                    <th class="text-center">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for app in upcoming_appointments %}
+                                <tr>
+                                    <td class="fw-semibold">{{ app.doctor }}</td>
+                                    <td>{{ app.department.name }}</td>
+                                    <td>{{ app.appointment_date }}</td>
+                                    <td>
+                                        {% if app.consultation_medium == 'Video-Call' %}
+                                            <span class="badge bg-purple-subtle text-purple border border-purple-subtle px-2.5 py-1.5" style="background: rgba(139, 92, 246, 0.1); color: #8b5cf6; border-radius: 8px; font-size: 11px; border: 1px solid rgba(139,92,246,0.2);">
+                                                <i class="bi bi-camera-video-fill me-1"></i>Video Call
+                                            </span>
+                                        {% else %}
+                                            <span class="badge bg-primary-subtle text-primary border border-primary-subtle px-2.5 py-1.5" style="background: rgba(13, 110, 253, 0.1); color: #0d6efd; border-radius: 8px; font-size: 11px; border: 1px solid rgba(13,110,253,0.2);">
+                                                <i class="bi bi-building me-1"></i>In-Hospital
+                                            </span>
+                                        {% endif %}
+                                    </td>
+                                    <td class="fw-bold text-primary">#{{ app.token_number }}</td>
+                                    <td>
+                                        <span class="badge bg-secondary rounded-pill px-2.5 py-1.5">{{ app.queue_position }}</span>
+                                    </td>
+                                    <td>
+                                        <span class="status-badge badge-pending">{{ app.status }}</span>
+                                    </td>
+                                    <td class="text-center">
+                                        <a href="{% url 'cancel_appointment' app.id %}" class="btn btn-sm btn-outline-danger border-0" onclick="return confirm('Are you sure you want to cancel this slot?');" title="Cancel Appointment">
+                                            <i class="bi bi-trash3-fill"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                {% else %}
+                    <div class="text-center py-5">
+                        <i class="bi bi-calendar-x text-muted" style="font-size: 3rem;"></i>
+                        <p class="text-secondary mt-3 mb-0">No upcoming appointments scheduled.</p>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+
+        <!-- Appointment History Sidebar -->
+        <div class="col-lg-4">
+            <div class="glass-card">
+                <h5 class="fw-bold mb-4">Past Log</h5>
+                {% if history %}
+                    <div class="d-flex flex-column gap-3">
+                        {% for app in history %}
+                        <div class="p-3 border rounded-3 bg-light bg-opacity-50">
+                            <div class="d-flex justify-content-between align-items-center mb-1">
+                                <strong class="text-dark">{{ app.doctor }}</strong>
+                                <span class="status-badge {% if app.status == 'Completed' %}badge-completed{% else %}badge-cancelled{% endif %}">{{ app.status }}</span>
+                            </div>
+                            <div class="text-secondary small mb-2">{{ app.department.name }}</div>
+                            <div class="d-flex justify-content-between align-items-center text-muted small">
+                                <span><i class="bi bi-calendar-event me-1"></i>{{ app.appointment_date }}</span>
+                                <span>Token #{{ app.token_number }}</span>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                {% else %}
+                    <div class="text-center py-5">
+                        <i class="bi bi-journal-x text-muted" style="font-size: 2.5rem;"></i>
+                        <p class="text-secondary mt-3 mb-0">No past appointments recorded.</p>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+        </div>
+    </div>
+
+    <!-- AI Clinical Insights -->
+    {% if ai_reports %}
+    <div class="row g-4 mt-2 mb-4">
+        <div class="col-12">
+            <h4 class="fw-bold mb-3"><i class="fa-solid fa-robot text-primary me-2"></i>AI Clinical Insights from your Doctor</h4>
+            <div class="accordion shadow-sm" id="accordionAIReports">
+                {% for report in ai_reports %}
+                <div class="accordion-item border-0 mb-3 rounded-4 overflow-hidden" style="box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);">
+                    <h2 class="accordion-header" id="headingAI{{ report.id }}">
+                        <button class="accordion-button collapsed fw-bold text-dark bg-white" type="button" data-bs-toggle="collapse" data-bs-target="#collapseAI{{ report.id }}" aria-expanded="false" aria-controls="collapseAI{{ report.id }}">
+                            <div class="d-flex w-100 justify-content-between align-items-center me-3">
+                                <span><i class="fa-solid fa-file-medical-alt text-primary me-2"></i>{{ report.report_type }} - Dr. {{ report.doctor.user.last_name }}</span>
+                                <span class="badge bg-light text-secondary border">{{ report.created_at|date:"M d, Y" }}</span>
+                            </div>
+                        </button>
+                    </h2>
+                    <div id="collapseAI{{ report.id }}" class="accordion-collapse collapse" aria-labelledby="headingAI{{ report.id }}" data-bs-parent="#accordionAIReports">
+                        <div class="accordion-body bg-light bg-opacity-50 border-top">
+                            {% if report.report_type == 'Cardiac Risk Profiler' %}
+                                <h5 class="fw-bold text-danger">{{ report.data_dict.risk_score|default:"Risk Assessed" }}</h5>
+                                <p>{{ report.data_dict.assessment }}</p>
+                                <h6 class="fw-bold mt-3">Action Plan:</h6>
+                                <ul>
+                                    {% for plan in report.data_dict.plan %}
+                                    <li><i class="fa-solid fa-check text-success me-2"></i>{{ plan }}</li>
+                                    {% endfor %}
+                                </ul>
+                            {% elif report.report_type == 'Heart Failure Analyzer' %}
+                                <h5 class="fw-bold text-danger">{{ report.data_dict.diagnosis }}</h5>
+                                <p>{{ report.data_dict.insight }}</p>
+                                <h6 class="fw-bold mt-3">Recommended GDMT:</h6>
+                                <ul>
+                                    {% for rx in report.data_dict.gdmt %}
+                                    <li><i class="fa-solid fa-pills text-success me-2"></i>{{ rx }}</li>
+                                    {% endfor %}
+                                </ul>
+                            {% elif report.report_type == 'Polytrauma Triage Predictor' %}
+                                <h5 class="fw-bold text-danger">Triage Priority: {{ report.data_dict.priority }}</h5>
+                                <p class="text-danger fw-bold"><i class="fa-solid fa-droplet me-2"></i>Massive Hemorrhage Risk: {{ report.data_dict.hemorrhage_risk }}</p>
+                                <h6 class="fw-bold mt-3">Teams Paged:</h6>
+                                <ul>
+                                    {% for team in report.data_dict.teams %}
+                                    <li><i class="fa-solid fa-user-md text-primary me-2"></i>{{ team }}</li>
+                                    {% endfor %}
+                                </ul>
+                            {% elif report.report_type == 'Surgical Complication Forecaster' %}
+                                <h5 class="fw-bold text-danger">Forecasted ICU Complications</h5>
+                                <div class="mt-3">
+                                    {% for comp in report.data_dict.complications %}
+                                    <div class="mb-2 p-3 bg-white border rounded">
+                                        <strong class="d-block text-danger">{{ comp.name }} ({{ comp.probability }})</strong>
+                                        <span class="small text-muted"><i class="fa-regular fa-clock me-1"></i> Timeline: {{ comp.timeline }}</span>
+                                    </div>
+                                    {% endfor %}
+                                </div>
+                            {% else %}
+                                <pre class="bg-white p-3 rounded border">{{ report.report_data }}</pre>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    {% endif %}
+</div>
+
+{% block extra_js %}
+{% if active_queue %}
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const appointmentId = "{{ active_queue.appointment.id }}";
+        const checkInterval = 5000; // Check status every 5 seconds
+        let isResolved = false;
+
+        // Custom style injected dynamically for sleek animations
+        const styleSheet = document.createElement("style");
+        styleSheet.innerText = `
+            @keyframes toastSlideIn {
+                from { transform: translateY(-50px) scale(0.95); opacity: 0; }
+                to { transform: translateY(0) scale(1); opacity: 1; }
+            }
+            @keyframes pulseBorder {
+                0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.4); }
+                70% { box-shadow: 0 0 0 12px rgba(16, 185, 129, 0); }
+                100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+            }
+            .animate-toast-slide-in {
+                animation: toastSlideIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            }
+            .animate-pulse-border {
+                animation: pulseBorder 2s infinite;
+            }
+        `;
+        document.head.appendChild(styleSheet);
+
+        let alertInjected = false;
+        function showTelehealthAlert(data) {
+            if (alertInjected) return;
+            
+            // Explicit browser alert requested by the user
+            alert("Dr. " + data.doctor_name + " has accepted and started the video call!");
+            
+            const mainContent = document.querySelector(".main-content");
+            const firstRow = mainContent ? mainContent.querySelector(".row") : document.querySelector(".container-fluid .row");
+            if (!firstRow) return;
+
+            const callAlert = document.createElement("div");
+            callAlert.id = "telehealth-call-alert";
+            callAlert.className = "row mb-4";
+            callAlert.innerHTML = `
+                <div class="col-12">
+                    <div class="glass-card border-purple p-4 animate-pulse-border animate-toast-slide-in" 
+                         style="border: 2px solid #8b5cf6 !important; background: rgba(139, 92, 246, 0.05); border-radius: 20px;">
+                        <div class="row align-items-center">
+                            <div class="col-md-8">
+                                <div class="d-flex align-items-center gap-3 mb-2">
+                                    <span class="badge status-badge" style="background-color: #8b5cf6; color: white;">Incoming Call</span>
+                                    <span class="text-secondary small">Live Video Consultation</span>
+                                </div>
+                                <h4 class="fw-bold mb-2" style="color: #6d28d9 !important;">Incoming Telehealth Request</h4>
+                                <p class="text-secondary mb-0" style="color: #475569 !important;">
+                                    <strong>${data.doctor_name}</strong> is online and waiting for you in the digital consultation room.
+                                </p>
+                            </div>
+                            <div class="col-md-4 text-md-end mt-3 mt-md-0">
+                                <a href="/telehealth/join/${appointmentId}/" class="btn text-white px-4 py-3" 
+                                   style="background: linear-gradient(135deg, #7c3aed, #ec4899); border: none; border-radius: 12px; font-weight: 600; box-shadow: 0 4px 15px rgba(124, 58, 237, 0.4); text-decoration: none; display: inline-block;">
+                                    <i class="fa-solid fa-video me-2"></i>Join Video Consultation
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+            firstRow.after(callAlert);
+            alertInjected = true;
+
+            // Play nice, dynamic incoming alert sound synthesized using Web Audio API
+            try {
+                const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+                if (audioCtx) {
+                    const osc = audioCtx.createOscillator();
+                    const gain = audioCtx.createGain();
+                    osc.connect(gain);
+                    gain.connect(audioCtx.destination);
+                    osc.type = 'sine';
+                    osc.frequency.setValueAtTime(440, audioCtx.currentTime); // A4
+                    gain.gain.setValueAtTime(0.04, audioCtx.currentTime);
+                    osc.start();
+                    osc.stop(audioCtx.currentTime + 0.15);
+                    setTimeout(() => {
+                        const osc2 = audioCtx.createOscillator();
+                        const gain2 = audioCtx.createGain();
+                        osc2.connect(gain2);
+                        gain2.connect(audioCtx.destination);
+                        osc2.type = 'sine';
+                        osc2.frequency.setValueAtTime(554.37, audioCtx.currentTime); // C#5
+                        gain2.gain.setValueAtTime(0.04, audioCtx.currentTime);
+                        osc2.start();
+                        osc2.stop(audioCtx.currentTime + 0.25);
+                    }, 140);
+                }
+            } catch(e) {}
+        }
+
+        function hideTelehealthAlert() {
+            if (!alertInjected) return;
+            const el = document.getElementById("telehealth-call-alert");
+            if (el) el.remove();
+            alertInjected = false;
+        }
+
+        function checkStatus() {
+            if (isResolved) return;
+            
+            fetch(`/api/appointment-status/${appointmentId}/`)
+                .then(response => {
+                    if (!response.ok) throw new Error("Network response was not ok");
+                    return response.json();
+                })
+                .then(data => {
+                    if (data.status === 'Completed' || data.status === 'Cancelled') {
+                        isResolved = true;
+                        showCompletionToast(data);
+                    } else if (data.has_active_call) {
+                        showTelehealthAlert(data);
+                    } else {
+                        hideTelehealthAlert();
+                    }
+                })
+                .catch(error => console.error("Error checking appointment status:", error));
+        }
+
+        function showCompletionToast(data) {
+            // Remove existing alert blocks to draw attention to the sleek notification
+            const existingAlerts = document.querySelectorAll('.alert');
+            existingAlerts.forEach(el => el.remove());
+
+            // Build dynamic notification card
+            const isCompleted = data.status === 'Completed';
+            const badgeText = isCompleted ? 'Consultation Completed' : 'Appointment Cancelled';
+            const titleText = isCompleted ? 'Visit Resolved!' : 'Slot Cancelled';
+            const colorTheme = isCompleted ? '#10b981' : '#ef4444';
+            const bgSubtle = isCompleted ? 'rgba(209, 250, 229, 0.96)' : 'rgba(254, 226, 226, 0.96)';
+            const borderTheme = isCompleted ? '#10b981 !important' : '#ef4444 !important';
+            const iconClass = isCompleted ? 'fa-solid fa-file-prescription animate-pulse' : 'fa-solid fa-calendar-xmark';
+            const message = isCompleted 
+                ? `<strong>${data.doctor_name}</strong> has successfully finalized your consultation and logged your digital prescription in your history.`
+                : `Your appointment with <strong>${data.doctor_name}</strong> has been cancelled by the administrative system.`;
+
+            const toastContainer = document.createElement('div');
+            toastContainer.id = 'appointment-resolved-toast';
+            toastContainer.className = 'position-fixed top-0 end-0 p-4';
+            toastContainer.style.zIndex = '99999';
+            toastContainer.style.maxWidth = '420px';
+            
+            toastContainer.innerHTML = `
+                <div class="glass-card p-4 shadow-lg animate-toast-slide-in animate-pulse-border" 
+                     style="background: ${bgSubtle}; border: 2px solid ${borderTheme}; border-radius: 20px; backdrop-filter: blur(12px); box-shadow: 0 20px 40px rgba(15, 23, 42, 0.15) !important;">
+                    <div class="d-flex align-items-start gap-3">
+                        <div class="rounded-circle text-white p-2 d-flex justify-content-center align-items-center" 
+                             style="width: 44px; height: 44px; font-size: 20px; background-color: ${colorTheme}; box-shadow: 0 4px 12px ${colorTheme}66;">
+                            <i class="${iconClass}"></i>
+                        </div>
+                        <div class="flex-grow-1">
+                            <span class="badge mb-2 px-2.5 py-1.5 status-badge" style="background-color: ${colorTheme}22; color: ${colorTheme}; border: 1px solid ${colorTheme}44;">
+                                ${badgeText}
+                            </span>
+                            <h5 class="fw-bold mb-1 text-dark">${titleText}</h5>
+                            <p class="mb-3 text-secondary" style="font-size: 13.5px; line-height: 1.5; color: #475569 !important;">
+                                ${message}
+                            </p>
+                            <div class="d-flex align-items-center gap-2 pt-2 border-top border-secondary-subtle">
+                                <span class="spinner-border spinner-border-sm" role="status" style="width: 14px; height: 14px; border-width: 2px; color: ${colorTheme};"></span>
+                                <span class="small text-secondary" style="font-size: 12.5px;">Auto-refreshing dynamic cabinet in <strong id="reload-timer" class="text-dark">3</strong> seconds...</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            document.body.appendChild(toastContainer);
+
+            // Play nice subtle success chime using browser standard synthesizer/Web Audio API if audio enabled
+            try {
+                const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+                if (audioCtx) {
+                    const osc = audioCtx.createOscillator();
+                    const gain = audioCtx.createGain();
+                    osc.connect(gain);
+                    gain.connect(audioCtx.destination);
+                    osc.type = 'sine';
+                    if (isCompleted) {
+                        // High-pitched double beep for success
+                        osc.frequency.setValueAtTime(587.33, audioCtx.currentTime); // D5
+                        gain.gain.setValueAtTime(0.1, audioCtx.currentTime);
+                        osc.start();
+                        osc.stop(audioCtx.currentTime + 0.15);
+                        setTimeout(() => {
+                            const osc2 = audioCtx.createOscillator();
+                            const gain2 = audioCtx.createGain();
+                            osc2.connect(gain2);
+                            gain2.connect(audioCtx.destination);
+                            osc2.type = 'sine';
+                            osc2.frequency.setValueAtTime(880, audioCtx.currentTime); // A5
+                            gain2.gain.setValueAtTime(0.1, audioCtx.currentTime);
+                            osc2.start();
+                            osc2.stop(audioCtx.currentTime + 0.25);
+                        }, 180);
+                    } else {
+                        // Downward beep for cancel
+                        osc.frequency.setValueAtTime(330, audioCtx.currentTime); // E4
+                        gain.gain.setValueAtTime(0.1, audioCtx.currentTime);
+                        osc.start();
+                        osc.stop(audioCtx.currentTime + 0.3);
+                    }
+                }
+            } catch (e) {
+                console.log("Audio feedback ignored or blocked by user guest settings.");
+            }
+
+            // Countdown and reload
+            let secondsLeft = 3;
+            const timerEl = document.getElementById("reload-timer");
+            const countdownInterval = setInterval(() => {
+                secondsLeft--;
+                if (timerEl) timerEl.textContent = secondsLeft;
+                if (secondsLeft <= 0) {
+                    clearInterval(countdownInterval);
+                    window.location.reload();
+                }
+            }, 1000);
+        }
+
+        // Poll every 5 seconds
+        setInterval(checkStatus, checkInterval);
+        // Do a quick status check immediately on load just in case
+        setTimeout(checkStatus, 1000);
+    });
+</script>
+{% endif %}
+{% endblock %}
+
+{% endblock %}

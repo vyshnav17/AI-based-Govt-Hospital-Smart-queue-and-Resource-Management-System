@@ -1,0 +1,2001 @@
+symptoms,TARGET_diagnosis,TARGET_meds,TARGET_inst
+chest tightness,Angina Pectoris,Aspirin 75mg 1-0-0,Immediate ER if pain worsens
+cough and throat pain,Acute Bronchitis,Amoxicillin 500mg 1-1-1,Warm saline gargles
+gastric pain,Dyspepsia,Pantoprazole 40mg 1-0-0,Avoid spicy food
+palpitations and sweat,Arrhythmia evaluation,Metoprolol 25mg 1-0-0,Avoid caffeine
+tonsils hurting,Streptococcal Pharyngitis,Azithromycin 500mg 1-0-0,Complete antibiotic course
+chest tightness,Angina Pectoris,Aspirin 75mg 1-0-0,Immediate ER if pain worsens
+nausea and diarrhea,Acute Gastroenteritis,Ondansetron 4mg 1-0-1,Light diet (rice gruel)
+body pain and cold,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+chest tightness,Angina Pectoris,Aspirin 75mg 1-0-0,Immediate ER if pain worsens
+gastric pain,Dyspepsia,Pantoprazole 40mg 1-0-0,Avoid spicy food
+gastric pain,Dyspepsia,Pantoprazole 40mg 1-0-0,Avoid spicy food
+palpitations and sweat,Arrhythmia evaluation,Metoprolol 25mg 1-0-0,Avoid caffeine
+tonsils hurting,Streptococcal Pharyngitis,Azithromycin 500mg 1-0-0,Complete antibiotic course
+cough and throat pain,Acute Bronchitis,Amoxicillin 500mg 1-1-1,Warm saline gargles
+palpitations and sweat,Arrhythmia evaluation,Metoprolol 25mg 1-0-0,Avoid caffeine
+palpitations and sweat,Arrhythmia evaluation,Metoprolol 25mg 1-0-0,Avoid caffeine
+body pain and cold,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+hard to breathe,Bronchitis,Salbutamol Inhaler PRN,Use inhaler if wheezing
+tonsils hurting,Streptococcal Pharyngitis,Azithromycin 500mg 1-0-0,Complete antibiotic course
+migraine,Migraine,Sumatriptan 50mg PRN,Dark room rest
+palpitations and sweat,Arrhythmia evaluation,Metoprolol 25mg 1-0-0,Avoid caffeine
+hard to breathe,Bronchitis,Salbutamol Inhaler PRN,Use inhaler if wheezing
+migraine,Migraine,Sumatriptan 50mg PRN,Dark room rest
+tonsils hurting,Streptococcal Pharyngitis,Azithromycin 500mg 1-0-0,Complete antibiotic course
+fever and headache,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+nausea and diarrhea,Acute Gastroenteritis,Ondansetron 4mg 1-0-1,Light diet (rice gruel)
+hard to breathe,Bronchitis,Salbutamol Inhaler PRN,Use inhaler if wheezing
+stomach pain and vomiting,Acute Gastroenteritis,Pantoprazole 40mg 1-0-0,Oral rehydration salts
+fever and headache,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+gastric pain,Dyspepsia,Pantoprazole 40mg 1-0-0,Avoid spicy food
+gastric pain,Dyspepsia,Pantoprazole 40mg 1-0-0,Avoid spicy food
+nausea and diarrhea,Acute Gastroenteritis,Ondansetron 4mg 1-0-1,Light diet (rice gruel)
+body pain and cold,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+chest tightness,Angina Pectoris,Aspirin 75mg 1-0-0,Immediate ER if pain worsens
+cough and throat pain,Acute Bronchitis,Amoxicillin 500mg 1-1-1,Warm saline gargles
+stomach pain and vomiting,Acute Gastroenteritis,Pantoprazole 40mg 1-0-0,Oral rehydration salts
+body pain and cold,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+tonsils hurting,Streptococcal Pharyngitis,Azithromycin 500mg 1-0-0,Complete antibiotic course
+body pain and cold,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+chest tightness,Angina Pectoris,Aspirin 75mg 1-0-0,Immediate ER if pain worsens
+tonsils hurting,Streptococcal Pharyngitis,Azithromycin 500mg 1-0-0,Complete antibiotic course
+stomach pain and vomiting,Acute Gastroenteritis,Pantoprazole 40mg 1-0-0,Oral rehydration salts
+chest tightness,Angina Pectoris,Aspirin 75mg 1-0-0,Immediate ER if pain worsens
+migraine,Migraine,Sumatriptan 50mg PRN,Dark room rest
+cough and throat pain,Acute Bronchitis,Amoxicillin 500mg 1-1-1,Warm saline gargles
+stomach pain and vomiting,Acute Gastroenteritis,Pantoprazole 40mg 1-0-0,Oral rehydration salts
+migraine,Migraine,Sumatriptan 50mg PRN,Dark room rest
+nausea and diarrhea,Acute Gastroenteritis,Ondansetron 4mg 1-0-1,Light diet (rice gruel)
+stomach pain and vomiting,Acute Gastroenteritis,Pantoprazole 40mg 1-0-0,Oral rehydration salts
+nausea and diarrhea,Acute Gastroenteritis,Ondansetron 4mg 1-0-1,Light diet (rice gruel)
+tonsils hurting,Streptococcal Pharyngitis,Azithromycin 500mg 1-0-0,Complete antibiotic course
+migraine,Migraine,Sumatriptan 50mg PRN,Dark room rest
+cough and throat pain,Acute Bronchitis,Amoxicillin 500mg 1-1-1,Warm saline gargles
+chest tightness,Angina Pectoris,Aspirin 75mg 1-0-0,Immediate ER if pain worsens
+palpitations and sweat,Arrhythmia evaluation,Metoprolol 25mg 1-0-0,Avoid caffeine
+body pain and cold,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+fever and headache,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+cough and throat pain,Acute Bronchitis,Amoxicillin 500mg 1-1-1,Warm saline gargles
+migraine,Migraine,Sumatriptan 50mg PRN,Dark room rest
+palpitations and sweat,Arrhythmia evaluation,Metoprolol 25mg 1-0-0,Avoid caffeine
+cough and throat pain,Acute Bronchitis,Amoxicillin 500mg 1-1-1,Warm saline gargles
+migraine,Migraine,Sumatriptan 50mg PRN,Dark room rest
+hard to breathe,Bronchitis,Salbutamol Inhaler PRN,Use inhaler if wheezing
+hard to breathe,Bronchitis,Salbutamol Inhaler PRN,Use inhaler if wheezing
+nausea and diarrhea,Acute Gastroenteritis,Ondansetron 4mg 1-0-1,Light diet (rice gruel)
+cough and throat pain,Acute Bronchitis,Amoxicillin 500mg 1-1-1,Warm saline gargles
+hard to breathe,Bronchitis,Salbutamol Inhaler PRN,Use inhaler if wheezing
+migraine,Migraine,Sumatriptan 50mg PRN,Dark room rest
+nausea and diarrhea,Acute Gastroenteritis,Ondansetron 4mg 1-0-1,Light diet (rice gruel)
+migraine,Migraine,Sumatriptan 50mg PRN,Dark room rest
+nausea and diarrhea,Acute Gastroenteritis,Ondansetron 4mg 1-0-1,Light diet (rice gruel)
+cough and throat pain,Acute Bronchitis,Amoxicillin 500mg 1-1-1,Warm saline gargles
+palpitations and sweat,Arrhythmia evaluation,Metoprolol 25mg 1-0-0,Avoid caffeine
+chest tightness,Angina Pectoris,Aspirin 75mg 1-0-0,Immediate ER if pain worsens
+stomach pain and vomiting,Acute Gastroenteritis,Pantoprazole 40mg 1-0-0,Oral rehydration salts
+palpitations and sweat,Arrhythmia evaluation,Metoprolol 25mg 1-0-0,Avoid caffeine
+tonsils hurting,Streptococcal Pharyngitis,Azithromycin 500mg 1-0-0,Complete antibiotic course
+migraine,Migraine,Sumatriptan 50mg PRN,Dark room rest
+tonsils hurting,Streptococcal Pharyngitis,Azithromycin 500mg 1-0-0,Complete antibiotic course
+palpitations and sweat,Arrhythmia evaluation,Metoprolol 25mg 1-0-0,Avoid caffeine
+nausea and diarrhea,Acute Gastroenteritis,Ondansetron 4mg 1-0-1,Light diet (rice gruel)
+stomach pain and vomiting,Acute Gastroenteritis,Pantoprazole 40mg 1-0-0,Oral rehydration salts
+stomach pain and vomiting,Acute Gastroenteritis,Pantoprazole 40mg 1-0-0,Oral rehydration salts
+fever and headache,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+stomach pain and vomiting,Acute Gastroenteritis,Pantoprazole 40mg 1-0-0,Oral rehydration salts
+chest tightness,Angina Pectoris,Aspirin 75mg 1-0-0,Immediate ER if pain worsens
+stomach pain and vomiting,Acute Gastroenteritis,Pantoprazole 40mg 1-0-0,Oral rehydration salts
+palpitations and sweat,Arrhythmia evaluation,Metoprolol 25mg 1-0-0,Avoid caffeine
+fever and headache,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+palpitations and sweat,Arrhythmia evaluation,Metoprolol 25mg 1-0-0,Avoid caffeine
+palpitations and sweat,Arrhythmia evaluation,Metoprolol 25mg 1-0-0,Avoid caffeine
+gastric pain,Dyspepsia,Pantoprazole 40mg 1-0-0,Avoid spicy food
+body pain and cold,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+fever and headache,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+palpitations and sweat,Arrhythmia evaluation,Metoprolol 25mg 1-0-0,Avoid caffeine
+body pain and cold,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+body pain and cold,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+fever and headache,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+gastric pain,Dyspepsia,Pantoprazole 40mg 1-0-0,Avoid spicy food
+tonsils hurting,Streptococcal Pharyngitis,Azithromycin 500mg 1-0-0,Complete antibiotic course
+nausea and diarrhea,Acute Gastroenteritis,Ondansetron 4mg 1-0-1,Light diet (rice gruel)
+chest tightness,Angina Pectoris,Aspirin 75mg 1-0-0,Immediate ER if pain worsens
+nausea and diarrhea,Acute Gastroenteritis,Ondansetron 4mg 1-0-1,Light diet (rice gruel)
+stomach pain and vomiting,Acute Gastroenteritis,Pantoprazole 40mg 1-0-0,Oral rehydration salts
+chest tightness,Angina Pectoris,Aspirin 75mg 1-0-0,Immediate ER if pain worsens
+stomach pain and vomiting,Acute Gastroenteritis,Pantoprazole 40mg 1-0-0,Oral rehydration salts
+palpitations and sweat,Arrhythmia evaluation,Metoprolol 25mg 1-0-0,Avoid caffeine
+migraine,Migraine,Sumatriptan 50mg PRN,Dark room rest
+fever and headache,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+chest tightness,Angina Pectoris,Aspirin 75mg 1-0-0,Immediate ER if pain worsens
+chest tightness,Angina Pectoris,Aspirin 75mg 1-0-0,Immediate ER if pain worsens
+palpitations and sweat,Arrhythmia evaluation,Metoprolol 25mg 1-0-0,Avoid caffeine
+tonsils hurting,Streptococcal Pharyngitis,Azithromycin 500mg 1-0-0,Complete antibiotic course
+body pain and cold,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+palpitations and sweat,Arrhythmia evaluation,Metoprolol 25mg 1-0-0,Avoid caffeine
+hard to breathe,Bronchitis,Salbutamol Inhaler PRN,Use inhaler if wheezing
+gastric pain,Dyspepsia,Pantoprazole 40mg 1-0-0,Avoid spicy food
+body pain and cold,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+fever and headache,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+body pain and cold,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+tonsils hurting,Streptococcal Pharyngitis,Azithromycin 500mg 1-0-0,Complete antibiotic course
+body pain and cold,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+fever and headache,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+tonsils hurting,Streptococcal Pharyngitis,Azithromycin 500mg 1-0-0,Complete antibiotic course
+nausea and diarrhea,Acute Gastroenteritis,Ondansetron 4mg 1-0-1,Light diet (rice gruel)
+chest tightness,Angina Pectoris,Aspirin 75mg 1-0-0,Immediate ER if pain worsens
+chest tightness,Angina Pectoris,Aspirin 75mg 1-0-0,Immediate ER if pain worsens
+gastric pain,Dyspepsia,Pantoprazole 40mg 1-0-0,Avoid spicy food
+stomach pain and vomiting,Acute Gastroenteritis,Pantoprazole 40mg 1-0-0,Oral rehydration salts
+nausea and diarrhea,Acute Gastroenteritis,Ondansetron 4mg 1-0-1,Light diet (rice gruel)
+nausea and diarrhea,Acute Gastroenteritis,Ondansetron 4mg 1-0-1,Light diet (rice gruel)
+body pain and cold,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+chest tightness,Angina Pectoris,Aspirin 75mg 1-0-0,Immediate ER if pain worsens
+fever and headache,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+cough and throat pain,Acute Bronchitis,Amoxicillin 500mg 1-1-1,Warm saline gargles
+cough and throat pain,Acute Bronchitis,Amoxicillin 500mg 1-1-1,Warm saline gargles
+tonsils hurting,Streptococcal Pharyngitis,Azithromycin 500mg 1-0-0,Complete antibiotic course
+chest tightness,Angina Pectoris,Aspirin 75mg 1-0-0,Immediate ER if pain worsens
+chest tightness,Angina Pectoris,Aspirin 75mg 1-0-0,Immediate ER if pain worsens
+gastric pain,Dyspepsia,Pantoprazole 40mg 1-0-0,Avoid spicy food
+cough and throat pain,Acute Bronchitis,Amoxicillin 500mg 1-1-1,Warm saline gargles
+chest tightness,Angina Pectoris,Aspirin 75mg 1-0-0,Immediate ER if pain worsens
+gastric pain,Dyspepsia,Pantoprazole 40mg 1-0-0,Avoid spicy food
+body pain and cold,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+hard to breathe,Bronchitis,Salbutamol Inhaler PRN,Use inhaler if wheezing
+migraine,Migraine,Sumatriptan 50mg PRN,Dark room rest
+nausea and diarrhea,Acute Gastroenteritis,Ondansetron 4mg 1-0-1,Light diet (rice gruel)
+stomach pain and vomiting,Acute Gastroenteritis,Pantoprazole 40mg 1-0-0,Oral rehydration salts
+tonsils hurting,Streptococcal Pharyngitis,Azithromycin 500mg 1-0-0,Complete antibiotic course
+hard to breathe,Bronchitis,Salbutamol Inhaler PRN,Use inhaler if wheezing
+cough and throat pain,Acute Bronchitis,Amoxicillin 500mg 1-1-1,Warm saline gargles
+gastric pain,Dyspepsia,Pantoprazole 40mg 1-0-0,Avoid spicy food
+nausea and diarrhea,Acute Gastroenteritis,Ondansetron 4mg 1-0-1,Light diet (rice gruel)
+chest tightness,Angina Pectoris,Aspirin 75mg 1-0-0,Immediate ER if pain worsens
+stomach pain and vomiting,Acute Gastroenteritis,Pantoprazole 40mg 1-0-0,Oral rehydration salts
+chest tightness,Angina Pectoris,Aspirin 75mg 1-0-0,Immediate ER if pain worsens
+fever and headache,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+fever and headache,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+stomach pain and vomiting,Acute Gastroenteritis,Pantoprazole 40mg 1-0-0,Oral rehydration salts
+gastric pain,Dyspepsia,Pantoprazole 40mg 1-0-0,Avoid spicy food
+stomach pain and vomiting,Acute Gastroenteritis,Pantoprazole 40mg 1-0-0,Oral rehydration salts
+cough and throat pain,Acute Bronchitis,Amoxicillin 500mg 1-1-1,Warm saline gargles
+stomach pain and vomiting,Acute Gastroenteritis,Pantoprazole 40mg 1-0-0,Oral rehydration salts
+body pain and cold,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+chest tightness,Angina Pectoris,Aspirin 75mg 1-0-0,Immediate ER if pain worsens
+hard to breathe,Bronchitis,Salbutamol Inhaler PRN,Use inhaler if wheezing
+palpitations and sweat,Arrhythmia evaluation,Metoprolol 25mg 1-0-0,Avoid caffeine
+gastric pain,Dyspepsia,Pantoprazole 40mg 1-0-0,Avoid spicy food
+stomach pain and vomiting,Acute Gastroenteritis,Pantoprazole 40mg 1-0-0,Oral rehydration salts
+tonsils hurting,Streptococcal Pharyngitis,Azithromycin 500mg 1-0-0,Complete antibiotic course
+fever and headache,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+body pain and cold,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+nausea and diarrhea,Acute Gastroenteritis,Ondansetron 4mg 1-0-1,Light diet (rice gruel)
+palpitations and sweat,Arrhythmia evaluation,Metoprolol 25mg 1-0-0,Avoid caffeine
+gastric pain,Dyspepsia,Pantoprazole 40mg 1-0-0,Avoid spicy food
+hard to breathe,Bronchitis,Salbutamol Inhaler PRN,Use inhaler if wheezing
+palpitations and sweat,Arrhythmia evaluation,Metoprolol 25mg 1-0-0,Avoid caffeine
+stomach pain and vomiting,Acute Gastroenteritis,Pantoprazole 40mg 1-0-0,Oral rehydration salts
+cough and throat pain,Acute Bronchitis,Amoxicillin 500mg 1-1-1,Warm saline gargles
+fever and headache,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+fever and headache,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+nausea and diarrhea,Acute Gastroenteritis,Ondansetron 4mg 1-0-1,Light diet (rice gruel)
+cough and throat pain,Acute Bronchitis,Amoxicillin 500mg 1-1-1,Warm saline gargles
+chest tightness,Angina Pectoris,Aspirin 75mg 1-0-0,Immediate ER if pain worsens
+migraine,Migraine,Sumatriptan 50mg PRN,Dark room rest
+body pain and cold,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+fever and headache,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+tonsils hurting,Streptococcal Pharyngitis,Azithromycin 500mg 1-0-0,Complete antibiotic course
+fever and headache,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+palpitations and sweat,Arrhythmia evaluation,Metoprolol 25mg 1-0-0,Avoid caffeine
+fever and headache,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+gastric pain,Dyspepsia,Pantoprazole 40mg 1-0-0,Avoid spicy food
+fever and headache,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+migraine,Migraine,Sumatriptan 50mg PRN,Dark room rest
+migraine,Migraine,Sumatriptan 50mg PRN,Dark room rest
+hard to breathe,Bronchitis,Salbutamol Inhaler PRN,Use inhaler if wheezing
+chest tightness,Angina Pectoris,Aspirin 75mg 1-0-0,Immediate ER if pain worsens
+tonsils hurting,Streptococcal Pharyngitis,Azithromycin 500mg 1-0-0,Complete antibiotic course
+fever and headache,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+fever and headache,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+body pain and cold,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+migraine,Migraine,Sumatriptan 50mg PRN,Dark room rest
+tonsils hurting,Streptococcal Pharyngitis,Azithromycin 500mg 1-0-0,Complete antibiotic course
+nausea and diarrhea,Acute Gastroenteritis,Ondansetron 4mg 1-0-1,Light diet (rice gruel)
+hard to breathe,Bronchitis,Salbutamol Inhaler PRN,Use inhaler if wheezing
+chest tightness,Angina Pectoris,Aspirin 75mg 1-0-0,Immediate ER if pain worsens
+cough and throat pain,Acute Bronchitis,Amoxicillin 500mg 1-1-1,Warm saline gargles
+chest tightness,Angina Pectoris,Aspirin 75mg 1-0-0,Immediate ER if pain worsens
+gastric pain,Dyspepsia,Pantoprazole 40mg 1-0-0,Avoid spicy food
+palpitations and sweat,Arrhythmia evaluation,Metoprolol 25mg 1-0-0,Avoid caffeine
+gastric pain,Dyspepsia,Pantoprazole 40mg 1-0-0,Avoid spicy food
+fever and headache,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+hard to breathe,Bronchitis,Salbutamol Inhaler PRN,Use inhaler if wheezing
+palpitations and sweat,Arrhythmia evaluation,Metoprolol 25mg 1-0-0,Avoid caffeine
+tonsils hurting,Streptococcal Pharyngitis,Azithromycin 500mg 1-0-0,Complete antibiotic course
+cough and throat pain,Acute Bronchitis,Amoxicillin 500mg 1-1-1,Warm saline gargles
+migraine,Migraine,Sumatriptan 50mg PRN,Dark room rest
+hard to breathe,Bronchitis,Salbutamol Inhaler PRN,Use inhaler if wheezing
+hard to breathe,Bronchitis,Salbutamol Inhaler PRN,Use inhaler if wheezing
+gastric pain,Dyspepsia,Pantoprazole 40mg 1-0-0,Avoid spicy food
+fever and headache,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+stomach pain and vomiting,Acute Gastroenteritis,Pantoprazole 40mg 1-0-0,Oral rehydration salts
+gastric pain,Dyspepsia,Pantoprazole 40mg 1-0-0,Avoid spicy food
+hard to breathe,Bronchitis,Salbutamol Inhaler PRN,Use inhaler if wheezing
+body pain and cold,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+cough and throat pain,Acute Bronchitis,Amoxicillin 500mg 1-1-1,Warm saline gargles
+gastric pain,Dyspepsia,Pantoprazole 40mg 1-0-0,Avoid spicy food
+cough and throat pain,Acute Bronchitis,Amoxicillin 500mg 1-1-1,Warm saline gargles
+body pain and cold,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+nausea and diarrhea,Acute Gastroenteritis,Ondansetron 4mg 1-0-1,Light diet (rice gruel)
+body pain and cold,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+body pain and cold,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+cough and throat pain,Acute Bronchitis,Amoxicillin 500mg 1-1-1,Warm saline gargles
+chest tightness,Angina Pectoris,Aspirin 75mg 1-0-0,Immediate ER if pain worsens
+cough and throat pain,Acute Bronchitis,Amoxicillin 500mg 1-1-1,Warm saline gargles
+stomach pain and vomiting,Acute Gastroenteritis,Pantoprazole 40mg 1-0-0,Oral rehydration salts
+fever and headache,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+palpitations and sweat,Arrhythmia evaluation,Metoprolol 25mg 1-0-0,Avoid caffeine
+chest tightness,Angina Pectoris,Aspirin 75mg 1-0-0,Immediate ER if pain worsens
+migraine,Migraine,Sumatriptan 50mg PRN,Dark room rest
+palpitations and sweat,Arrhythmia evaluation,Metoprolol 25mg 1-0-0,Avoid caffeine
+fever and headache,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+gastric pain,Dyspepsia,Pantoprazole 40mg 1-0-0,Avoid spicy food
+stomach pain and vomiting,Acute Gastroenteritis,Pantoprazole 40mg 1-0-0,Oral rehydration salts
+stomach pain and vomiting,Acute Gastroenteritis,Pantoprazole 40mg 1-0-0,Oral rehydration salts
+migraine,Migraine,Sumatriptan 50mg PRN,Dark room rest
+chest tightness,Angina Pectoris,Aspirin 75mg 1-0-0,Immediate ER if pain worsens
+nausea and diarrhea,Acute Gastroenteritis,Ondansetron 4mg 1-0-1,Light diet (rice gruel)
+body pain and cold,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+chest tightness,Angina Pectoris,Aspirin 75mg 1-0-0,Immediate ER if pain worsens
+nausea and diarrhea,Acute Gastroenteritis,Ondansetron 4mg 1-0-1,Light diet (rice gruel)
+stomach pain and vomiting,Acute Gastroenteritis,Pantoprazole 40mg 1-0-0,Oral rehydration salts
+cough and throat pain,Acute Bronchitis,Amoxicillin 500mg 1-1-1,Warm saline gargles
+fever and headache,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+migraine,Migraine,Sumatriptan 50mg PRN,Dark room rest
+fever and headache,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+tonsils hurting,Streptococcal Pharyngitis,Azithromycin 500mg 1-0-0,Complete antibiotic course
+tonsils hurting,Streptococcal Pharyngitis,Azithromycin 500mg 1-0-0,Complete antibiotic course
+gastric pain,Dyspepsia,Pantoprazole 40mg 1-0-0,Avoid spicy food
+chest tightness,Angina Pectoris,Aspirin 75mg 1-0-0,Immediate ER if pain worsens
+stomach pain and vomiting,Acute Gastroenteritis,Pantoprazole 40mg 1-0-0,Oral rehydration salts
+stomach pain and vomiting,Acute Gastroenteritis,Pantoprazole 40mg 1-0-0,Oral rehydration salts
+body pain and cold,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+body pain and cold,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+body pain and cold,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+cough and throat pain,Acute Bronchitis,Amoxicillin 500mg 1-1-1,Warm saline gargles
+palpitations and sweat,Arrhythmia evaluation,Metoprolol 25mg 1-0-0,Avoid caffeine
+hard to breathe,Bronchitis,Salbutamol Inhaler PRN,Use inhaler if wheezing
+palpitations and sweat,Arrhythmia evaluation,Metoprolol 25mg 1-0-0,Avoid caffeine
+fever and headache,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+palpitations and sweat,Arrhythmia evaluation,Metoprolol 25mg 1-0-0,Avoid caffeine
+cough and throat pain,Acute Bronchitis,Amoxicillin 500mg 1-1-1,Warm saline gargles
+gastric pain,Dyspepsia,Pantoprazole 40mg 1-0-0,Avoid spicy food
+fever and headache,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+palpitations and sweat,Arrhythmia evaluation,Metoprolol 25mg 1-0-0,Avoid caffeine
+cough and throat pain,Acute Bronchitis,Amoxicillin 500mg 1-1-1,Warm saline gargles
+hard to breathe,Bronchitis,Salbutamol Inhaler PRN,Use inhaler if wheezing
+palpitations and sweat,Arrhythmia evaluation,Metoprolol 25mg 1-0-0,Avoid caffeine
+cough and throat pain,Acute Bronchitis,Amoxicillin 500mg 1-1-1,Warm saline gargles
+body pain and cold,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+stomach pain and vomiting,Acute Gastroenteritis,Pantoprazole 40mg 1-0-0,Oral rehydration salts
+body pain and cold,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+stomach pain and vomiting,Acute Gastroenteritis,Pantoprazole 40mg 1-0-0,Oral rehydration salts
+migraine,Migraine,Sumatriptan 50mg PRN,Dark room rest
+migraine,Migraine,Sumatriptan 50mg PRN,Dark room rest
+migraine,Migraine,Sumatriptan 50mg PRN,Dark room rest
+hard to breathe,Bronchitis,Salbutamol Inhaler PRN,Use inhaler if wheezing
+body pain and cold,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+stomach pain and vomiting,Acute Gastroenteritis,Pantoprazole 40mg 1-0-0,Oral rehydration salts
+cough and throat pain,Acute Bronchitis,Amoxicillin 500mg 1-1-1,Warm saline gargles
+fever and headache,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+cough and throat pain,Acute Bronchitis,Amoxicillin 500mg 1-1-1,Warm saline gargles
+fever and headache,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+tonsils hurting,Streptococcal Pharyngitis,Azithromycin 500mg 1-0-0,Complete antibiotic course
+cough and throat pain,Acute Bronchitis,Amoxicillin 500mg 1-1-1,Warm saline gargles
+palpitations and sweat,Arrhythmia evaluation,Metoprolol 25mg 1-0-0,Avoid caffeine
+palpitations and sweat,Arrhythmia evaluation,Metoprolol 25mg 1-0-0,Avoid caffeine
+chest tightness,Angina Pectoris,Aspirin 75mg 1-0-0,Immediate ER if pain worsens
+body pain and cold,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+fever and headache,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+fever and headache,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+gastric pain,Dyspepsia,Pantoprazole 40mg 1-0-0,Avoid spicy food
+body pain and cold,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+hard to breathe,Bronchitis,Salbutamol Inhaler PRN,Use inhaler if wheezing
+chest tightness,Angina Pectoris,Aspirin 75mg 1-0-0,Immediate ER if pain worsens
+hard to breathe,Bronchitis,Salbutamol Inhaler PRN,Use inhaler if wheezing
+hard to breathe,Bronchitis,Salbutamol Inhaler PRN,Use inhaler if wheezing
+hard to breathe,Bronchitis,Salbutamol Inhaler PRN,Use inhaler if wheezing
+body pain and cold,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+hard to breathe,Bronchitis,Salbutamol Inhaler PRN,Use inhaler if wheezing
+palpitations and sweat,Arrhythmia evaluation,Metoprolol 25mg 1-0-0,Avoid caffeine
+gastric pain,Dyspepsia,Pantoprazole 40mg 1-0-0,Avoid spicy food
+gastric pain,Dyspepsia,Pantoprazole 40mg 1-0-0,Avoid spicy food
+migraine,Migraine,Sumatriptan 50mg PRN,Dark room rest
+tonsils hurting,Streptococcal Pharyngitis,Azithromycin 500mg 1-0-0,Complete antibiotic course
+fever and headache,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+fever and headache,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+tonsils hurting,Streptococcal Pharyngitis,Azithromycin 500mg 1-0-0,Complete antibiotic course
+body pain and cold,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+cough and throat pain,Acute Bronchitis,Amoxicillin 500mg 1-1-1,Warm saline gargles
+body pain and cold,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+fever and headache,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+fever and headache,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+tonsils hurting,Streptococcal Pharyngitis,Azithromycin 500mg 1-0-0,Complete antibiotic course
+hard to breathe,Bronchitis,Salbutamol Inhaler PRN,Use inhaler if wheezing
+body pain and cold,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+stomach pain and vomiting,Acute Gastroenteritis,Pantoprazole 40mg 1-0-0,Oral rehydration salts
+tonsils hurting,Streptococcal Pharyngitis,Azithromycin 500mg 1-0-0,Complete antibiotic course
+palpitations and sweat,Arrhythmia evaluation,Metoprolol 25mg 1-0-0,Avoid caffeine
+fever and headache,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+tonsils hurting,Streptococcal Pharyngitis,Azithromycin 500mg 1-0-0,Complete antibiotic course
+body pain and cold,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+fever and headache,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+cough and throat pain,Acute Bronchitis,Amoxicillin 500mg 1-1-1,Warm saline gargles
+tonsils hurting,Streptococcal Pharyngitis,Azithromycin 500mg 1-0-0,Complete antibiotic course
+chest tightness,Angina Pectoris,Aspirin 75mg 1-0-0,Immediate ER if pain worsens
+fever and headache,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+body pain and cold,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+migraine,Migraine,Sumatriptan 50mg PRN,Dark room rest
+stomach pain and vomiting,Acute Gastroenteritis,Pantoprazole 40mg 1-0-0,Oral rehydration salts
+nausea and diarrhea,Acute Gastroenteritis,Ondansetron 4mg 1-0-1,Light diet (rice gruel)
+hard to breathe,Bronchitis,Salbutamol Inhaler PRN,Use inhaler if wheezing
+nausea and diarrhea,Acute Gastroenteritis,Ondansetron 4mg 1-0-1,Light diet (rice gruel)
+body pain and cold,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+palpitations and sweat,Arrhythmia evaluation,Metoprolol 25mg 1-0-0,Avoid caffeine
+palpitations and sweat,Arrhythmia evaluation,Metoprolol 25mg 1-0-0,Avoid caffeine
+migraine,Migraine,Sumatriptan 50mg PRN,Dark room rest
+hard to breathe,Bronchitis,Salbutamol Inhaler PRN,Use inhaler if wheezing
+chest tightness,Angina Pectoris,Aspirin 75mg 1-0-0,Immediate ER if pain worsens
+migraine,Migraine,Sumatriptan 50mg PRN,Dark room rest
+gastric pain,Dyspepsia,Pantoprazole 40mg 1-0-0,Avoid spicy food
+nausea and diarrhea,Acute Gastroenteritis,Ondansetron 4mg 1-0-1,Light diet (rice gruel)
+migraine,Migraine,Sumatriptan 50mg PRN,Dark room rest
+nausea and diarrhea,Acute Gastroenteritis,Ondansetron 4mg 1-0-1,Light diet (rice gruel)
+fever and headache,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+palpitations and sweat,Arrhythmia evaluation,Metoprolol 25mg 1-0-0,Avoid caffeine
+fever and headache,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+stomach pain and vomiting,Acute Gastroenteritis,Pantoprazole 40mg 1-0-0,Oral rehydration salts
+gastric pain,Dyspepsia,Pantoprazole 40mg 1-0-0,Avoid spicy food
+hard to breathe,Bronchitis,Salbutamol Inhaler PRN,Use inhaler if wheezing
+chest tightness,Angina Pectoris,Aspirin 75mg 1-0-0,Immediate ER if pain worsens
+nausea and diarrhea,Acute Gastroenteritis,Ondansetron 4mg 1-0-1,Light diet (rice gruel)
+chest tightness,Angina Pectoris,Aspirin 75mg 1-0-0,Immediate ER if pain worsens
+nausea and diarrhea,Acute Gastroenteritis,Ondansetron 4mg 1-0-1,Light diet (rice gruel)
+body pain and cold,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+migraine,Migraine,Sumatriptan 50mg PRN,Dark room rest
+stomach pain and vomiting,Acute Gastroenteritis,Pantoprazole 40mg 1-0-0,Oral rehydration salts
+palpitations and sweat,Arrhythmia evaluation,Metoprolol 25mg 1-0-0,Avoid caffeine
+nausea and diarrhea,Acute Gastroenteritis,Ondansetron 4mg 1-0-1,Light diet (rice gruel)
+chest tightness,Angina Pectoris,Aspirin 75mg 1-0-0,Immediate ER if pain worsens
+stomach pain and vomiting,Acute Gastroenteritis,Pantoprazole 40mg 1-0-0,Oral rehydration salts
+cough and throat pain,Acute Bronchitis,Amoxicillin 500mg 1-1-1,Warm saline gargles
+cough and throat pain,Acute Bronchitis,Amoxicillin 500mg 1-1-1,Warm saline gargles
+fever and headache,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+palpitations and sweat,Arrhythmia evaluation,Metoprolol 25mg 1-0-0,Avoid caffeine
+body pain and cold,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+chest tightness,Angina Pectoris,Aspirin 75mg 1-0-0,Immediate ER if pain worsens
+migraine,Migraine,Sumatriptan 50mg PRN,Dark room rest
+migraine,Migraine,Sumatriptan 50mg PRN,Dark room rest
+chest tightness,Angina Pectoris,Aspirin 75mg 1-0-0,Immediate ER if pain worsens
+hard to breathe,Bronchitis,Salbutamol Inhaler PRN,Use inhaler if wheezing
+body pain and cold,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+stomach pain and vomiting,Acute Gastroenteritis,Pantoprazole 40mg 1-0-0,Oral rehydration salts
+nausea and diarrhea,Acute Gastroenteritis,Ondansetron 4mg 1-0-1,Light diet (rice gruel)
+hard to breathe,Bronchitis,Salbutamol Inhaler PRN,Use inhaler if wheezing
+nausea and diarrhea,Acute Gastroenteritis,Ondansetron 4mg 1-0-1,Light diet (rice gruel)
+nausea and diarrhea,Acute Gastroenteritis,Ondansetron 4mg 1-0-1,Light diet (rice gruel)
+hard to breathe,Bronchitis,Salbutamol Inhaler PRN,Use inhaler if wheezing
+fever and headache,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+cough and throat pain,Acute Bronchitis,Amoxicillin 500mg 1-1-1,Warm saline gargles
+nausea and diarrhea,Acute Gastroenteritis,Ondansetron 4mg 1-0-1,Light diet (rice gruel)
+hard to breathe,Bronchitis,Salbutamol Inhaler PRN,Use inhaler if wheezing
+hard to breathe,Bronchitis,Salbutamol Inhaler PRN,Use inhaler if wheezing
+gastric pain,Dyspepsia,Pantoprazole 40mg 1-0-0,Avoid spicy food
+tonsils hurting,Streptococcal Pharyngitis,Azithromycin 500mg 1-0-0,Complete antibiotic course
+fever and headache,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+palpitations and sweat,Arrhythmia evaluation,Metoprolol 25mg 1-0-0,Avoid caffeine
+tonsils hurting,Streptococcal Pharyngitis,Azithromycin 500mg 1-0-0,Complete antibiotic course
+tonsils hurting,Streptococcal Pharyngitis,Azithromycin 500mg 1-0-0,Complete antibiotic course
+chest tightness,Angina Pectoris,Aspirin 75mg 1-0-0,Immediate ER if pain worsens
+cough and throat pain,Acute Bronchitis,Amoxicillin 500mg 1-1-1,Warm saline gargles
+hard to breathe,Bronchitis,Salbutamol Inhaler PRN,Use inhaler if wheezing
+cough and throat pain,Acute Bronchitis,Amoxicillin 500mg 1-1-1,Warm saline gargles
+body pain and cold,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+chest tightness,Angina Pectoris,Aspirin 75mg 1-0-0,Immediate ER if pain worsens
+palpitations and sweat,Arrhythmia evaluation,Metoprolol 25mg 1-0-0,Avoid caffeine
+cough and throat pain,Acute Bronchitis,Amoxicillin 500mg 1-1-1,Warm saline gargles
+migraine,Migraine,Sumatriptan 50mg PRN,Dark room rest
+nausea and diarrhea,Acute Gastroenteritis,Ondansetron 4mg 1-0-1,Light diet (rice gruel)
+body pain and cold,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+fever and headache,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+palpitations and sweat,Arrhythmia evaluation,Metoprolol 25mg 1-0-0,Avoid caffeine
+body pain and cold,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+nausea and diarrhea,Acute Gastroenteritis,Ondansetron 4mg 1-0-1,Light diet (rice gruel)
+chest tightness,Angina Pectoris,Aspirin 75mg 1-0-0,Immediate ER if pain worsens
+nausea and diarrhea,Acute Gastroenteritis,Ondansetron 4mg 1-0-1,Light diet (rice gruel)
+tonsils hurting,Streptococcal Pharyngitis,Azithromycin 500mg 1-0-0,Complete antibiotic course
+nausea and diarrhea,Acute Gastroenteritis,Ondansetron 4mg 1-0-1,Light diet (rice gruel)
+tonsils hurting,Streptococcal Pharyngitis,Azithromycin 500mg 1-0-0,Complete antibiotic course
+chest tightness,Angina Pectoris,Aspirin 75mg 1-0-0,Immediate ER if pain worsens
+stomach pain and vomiting,Acute Gastroenteritis,Pantoprazole 40mg 1-0-0,Oral rehydration salts
+tonsils hurting,Streptococcal Pharyngitis,Azithromycin 500mg 1-0-0,Complete antibiotic course
+fever and headache,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+nausea and diarrhea,Acute Gastroenteritis,Ondansetron 4mg 1-0-1,Light diet (rice gruel)
+nausea and diarrhea,Acute Gastroenteritis,Ondansetron 4mg 1-0-1,Light diet (rice gruel)
+fever and headache,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+migraine,Migraine,Sumatriptan 50mg PRN,Dark room rest
+hard to breathe,Bronchitis,Salbutamol Inhaler PRN,Use inhaler if wheezing
+stomach pain and vomiting,Acute Gastroenteritis,Pantoprazole 40mg 1-0-0,Oral rehydration salts
+palpitations and sweat,Arrhythmia evaluation,Metoprolol 25mg 1-0-0,Avoid caffeine
+tonsils hurting,Streptococcal Pharyngitis,Azithromycin 500mg 1-0-0,Complete antibiotic course
+fever and headache,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+chest tightness,Angina Pectoris,Aspirin 75mg 1-0-0,Immediate ER if pain worsens
+tonsils hurting,Streptococcal Pharyngitis,Azithromycin 500mg 1-0-0,Complete antibiotic course
+hard to breathe,Bronchitis,Salbutamol Inhaler PRN,Use inhaler if wheezing
+chest tightness,Angina Pectoris,Aspirin 75mg 1-0-0,Immediate ER if pain worsens
+body pain and cold,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+nausea and diarrhea,Acute Gastroenteritis,Ondansetron 4mg 1-0-1,Light diet (rice gruel)
+body pain and cold,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+tonsils hurting,Streptococcal Pharyngitis,Azithromycin 500mg 1-0-0,Complete antibiotic course
+hard to breathe,Bronchitis,Salbutamol Inhaler PRN,Use inhaler if wheezing
+stomach pain and vomiting,Acute Gastroenteritis,Pantoprazole 40mg 1-0-0,Oral rehydration salts
+tonsils hurting,Streptococcal Pharyngitis,Azithromycin 500mg 1-0-0,Complete antibiotic course
+fever and headache,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+cough and throat pain,Acute Bronchitis,Amoxicillin 500mg 1-1-1,Warm saline gargles
+tonsils hurting,Streptococcal Pharyngitis,Azithromycin 500mg 1-0-0,Complete antibiotic course
+nausea and diarrhea,Acute Gastroenteritis,Ondansetron 4mg 1-0-1,Light diet (rice gruel)
+nausea and diarrhea,Acute Gastroenteritis,Ondansetron 4mg 1-0-1,Light diet (rice gruel)
+tonsils hurting,Streptococcal Pharyngitis,Azithromycin 500mg 1-0-0,Complete antibiotic course
+chest tightness,Angina Pectoris,Aspirin 75mg 1-0-0,Immediate ER if pain worsens
+cough and throat pain,Acute Bronchitis,Amoxicillin 500mg 1-1-1,Warm saline gargles
+fever and headache,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+tonsils hurting,Streptococcal Pharyngitis,Azithromycin 500mg 1-0-0,Complete antibiotic course
+chest tightness,Angina Pectoris,Aspirin 75mg 1-0-0,Immediate ER if pain worsens
+nausea and diarrhea,Acute Gastroenteritis,Ondansetron 4mg 1-0-1,Light diet (rice gruel)
+nausea and diarrhea,Acute Gastroenteritis,Ondansetron 4mg 1-0-1,Light diet (rice gruel)
+hard to breathe,Bronchitis,Salbutamol Inhaler PRN,Use inhaler if wheezing
+tonsils hurting,Streptococcal Pharyngitis,Azithromycin 500mg 1-0-0,Complete antibiotic course
+cough and throat pain,Acute Bronchitis,Amoxicillin 500mg 1-1-1,Warm saline gargles
+migraine,Migraine,Sumatriptan 50mg PRN,Dark room rest
+cough and throat pain,Acute Bronchitis,Amoxicillin 500mg 1-1-1,Warm saline gargles
+nausea and diarrhea,Acute Gastroenteritis,Ondansetron 4mg 1-0-1,Light diet (rice gruel)
+nausea and diarrhea,Acute Gastroenteritis,Ondansetron 4mg 1-0-1,Light diet (rice gruel)
+body pain and cold,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+nausea and diarrhea,Acute Gastroenteritis,Ondansetron 4mg 1-0-1,Light diet (rice gruel)
+fever and headache,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+palpitations and sweat,Arrhythmia evaluation,Metoprolol 25mg 1-0-0,Avoid caffeine
+tonsils hurting,Streptococcal Pharyngitis,Azithromycin 500mg 1-0-0,Complete antibiotic course
+cough and throat pain,Acute Bronchitis,Amoxicillin 500mg 1-1-1,Warm saline gargles
+palpitations and sweat,Arrhythmia evaluation,Metoprolol 25mg 1-0-0,Avoid caffeine
+chest tightness,Angina Pectoris,Aspirin 75mg 1-0-0,Immediate ER if pain worsens
+migraine,Migraine,Sumatriptan 50mg PRN,Dark room rest
+fever and headache,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+gastric pain,Dyspepsia,Pantoprazole 40mg 1-0-0,Avoid spicy food
+cough and throat pain,Acute Bronchitis,Amoxicillin 500mg 1-1-1,Warm saline gargles
+palpitations and sweat,Arrhythmia evaluation,Metoprolol 25mg 1-0-0,Avoid caffeine
+migraine,Migraine,Sumatriptan 50mg PRN,Dark room rest
+body pain and cold,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+fever and headache,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+fever and headache,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+body pain and cold,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+gastric pain,Dyspepsia,Pantoprazole 40mg 1-0-0,Avoid spicy food
+tonsils hurting,Streptococcal Pharyngitis,Azithromycin 500mg 1-0-0,Complete antibiotic course
+body pain and cold,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+fever and headache,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+fever and headache,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+palpitations and sweat,Arrhythmia evaluation,Metoprolol 25mg 1-0-0,Avoid caffeine
+nausea and diarrhea,Acute Gastroenteritis,Ondansetron 4mg 1-0-1,Light diet (rice gruel)
+gastric pain,Dyspepsia,Pantoprazole 40mg 1-0-0,Avoid spicy food
+migraine,Migraine,Sumatriptan 50mg PRN,Dark room rest
+body pain and cold,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+migraine,Migraine,Sumatriptan 50mg PRN,Dark room rest
+body pain and cold,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+chest tightness,Angina Pectoris,Aspirin 75mg 1-0-0,Immediate ER if pain worsens
+fever and headache,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+nausea and diarrhea,Acute Gastroenteritis,Ondansetron 4mg 1-0-1,Light diet (rice gruel)
+palpitations and sweat,Arrhythmia evaluation,Metoprolol 25mg 1-0-0,Avoid caffeine
+nausea and diarrhea,Acute Gastroenteritis,Ondansetron 4mg 1-0-1,Light diet (rice gruel)
+nausea and diarrhea,Acute Gastroenteritis,Ondansetron 4mg 1-0-1,Light diet (rice gruel)
+nausea and diarrhea,Acute Gastroenteritis,Ondansetron 4mg 1-0-1,Light diet (rice gruel)
+migraine,Migraine,Sumatriptan 50mg PRN,Dark room rest
+body pain and cold,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+stomach pain and vomiting,Acute Gastroenteritis,Pantoprazole 40mg 1-0-0,Oral rehydration salts
+chest tightness,Angina Pectoris,Aspirin 75mg 1-0-0,Immediate ER if pain worsens
+cough and throat pain,Acute Bronchitis,Amoxicillin 500mg 1-1-1,Warm saline gargles
+nausea and diarrhea,Acute Gastroenteritis,Ondansetron 4mg 1-0-1,Light diet (rice gruel)
+tonsils hurting,Streptococcal Pharyngitis,Azithromycin 500mg 1-0-0,Complete antibiotic course
+migraine,Migraine,Sumatriptan 50mg PRN,Dark room rest
+gastric pain,Dyspepsia,Pantoprazole 40mg 1-0-0,Avoid spicy food
+palpitations and sweat,Arrhythmia evaluation,Metoprolol 25mg 1-0-0,Avoid caffeine
+cough and throat pain,Acute Bronchitis,Amoxicillin 500mg 1-1-1,Warm saline gargles
+stomach pain and vomiting,Acute Gastroenteritis,Pantoprazole 40mg 1-0-0,Oral rehydration salts
+tonsils hurting,Streptococcal Pharyngitis,Azithromycin 500mg 1-0-0,Complete antibiotic course
+stomach pain and vomiting,Acute Gastroenteritis,Pantoprazole 40mg 1-0-0,Oral rehydration salts
+cough and throat pain,Acute Bronchitis,Amoxicillin 500mg 1-1-1,Warm saline gargles
+nausea and diarrhea,Acute Gastroenteritis,Ondansetron 4mg 1-0-1,Light diet (rice gruel)
+tonsils hurting,Streptococcal Pharyngitis,Azithromycin 500mg 1-0-0,Complete antibiotic course
+stomach pain and vomiting,Acute Gastroenteritis,Pantoprazole 40mg 1-0-0,Oral rehydration salts
+palpitations and sweat,Arrhythmia evaluation,Metoprolol 25mg 1-0-0,Avoid caffeine
+body pain and cold,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+fever and headache,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+body pain and cold,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+cough and throat pain,Acute Bronchitis,Amoxicillin 500mg 1-1-1,Warm saline gargles
+migraine,Migraine,Sumatriptan 50mg PRN,Dark room rest
+fever and headache,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+chest tightness,Angina Pectoris,Aspirin 75mg 1-0-0,Immediate ER if pain worsens
+palpitations and sweat,Arrhythmia evaluation,Metoprolol 25mg 1-0-0,Avoid caffeine
+chest tightness,Angina Pectoris,Aspirin 75mg 1-0-0,Immediate ER if pain worsens
+tonsils hurting,Streptococcal Pharyngitis,Azithromycin 500mg 1-0-0,Complete antibiotic course
+fever and headache,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+chest tightness,Angina Pectoris,Aspirin 75mg 1-0-0,Immediate ER if pain worsens
+chest tightness,Angina Pectoris,Aspirin 75mg 1-0-0,Immediate ER if pain worsens
+stomach pain and vomiting,Acute Gastroenteritis,Pantoprazole 40mg 1-0-0,Oral rehydration salts
+body pain and cold,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+stomach pain and vomiting,Acute Gastroenteritis,Pantoprazole 40mg 1-0-0,Oral rehydration salts
+fever and headache,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+fever and headache,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+cough and throat pain,Acute Bronchitis,Amoxicillin 500mg 1-1-1,Warm saline gargles
+stomach pain and vomiting,Acute Gastroenteritis,Pantoprazole 40mg 1-0-0,Oral rehydration salts
+hard to breathe,Bronchitis,Salbutamol Inhaler PRN,Use inhaler if wheezing
+gastric pain,Dyspepsia,Pantoprazole 40mg 1-0-0,Avoid spicy food
+body pain and cold,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+fever and headache,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+cough and throat pain,Acute Bronchitis,Amoxicillin 500mg 1-1-1,Warm saline gargles
+stomach pain and vomiting,Acute Gastroenteritis,Pantoprazole 40mg 1-0-0,Oral rehydration salts
+body pain and cold,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+stomach pain and vomiting,Acute Gastroenteritis,Pantoprazole 40mg 1-0-0,Oral rehydration salts
+chest tightness,Angina Pectoris,Aspirin 75mg 1-0-0,Immediate ER if pain worsens
+cough and throat pain,Acute Bronchitis,Amoxicillin 500mg 1-1-1,Warm saline gargles
+body pain and cold,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+nausea and diarrhea,Acute Gastroenteritis,Ondansetron 4mg 1-0-1,Light diet (rice gruel)
+tonsils hurting,Streptococcal Pharyngitis,Azithromycin 500mg 1-0-0,Complete antibiotic course
+tonsils hurting,Streptococcal Pharyngitis,Azithromycin 500mg 1-0-0,Complete antibiotic course
+body pain and cold,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+stomach pain and vomiting,Acute Gastroenteritis,Pantoprazole 40mg 1-0-0,Oral rehydration salts
+cough and throat pain,Acute Bronchitis,Amoxicillin 500mg 1-1-1,Warm saline gargles
+gastric pain,Dyspepsia,Pantoprazole 40mg 1-0-0,Avoid spicy food
+tonsils hurting,Streptococcal Pharyngitis,Azithromycin 500mg 1-0-0,Complete antibiotic course
+cough and throat pain,Acute Bronchitis,Amoxicillin 500mg 1-1-1,Warm saline gargles
+tonsils hurting,Streptococcal Pharyngitis,Azithromycin 500mg 1-0-0,Complete antibiotic course
+chest tightness,Angina Pectoris,Aspirin 75mg 1-0-0,Immediate ER if pain worsens
+stomach pain and vomiting,Acute Gastroenteritis,Pantoprazole 40mg 1-0-0,Oral rehydration salts
+chest tightness,Angina Pectoris,Aspirin 75mg 1-0-0,Immediate ER if pain worsens
+tonsils hurting,Streptococcal Pharyngitis,Azithromycin 500mg 1-0-0,Complete antibiotic course
+nausea and diarrhea,Acute Gastroenteritis,Ondansetron 4mg 1-0-1,Light diet (rice gruel)
+nausea and diarrhea,Acute Gastroenteritis,Ondansetron 4mg 1-0-1,Light diet (rice gruel)
+chest tightness,Angina Pectoris,Aspirin 75mg 1-0-0,Immediate ER if pain worsens
+nausea and diarrhea,Acute Gastroenteritis,Ondansetron 4mg 1-0-1,Light diet (rice gruel)
+tonsils hurting,Streptococcal Pharyngitis,Azithromycin 500mg 1-0-0,Complete antibiotic course
+body pain and cold,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+chest tightness,Angina Pectoris,Aspirin 75mg 1-0-0,Immediate ER if pain worsens
+gastric pain,Dyspepsia,Pantoprazole 40mg 1-0-0,Avoid spicy food
+gastric pain,Dyspepsia,Pantoprazole 40mg 1-0-0,Avoid spicy food
+migraine,Migraine,Sumatriptan 50mg PRN,Dark room rest
+stomach pain and vomiting,Acute Gastroenteritis,Pantoprazole 40mg 1-0-0,Oral rehydration salts
+nausea and diarrhea,Acute Gastroenteritis,Ondansetron 4mg 1-0-1,Light diet (rice gruel)
+nausea and diarrhea,Acute Gastroenteritis,Ondansetron 4mg 1-0-1,Light diet (rice gruel)
+fever and headache,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+hard to breathe,Bronchitis,Salbutamol Inhaler PRN,Use inhaler if wheezing
+chest tightness,Angina Pectoris,Aspirin 75mg 1-0-0,Immediate ER if pain worsens
+palpitations and sweat,Arrhythmia evaluation,Metoprolol 25mg 1-0-0,Avoid caffeine
+nausea and diarrhea,Acute Gastroenteritis,Ondansetron 4mg 1-0-1,Light diet (rice gruel)
+stomach pain and vomiting,Acute Gastroenteritis,Pantoprazole 40mg 1-0-0,Oral rehydration salts
+migraine,Migraine,Sumatriptan 50mg PRN,Dark room rest
+gastric pain,Dyspepsia,Pantoprazole 40mg 1-0-0,Avoid spicy food
+nausea and diarrhea,Acute Gastroenteritis,Ondansetron 4mg 1-0-1,Light diet (rice gruel)
+migraine,Migraine,Sumatriptan 50mg PRN,Dark room rest
+tonsils hurting,Streptococcal Pharyngitis,Azithromycin 500mg 1-0-0,Complete antibiotic course
+tonsils hurting,Streptococcal Pharyngitis,Azithromycin 500mg 1-0-0,Complete antibiotic course
+hard to breathe,Bronchitis,Salbutamol Inhaler PRN,Use inhaler if wheezing
+body pain and cold,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+palpitations and sweat,Arrhythmia evaluation,Metoprolol 25mg 1-0-0,Avoid caffeine
+fever and headache,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+hard to breathe,Bronchitis,Salbutamol Inhaler PRN,Use inhaler if wheezing
+cough and throat pain,Acute Bronchitis,Amoxicillin 500mg 1-1-1,Warm saline gargles
+fever and headache,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+chest tightness,Angina Pectoris,Aspirin 75mg 1-0-0,Immediate ER if pain worsens
+stomach pain and vomiting,Acute Gastroenteritis,Pantoprazole 40mg 1-0-0,Oral rehydration salts
+cough and throat pain,Acute Bronchitis,Amoxicillin 500mg 1-1-1,Warm saline gargles
+cough and throat pain,Acute Bronchitis,Amoxicillin 500mg 1-1-1,Warm saline gargles
+hard to breathe,Bronchitis,Salbutamol Inhaler PRN,Use inhaler if wheezing
+body pain and cold,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+hard to breathe,Bronchitis,Salbutamol Inhaler PRN,Use inhaler if wheezing
+chest tightness,Angina Pectoris,Aspirin 75mg 1-0-0,Immediate ER if pain worsens
+gastric pain,Dyspepsia,Pantoprazole 40mg 1-0-0,Avoid spicy food
+nausea and diarrhea,Acute Gastroenteritis,Ondansetron 4mg 1-0-1,Light diet (rice gruel)
+nausea and diarrhea,Acute Gastroenteritis,Ondansetron 4mg 1-0-1,Light diet (rice gruel)
+body pain and cold,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+chest tightness,Angina Pectoris,Aspirin 75mg 1-0-0,Immediate ER if pain worsens
+body pain and cold,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+migraine,Migraine,Sumatriptan 50mg PRN,Dark room rest
+nausea and diarrhea,Acute Gastroenteritis,Ondansetron 4mg 1-0-1,Light diet (rice gruel)
+cough and throat pain,Acute Bronchitis,Amoxicillin 500mg 1-1-1,Warm saline gargles
+palpitations and sweat,Arrhythmia evaluation,Metoprolol 25mg 1-0-0,Avoid caffeine
+stomach pain and vomiting,Acute Gastroenteritis,Pantoprazole 40mg 1-0-0,Oral rehydration salts
+chest tightness,Angina Pectoris,Aspirin 75mg 1-0-0,Immediate ER if pain worsens
+fever and headache,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+body pain and cold,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+stomach pain and vomiting,Acute Gastroenteritis,Pantoprazole 40mg 1-0-0,Oral rehydration salts
+fever and headache,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+stomach pain and vomiting,Acute Gastroenteritis,Pantoprazole 40mg 1-0-0,Oral rehydration salts
+palpitations and sweat,Arrhythmia evaluation,Metoprolol 25mg 1-0-0,Avoid caffeine
+fever and headache,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+hard to breathe,Bronchitis,Salbutamol Inhaler PRN,Use inhaler if wheezing
+tonsils hurting,Streptococcal Pharyngitis,Azithromycin 500mg 1-0-0,Complete antibiotic course
+hard to breathe,Bronchitis,Salbutamol Inhaler PRN,Use inhaler if wheezing
+nausea and diarrhea,Acute Gastroenteritis,Ondansetron 4mg 1-0-1,Light diet (rice gruel)
+tonsils hurting,Streptococcal Pharyngitis,Azithromycin 500mg 1-0-0,Complete antibiotic course
+hard to breathe,Bronchitis,Salbutamol Inhaler PRN,Use inhaler if wheezing
+tonsils hurting,Streptococcal Pharyngitis,Azithromycin 500mg 1-0-0,Complete antibiotic course
+gastric pain,Dyspepsia,Pantoprazole 40mg 1-0-0,Avoid spicy food
+tonsils hurting,Streptococcal Pharyngitis,Azithromycin 500mg 1-0-0,Complete antibiotic course
+cough and throat pain,Acute Bronchitis,Amoxicillin 500mg 1-1-1,Warm saline gargles
+body pain and cold,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+body pain and cold,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+cough and throat pain,Acute Bronchitis,Amoxicillin 500mg 1-1-1,Warm saline gargles
+stomach pain and vomiting,Acute Gastroenteritis,Pantoprazole 40mg 1-0-0,Oral rehydration salts
+migraine,Migraine,Sumatriptan 50mg PRN,Dark room rest
+stomach pain and vomiting,Acute Gastroenteritis,Pantoprazole 40mg 1-0-0,Oral rehydration salts
+fever and headache,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+fever and headache,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+tonsils hurting,Streptococcal Pharyngitis,Azithromycin 500mg 1-0-0,Complete antibiotic course
+hard to breathe,Bronchitis,Salbutamol Inhaler PRN,Use inhaler if wheezing
+hard to breathe,Bronchitis,Salbutamol Inhaler PRN,Use inhaler if wheezing
+body pain and cold,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+chest tightness,Angina Pectoris,Aspirin 75mg 1-0-0,Immediate ER if pain worsens
+stomach pain and vomiting,Acute Gastroenteritis,Pantoprazole 40mg 1-0-0,Oral rehydration salts
+gastric pain,Dyspepsia,Pantoprazole 40mg 1-0-0,Avoid spicy food
+nausea and diarrhea,Acute Gastroenteritis,Ondansetron 4mg 1-0-1,Light diet (rice gruel)
+palpitations and sweat,Arrhythmia evaluation,Metoprolol 25mg 1-0-0,Avoid caffeine
+hard to breathe,Bronchitis,Salbutamol Inhaler PRN,Use inhaler if wheezing
+palpitations and sweat,Arrhythmia evaluation,Metoprolol 25mg 1-0-0,Avoid caffeine
+tonsils hurting,Streptococcal Pharyngitis,Azithromycin 500mg 1-0-0,Complete antibiotic course
+palpitations and sweat,Arrhythmia evaluation,Metoprolol 25mg 1-0-0,Avoid caffeine
+nausea and diarrhea,Acute Gastroenteritis,Ondansetron 4mg 1-0-1,Light diet (rice gruel)
+cough and throat pain,Acute Bronchitis,Amoxicillin 500mg 1-1-1,Warm saline gargles
+nausea and diarrhea,Acute Gastroenteritis,Ondansetron 4mg 1-0-1,Light diet (rice gruel)
+palpitations and sweat,Arrhythmia evaluation,Metoprolol 25mg 1-0-0,Avoid caffeine
+nausea and diarrhea,Acute Gastroenteritis,Ondansetron 4mg 1-0-1,Light diet (rice gruel)
+migraine,Migraine,Sumatriptan 50mg PRN,Dark room rest
+tonsils hurting,Streptococcal Pharyngitis,Azithromycin 500mg 1-0-0,Complete antibiotic course
+stomach pain and vomiting,Acute Gastroenteritis,Pantoprazole 40mg 1-0-0,Oral rehydration salts
+cough and throat pain,Acute Bronchitis,Amoxicillin 500mg 1-1-1,Warm saline gargles
+gastric pain,Dyspepsia,Pantoprazole 40mg 1-0-0,Avoid spicy food
+hard to breathe,Bronchitis,Salbutamol Inhaler PRN,Use inhaler if wheezing
+fever and headache,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+stomach pain and vomiting,Acute Gastroenteritis,Pantoprazole 40mg 1-0-0,Oral rehydration salts
+fever and headache,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+tonsils hurting,Streptococcal Pharyngitis,Azithromycin 500mg 1-0-0,Complete antibiotic course
+cough and throat pain,Acute Bronchitis,Amoxicillin 500mg 1-1-1,Warm saline gargles
+body pain and cold,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+hard to breathe,Bronchitis,Salbutamol Inhaler PRN,Use inhaler if wheezing
+migraine,Migraine,Sumatriptan 50mg PRN,Dark room rest
+body pain and cold,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+tonsils hurting,Streptococcal Pharyngitis,Azithromycin 500mg 1-0-0,Complete antibiotic course
+stomach pain and vomiting,Acute Gastroenteritis,Pantoprazole 40mg 1-0-0,Oral rehydration salts
+migraine,Migraine,Sumatriptan 50mg PRN,Dark room rest
+nausea and diarrhea,Acute Gastroenteritis,Ondansetron 4mg 1-0-1,Light diet (rice gruel)
+palpitations and sweat,Arrhythmia evaluation,Metoprolol 25mg 1-0-0,Avoid caffeine
+migraine,Migraine,Sumatriptan 50mg PRN,Dark room rest
+gastric pain,Dyspepsia,Pantoprazole 40mg 1-0-0,Avoid spicy food
+tonsils hurting,Streptococcal Pharyngitis,Azithromycin 500mg 1-0-0,Complete antibiotic course
+chest tightness,Angina Pectoris,Aspirin 75mg 1-0-0,Immediate ER if pain worsens
+palpitations and sweat,Arrhythmia evaluation,Metoprolol 25mg 1-0-0,Avoid caffeine
+fever and headache,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+hard to breathe,Bronchitis,Salbutamol Inhaler PRN,Use inhaler if wheezing
+fever and headache,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+migraine,Migraine,Sumatriptan 50mg PRN,Dark room rest
+fever and headache,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+gastric pain,Dyspepsia,Pantoprazole 40mg 1-0-0,Avoid spicy food
+tonsils hurting,Streptococcal Pharyngitis,Azithromycin 500mg 1-0-0,Complete antibiotic course
+nausea and diarrhea,Acute Gastroenteritis,Ondansetron 4mg 1-0-1,Light diet (rice gruel)
+stomach pain and vomiting,Acute Gastroenteritis,Pantoprazole 40mg 1-0-0,Oral rehydration salts
+hard to breathe,Bronchitis,Salbutamol Inhaler PRN,Use inhaler if wheezing
+gastric pain,Dyspepsia,Pantoprazole 40mg 1-0-0,Avoid spicy food
+gastric pain,Dyspepsia,Pantoprazole 40mg 1-0-0,Avoid spicy food
+fever and headache,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+fever and headache,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+migraine,Migraine,Sumatriptan 50mg PRN,Dark room rest
+stomach pain and vomiting,Acute Gastroenteritis,Pantoprazole 40mg 1-0-0,Oral rehydration salts
+body pain and cold,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+fever and headache,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+tonsils hurting,Streptococcal Pharyngitis,Azithromycin 500mg 1-0-0,Complete antibiotic course
+chest tightness,Angina Pectoris,Aspirin 75mg 1-0-0,Immediate ER if pain worsens
+hard to breathe,Bronchitis,Salbutamol Inhaler PRN,Use inhaler if wheezing
+fever and headache,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+tonsils hurting,Streptococcal Pharyngitis,Azithromycin 500mg 1-0-0,Complete antibiotic course
+tonsils hurting,Streptococcal Pharyngitis,Azithromycin 500mg 1-0-0,Complete antibiotic course
+hard to breathe,Bronchitis,Salbutamol Inhaler PRN,Use inhaler if wheezing
+body pain and cold,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+tonsils hurting,Streptococcal Pharyngitis,Azithromycin 500mg 1-0-0,Complete antibiotic course
+chest tightness,Angina Pectoris,Aspirin 75mg 1-0-0,Immediate ER if pain worsens
+tonsils hurting,Streptococcal Pharyngitis,Azithromycin 500mg 1-0-0,Complete antibiotic course
+tonsils hurting,Streptococcal Pharyngitis,Azithromycin 500mg 1-0-0,Complete antibiotic course
+tonsils hurting,Streptococcal Pharyngitis,Azithromycin 500mg 1-0-0,Complete antibiotic course
+nausea and diarrhea,Acute Gastroenteritis,Ondansetron 4mg 1-0-1,Light diet (rice gruel)
+nausea and diarrhea,Acute Gastroenteritis,Ondansetron 4mg 1-0-1,Light diet (rice gruel)
+body pain and cold,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+fever and headache,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+tonsils hurting,Streptococcal Pharyngitis,Azithromycin 500mg 1-0-0,Complete antibiotic course
+stomach pain and vomiting,Acute Gastroenteritis,Pantoprazole 40mg 1-0-0,Oral rehydration salts
+fever and headache,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+body pain and cold,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+cough and throat pain,Acute Bronchitis,Amoxicillin 500mg 1-1-1,Warm saline gargles
+fever and headache,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+fever and headache,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+palpitations and sweat,Arrhythmia evaluation,Metoprolol 25mg 1-0-0,Avoid caffeine
+migraine,Migraine,Sumatriptan 50mg PRN,Dark room rest
+palpitations and sweat,Arrhythmia evaluation,Metoprolol 25mg 1-0-0,Avoid caffeine
+chest tightness,Angina Pectoris,Aspirin 75mg 1-0-0,Immediate ER if pain worsens
+nausea and diarrhea,Acute Gastroenteritis,Ondansetron 4mg 1-0-1,Light diet (rice gruel)
+nausea and diarrhea,Acute Gastroenteritis,Ondansetron 4mg 1-0-1,Light diet (rice gruel)
+migraine,Migraine,Sumatriptan 50mg PRN,Dark room rest
+hard to breathe,Bronchitis,Salbutamol Inhaler PRN,Use inhaler if wheezing
+hard to breathe,Bronchitis,Salbutamol Inhaler PRN,Use inhaler if wheezing
+body pain and cold,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+gastric pain,Dyspepsia,Pantoprazole 40mg 1-0-0,Avoid spicy food
+migraine,Migraine,Sumatriptan 50mg PRN,Dark room rest
+fever and headache,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+hard to breathe,Bronchitis,Salbutamol Inhaler PRN,Use inhaler if wheezing
+tonsils hurting,Streptococcal Pharyngitis,Azithromycin 500mg 1-0-0,Complete antibiotic course
+gastric pain,Dyspepsia,Pantoprazole 40mg 1-0-0,Avoid spicy food
+stomach pain and vomiting,Acute Gastroenteritis,Pantoprazole 40mg 1-0-0,Oral rehydration salts
+fever and headache,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+chest tightness,Angina Pectoris,Aspirin 75mg 1-0-0,Immediate ER if pain worsens
+tonsils hurting,Streptococcal Pharyngitis,Azithromycin 500mg 1-0-0,Complete antibiotic course
+tonsils hurting,Streptococcal Pharyngitis,Azithromycin 500mg 1-0-0,Complete antibiotic course
+migraine,Migraine,Sumatriptan 50mg PRN,Dark room rest
+gastric pain,Dyspepsia,Pantoprazole 40mg 1-0-0,Avoid spicy food
+body pain and cold,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+chest tightness,Angina Pectoris,Aspirin 75mg 1-0-0,Immediate ER if pain worsens
+hard to breathe,Bronchitis,Salbutamol Inhaler PRN,Use inhaler if wheezing
+migraine,Migraine,Sumatriptan 50mg PRN,Dark room rest
+hard to breathe,Bronchitis,Salbutamol Inhaler PRN,Use inhaler if wheezing
+migraine,Migraine,Sumatriptan 50mg PRN,Dark room rest
+migraine,Migraine,Sumatriptan 50mg PRN,Dark room rest
+migraine,Migraine,Sumatriptan 50mg PRN,Dark room rest
+gastric pain,Dyspepsia,Pantoprazole 40mg 1-0-0,Avoid spicy food
+body pain and cold,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+migraine,Migraine,Sumatriptan 50mg PRN,Dark room rest
+cough and throat pain,Acute Bronchitis,Amoxicillin 500mg 1-1-1,Warm saline gargles
+stomach pain and vomiting,Acute Gastroenteritis,Pantoprazole 40mg 1-0-0,Oral rehydration salts
+hard to breathe,Bronchitis,Salbutamol Inhaler PRN,Use inhaler if wheezing
+fever and headache,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+palpitations and sweat,Arrhythmia evaluation,Metoprolol 25mg 1-0-0,Avoid caffeine
+chest tightness,Angina Pectoris,Aspirin 75mg 1-0-0,Immediate ER if pain worsens
+nausea and diarrhea,Acute Gastroenteritis,Ondansetron 4mg 1-0-1,Light diet (rice gruel)
+body pain and cold,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+fever and headache,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+tonsils hurting,Streptococcal Pharyngitis,Azithromycin 500mg 1-0-0,Complete antibiotic course
+cough and throat pain,Acute Bronchitis,Amoxicillin 500mg 1-1-1,Warm saline gargles
+nausea and diarrhea,Acute Gastroenteritis,Ondansetron 4mg 1-0-1,Light diet (rice gruel)
+palpitations and sweat,Arrhythmia evaluation,Metoprolol 25mg 1-0-0,Avoid caffeine
+fever and headache,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+nausea and diarrhea,Acute Gastroenteritis,Ondansetron 4mg 1-0-1,Light diet (rice gruel)
+fever and headache,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+cough and throat pain,Acute Bronchitis,Amoxicillin 500mg 1-1-1,Warm saline gargles
+palpitations and sweat,Arrhythmia evaluation,Metoprolol 25mg 1-0-0,Avoid caffeine
+tonsils hurting,Streptococcal Pharyngitis,Azithromycin 500mg 1-0-0,Complete antibiotic course
+migraine,Migraine,Sumatriptan 50mg PRN,Dark room rest
+hard to breathe,Bronchitis,Salbutamol Inhaler PRN,Use inhaler if wheezing
+tonsils hurting,Streptococcal Pharyngitis,Azithromycin 500mg 1-0-0,Complete antibiotic course
+migraine,Migraine,Sumatriptan 50mg PRN,Dark room rest
+gastric pain,Dyspepsia,Pantoprazole 40mg 1-0-0,Avoid spicy food
+gastric pain,Dyspepsia,Pantoprazole 40mg 1-0-0,Avoid spicy food
+gastric pain,Dyspepsia,Pantoprazole 40mg 1-0-0,Avoid spicy food
+body pain and cold,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+stomach pain and vomiting,Acute Gastroenteritis,Pantoprazole 40mg 1-0-0,Oral rehydration salts
+chest tightness,Angina Pectoris,Aspirin 75mg 1-0-0,Immediate ER if pain worsens
+chest tightness,Angina Pectoris,Aspirin 75mg 1-0-0,Immediate ER if pain worsens
+gastric pain,Dyspepsia,Pantoprazole 40mg 1-0-0,Avoid spicy food
+hard to breathe,Bronchitis,Salbutamol Inhaler PRN,Use inhaler if wheezing
+palpitations and sweat,Arrhythmia evaluation,Metoprolol 25mg 1-0-0,Avoid caffeine
+cough and throat pain,Acute Bronchitis,Amoxicillin 500mg 1-1-1,Warm saline gargles
+palpitations and sweat,Arrhythmia evaluation,Metoprolol 25mg 1-0-0,Avoid caffeine
+cough and throat pain,Acute Bronchitis,Amoxicillin 500mg 1-1-1,Warm saline gargles
+palpitations and sweat,Arrhythmia evaluation,Metoprolol 25mg 1-0-0,Avoid caffeine
+stomach pain and vomiting,Acute Gastroenteritis,Pantoprazole 40mg 1-0-0,Oral rehydration salts
+body pain and cold,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+body pain and cold,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+gastric pain,Dyspepsia,Pantoprazole 40mg 1-0-0,Avoid spicy food
+migraine,Migraine,Sumatriptan 50mg PRN,Dark room rest
+nausea and diarrhea,Acute Gastroenteritis,Ondansetron 4mg 1-0-1,Light diet (rice gruel)
+body pain and cold,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+body pain and cold,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+tonsils hurting,Streptococcal Pharyngitis,Azithromycin 500mg 1-0-0,Complete antibiotic course
+tonsils hurting,Streptococcal Pharyngitis,Azithromycin 500mg 1-0-0,Complete antibiotic course
+migraine,Migraine,Sumatriptan 50mg PRN,Dark room rest
+nausea and diarrhea,Acute Gastroenteritis,Ondansetron 4mg 1-0-1,Light diet (rice gruel)
+hard to breathe,Bronchitis,Salbutamol Inhaler PRN,Use inhaler if wheezing
+tonsils hurting,Streptococcal Pharyngitis,Azithromycin 500mg 1-0-0,Complete antibiotic course
+hard to breathe,Bronchitis,Salbutamol Inhaler PRN,Use inhaler if wheezing
+fever and headache,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+tonsils hurting,Streptococcal Pharyngitis,Azithromycin 500mg 1-0-0,Complete antibiotic course
+stomach pain and vomiting,Acute Gastroenteritis,Pantoprazole 40mg 1-0-0,Oral rehydration salts
+nausea and diarrhea,Acute Gastroenteritis,Ondansetron 4mg 1-0-1,Light diet (rice gruel)
+migraine,Migraine,Sumatriptan 50mg PRN,Dark room rest
+fever and headache,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+nausea and diarrhea,Acute Gastroenteritis,Ondansetron 4mg 1-0-1,Light diet (rice gruel)
+gastric pain,Dyspepsia,Pantoprazole 40mg 1-0-0,Avoid spicy food
+stomach pain and vomiting,Acute Gastroenteritis,Pantoprazole 40mg 1-0-0,Oral rehydration salts
+nausea and diarrhea,Acute Gastroenteritis,Ondansetron 4mg 1-0-1,Light diet (rice gruel)
+stomach pain and vomiting,Acute Gastroenteritis,Pantoprazole 40mg 1-0-0,Oral rehydration salts
+stomach pain and vomiting,Acute Gastroenteritis,Pantoprazole 40mg 1-0-0,Oral rehydration salts
+hard to breathe,Bronchitis,Salbutamol Inhaler PRN,Use inhaler if wheezing
+palpitations and sweat,Arrhythmia evaluation,Metoprolol 25mg 1-0-0,Avoid caffeine
+gastric pain,Dyspepsia,Pantoprazole 40mg 1-0-0,Avoid spicy food
+fever and headache,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+nausea and diarrhea,Acute Gastroenteritis,Ondansetron 4mg 1-0-1,Light diet (rice gruel)
+cough and throat pain,Acute Bronchitis,Amoxicillin 500mg 1-1-1,Warm saline gargles
+fever and headache,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+palpitations and sweat,Arrhythmia evaluation,Metoprolol 25mg 1-0-0,Avoid caffeine
+fever and headache,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+body pain and cold,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+cough and throat pain,Acute Bronchitis,Amoxicillin 500mg 1-1-1,Warm saline gargles
+palpitations and sweat,Arrhythmia evaluation,Metoprolol 25mg 1-0-0,Avoid caffeine
+hard to breathe,Bronchitis,Salbutamol Inhaler PRN,Use inhaler if wheezing
+nausea and diarrhea,Acute Gastroenteritis,Ondansetron 4mg 1-0-1,Light diet (rice gruel)
+chest tightness,Angina Pectoris,Aspirin 75mg 1-0-0,Immediate ER if pain worsens
+palpitations and sweat,Arrhythmia evaluation,Metoprolol 25mg 1-0-0,Avoid caffeine
+migraine,Migraine,Sumatriptan 50mg PRN,Dark room rest
+nausea and diarrhea,Acute Gastroenteritis,Ondansetron 4mg 1-0-1,Light diet (rice gruel)
+gastric pain,Dyspepsia,Pantoprazole 40mg 1-0-0,Avoid spicy food
+palpitations and sweat,Arrhythmia evaluation,Metoprolol 25mg 1-0-0,Avoid caffeine
+body pain and cold,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+chest tightness,Angina Pectoris,Aspirin 75mg 1-0-0,Immediate ER if pain worsens
+body pain and cold,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+chest tightness,Angina Pectoris,Aspirin 75mg 1-0-0,Immediate ER if pain worsens
+gastric pain,Dyspepsia,Pantoprazole 40mg 1-0-0,Avoid spicy food
+migraine,Migraine,Sumatriptan 50mg PRN,Dark room rest
+nausea and diarrhea,Acute Gastroenteritis,Ondansetron 4mg 1-0-1,Light diet (rice gruel)
+hard to breathe,Bronchitis,Salbutamol Inhaler PRN,Use inhaler if wheezing
+body pain and cold,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+body pain and cold,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+stomach pain and vomiting,Acute Gastroenteritis,Pantoprazole 40mg 1-0-0,Oral rehydration salts
+chest tightness,Angina Pectoris,Aspirin 75mg 1-0-0,Immediate ER if pain worsens
+tonsils hurting,Streptococcal Pharyngitis,Azithromycin 500mg 1-0-0,Complete antibiotic course
+nausea and diarrhea,Acute Gastroenteritis,Ondansetron 4mg 1-0-1,Light diet (rice gruel)
+chest tightness,Angina Pectoris,Aspirin 75mg 1-0-0,Immediate ER if pain worsens
+stomach pain and vomiting,Acute Gastroenteritis,Pantoprazole 40mg 1-0-0,Oral rehydration salts
+fever and headache,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+chest tightness,Angina Pectoris,Aspirin 75mg 1-0-0,Immediate ER if pain worsens
+hard to breathe,Bronchitis,Salbutamol Inhaler PRN,Use inhaler if wheezing
+nausea and diarrhea,Acute Gastroenteritis,Ondansetron 4mg 1-0-1,Light diet (rice gruel)
+stomach pain and vomiting,Acute Gastroenteritis,Pantoprazole 40mg 1-0-0,Oral rehydration salts
+fever and headache,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+cough and throat pain,Acute Bronchitis,Amoxicillin 500mg 1-1-1,Warm saline gargles
+stomach pain and vomiting,Acute Gastroenteritis,Pantoprazole 40mg 1-0-0,Oral rehydration salts
+cough and throat pain,Acute Bronchitis,Amoxicillin 500mg 1-1-1,Warm saline gargles
+nausea and diarrhea,Acute Gastroenteritis,Ondansetron 4mg 1-0-1,Light diet (rice gruel)
+body pain and cold,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+stomach pain and vomiting,Acute Gastroenteritis,Pantoprazole 40mg 1-0-0,Oral rehydration salts
+migraine,Migraine,Sumatriptan 50mg PRN,Dark room rest
+cough and throat pain,Acute Bronchitis,Amoxicillin 500mg 1-1-1,Warm saline gargles
+hard to breathe,Bronchitis,Salbutamol Inhaler PRN,Use inhaler if wheezing
+migraine,Migraine,Sumatriptan 50mg PRN,Dark room rest
+palpitations and sweat,Arrhythmia evaluation,Metoprolol 25mg 1-0-0,Avoid caffeine
+palpitations and sweat,Arrhythmia evaluation,Metoprolol 25mg 1-0-0,Avoid caffeine
+fever and headache,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+body pain and cold,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+nausea and diarrhea,Acute Gastroenteritis,Ondansetron 4mg 1-0-1,Light diet (rice gruel)
+stomach pain and vomiting,Acute Gastroenteritis,Pantoprazole 40mg 1-0-0,Oral rehydration salts
+tonsils hurting,Streptococcal Pharyngitis,Azithromycin 500mg 1-0-0,Complete antibiotic course
+hard to breathe,Bronchitis,Salbutamol Inhaler PRN,Use inhaler if wheezing
+cough and throat pain,Acute Bronchitis,Amoxicillin 500mg 1-1-1,Warm saline gargles
+nausea and diarrhea,Acute Gastroenteritis,Ondansetron 4mg 1-0-1,Light diet (rice gruel)
+migraine,Migraine,Sumatriptan 50mg PRN,Dark room rest
+gastric pain,Dyspepsia,Pantoprazole 40mg 1-0-0,Avoid spicy food
+palpitations and sweat,Arrhythmia evaluation,Metoprolol 25mg 1-0-0,Avoid caffeine
+gastric pain,Dyspepsia,Pantoprazole 40mg 1-0-0,Avoid spicy food
+hard to breathe,Bronchitis,Salbutamol Inhaler PRN,Use inhaler if wheezing
+tonsils hurting,Streptococcal Pharyngitis,Azithromycin 500mg 1-0-0,Complete antibiotic course
+stomach pain and vomiting,Acute Gastroenteritis,Pantoprazole 40mg 1-0-0,Oral rehydration salts
+fever and headache,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+tonsils hurting,Streptococcal Pharyngitis,Azithromycin 500mg 1-0-0,Complete antibiotic course
+hard to breathe,Bronchitis,Salbutamol Inhaler PRN,Use inhaler if wheezing
+tonsils hurting,Streptococcal Pharyngitis,Azithromycin 500mg 1-0-0,Complete antibiotic course
+hard to breathe,Bronchitis,Salbutamol Inhaler PRN,Use inhaler if wheezing
+hard to breathe,Bronchitis,Salbutamol Inhaler PRN,Use inhaler if wheezing
+chest tightness,Angina Pectoris,Aspirin 75mg 1-0-0,Immediate ER if pain worsens
+cough and throat pain,Acute Bronchitis,Amoxicillin 500mg 1-1-1,Warm saline gargles
+gastric pain,Dyspepsia,Pantoprazole 40mg 1-0-0,Avoid spicy food
+palpitations and sweat,Arrhythmia evaluation,Metoprolol 25mg 1-0-0,Avoid caffeine
+chest tightness,Angina Pectoris,Aspirin 75mg 1-0-0,Immediate ER if pain worsens
+stomach pain and vomiting,Acute Gastroenteritis,Pantoprazole 40mg 1-0-0,Oral rehydration salts
+chest tightness,Angina Pectoris,Aspirin 75mg 1-0-0,Immediate ER if pain worsens
+body pain and cold,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+body pain and cold,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+palpitations and sweat,Arrhythmia evaluation,Metoprolol 25mg 1-0-0,Avoid caffeine
+tonsils hurting,Streptococcal Pharyngitis,Azithromycin 500mg 1-0-0,Complete antibiotic course
+cough and throat pain,Acute Bronchitis,Amoxicillin 500mg 1-1-1,Warm saline gargles
+palpitations and sweat,Arrhythmia evaluation,Metoprolol 25mg 1-0-0,Avoid caffeine
+hard to breathe,Bronchitis,Salbutamol Inhaler PRN,Use inhaler if wheezing
+migraine,Migraine,Sumatriptan 50mg PRN,Dark room rest
+cough and throat pain,Acute Bronchitis,Amoxicillin 500mg 1-1-1,Warm saline gargles
+gastric pain,Dyspepsia,Pantoprazole 40mg 1-0-0,Avoid spicy food
+cough and throat pain,Acute Bronchitis,Amoxicillin 500mg 1-1-1,Warm saline gargles
+hard to breathe,Bronchitis,Salbutamol Inhaler PRN,Use inhaler if wheezing
+hard to breathe,Bronchitis,Salbutamol Inhaler PRN,Use inhaler if wheezing
+fever and headache,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+palpitations and sweat,Arrhythmia evaluation,Metoprolol 25mg 1-0-0,Avoid caffeine
+hard to breathe,Bronchitis,Salbutamol Inhaler PRN,Use inhaler if wheezing
+body pain and cold,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+stomach pain and vomiting,Acute Gastroenteritis,Pantoprazole 40mg 1-0-0,Oral rehydration salts
+migraine,Migraine,Sumatriptan 50mg PRN,Dark room rest
+gastric pain,Dyspepsia,Pantoprazole 40mg 1-0-0,Avoid spicy food
+palpitations and sweat,Arrhythmia evaluation,Metoprolol 25mg 1-0-0,Avoid caffeine
+nausea and diarrhea,Acute Gastroenteritis,Ondansetron 4mg 1-0-1,Light diet (rice gruel)
+body pain and cold,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+tonsils hurting,Streptococcal Pharyngitis,Azithromycin 500mg 1-0-0,Complete antibiotic course
+hard to breathe,Bronchitis,Salbutamol Inhaler PRN,Use inhaler if wheezing
+nausea and diarrhea,Acute Gastroenteritis,Ondansetron 4mg 1-0-1,Light diet (rice gruel)
+hard to breathe,Bronchitis,Salbutamol Inhaler PRN,Use inhaler if wheezing
+cough and throat pain,Acute Bronchitis,Amoxicillin 500mg 1-1-1,Warm saline gargles
+body pain and cold,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+cough and throat pain,Acute Bronchitis,Amoxicillin 500mg 1-1-1,Warm saline gargles
+fever and headache,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+cough and throat pain,Acute Bronchitis,Amoxicillin 500mg 1-1-1,Warm saline gargles
+fever and headache,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+fever and headache,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+nausea and diarrhea,Acute Gastroenteritis,Ondansetron 4mg 1-0-1,Light diet (rice gruel)
+hard to breathe,Bronchitis,Salbutamol Inhaler PRN,Use inhaler if wheezing
+tonsils hurting,Streptococcal Pharyngitis,Azithromycin 500mg 1-0-0,Complete antibiotic course
+gastric pain,Dyspepsia,Pantoprazole 40mg 1-0-0,Avoid spicy food
+cough and throat pain,Acute Bronchitis,Amoxicillin 500mg 1-1-1,Warm saline gargles
+gastric pain,Dyspepsia,Pantoprazole 40mg 1-0-0,Avoid spicy food
+body pain and cold,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+fever and headache,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+hard to breathe,Bronchitis,Salbutamol Inhaler PRN,Use inhaler if wheezing
+migraine,Migraine,Sumatriptan 50mg PRN,Dark room rest
+palpitations and sweat,Arrhythmia evaluation,Metoprolol 25mg 1-0-0,Avoid caffeine
+nausea and diarrhea,Acute Gastroenteritis,Ondansetron 4mg 1-0-1,Light diet (rice gruel)
+tonsils hurting,Streptococcal Pharyngitis,Azithromycin 500mg 1-0-0,Complete antibiotic course
+chest tightness,Angina Pectoris,Aspirin 75mg 1-0-0,Immediate ER if pain worsens
+nausea and diarrhea,Acute Gastroenteritis,Ondansetron 4mg 1-0-1,Light diet (rice gruel)
+migraine,Migraine,Sumatriptan 50mg PRN,Dark room rest
+palpitations and sweat,Arrhythmia evaluation,Metoprolol 25mg 1-0-0,Avoid caffeine
+migraine,Migraine,Sumatriptan 50mg PRN,Dark room rest
+cough and throat pain,Acute Bronchitis,Amoxicillin 500mg 1-1-1,Warm saline gargles
+fever and headache,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+tonsils hurting,Streptococcal Pharyngitis,Azithromycin 500mg 1-0-0,Complete antibiotic course
+stomach pain and vomiting,Acute Gastroenteritis,Pantoprazole 40mg 1-0-0,Oral rehydration salts
+fever and headache,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+stomach pain and vomiting,Acute Gastroenteritis,Pantoprazole 40mg 1-0-0,Oral rehydration salts
+gastric pain,Dyspepsia,Pantoprazole 40mg 1-0-0,Avoid spicy food
+palpitations and sweat,Arrhythmia evaluation,Metoprolol 25mg 1-0-0,Avoid caffeine
+hard to breathe,Bronchitis,Salbutamol Inhaler PRN,Use inhaler if wheezing
+chest tightness,Angina Pectoris,Aspirin 75mg 1-0-0,Immediate ER if pain worsens
+body pain and cold,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+fever and headache,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+tonsils hurting,Streptococcal Pharyngitis,Azithromycin 500mg 1-0-0,Complete antibiotic course
+migraine,Migraine,Sumatriptan 50mg PRN,Dark room rest
+tonsils hurting,Streptococcal Pharyngitis,Azithromycin 500mg 1-0-0,Complete antibiotic course
+palpitations and sweat,Arrhythmia evaluation,Metoprolol 25mg 1-0-0,Avoid caffeine
+gastric pain,Dyspepsia,Pantoprazole 40mg 1-0-0,Avoid spicy food
+stomach pain and vomiting,Acute Gastroenteritis,Pantoprazole 40mg 1-0-0,Oral rehydration salts
+migraine,Migraine,Sumatriptan 50mg PRN,Dark room rest
+body pain and cold,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+body pain and cold,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+fever and headache,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+palpitations and sweat,Arrhythmia evaluation,Metoprolol 25mg 1-0-0,Avoid caffeine
+hard to breathe,Bronchitis,Salbutamol Inhaler PRN,Use inhaler if wheezing
+palpitations and sweat,Arrhythmia evaluation,Metoprolol 25mg 1-0-0,Avoid caffeine
+gastric pain,Dyspepsia,Pantoprazole 40mg 1-0-0,Avoid spicy food
+stomach pain and vomiting,Acute Gastroenteritis,Pantoprazole 40mg 1-0-0,Oral rehydration salts
+tonsils hurting,Streptococcal Pharyngitis,Azithromycin 500mg 1-0-0,Complete antibiotic course
+body pain and cold,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+tonsils hurting,Streptococcal Pharyngitis,Azithromycin 500mg 1-0-0,Complete antibiotic course
+tonsils hurting,Streptococcal Pharyngitis,Azithromycin 500mg 1-0-0,Complete antibiotic course
+tonsils hurting,Streptococcal Pharyngitis,Azithromycin 500mg 1-0-0,Complete antibiotic course
+body pain and cold,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+gastric pain,Dyspepsia,Pantoprazole 40mg 1-0-0,Avoid spicy food
+nausea and diarrhea,Acute Gastroenteritis,Ondansetron 4mg 1-0-1,Light diet (rice gruel)
+cough and throat pain,Acute Bronchitis,Amoxicillin 500mg 1-1-1,Warm saline gargles
+stomach pain and vomiting,Acute Gastroenteritis,Pantoprazole 40mg 1-0-0,Oral rehydration salts
+nausea and diarrhea,Acute Gastroenteritis,Ondansetron 4mg 1-0-1,Light diet (rice gruel)
+stomach pain and vomiting,Acute Gastroenteritis,Pantoprazole 40mg 1-0-0,Oral rehydration salts
+migraine,Migraine,Sumatriptan 50mg PRN,Dark room rest
+palpitations and sweat,Arrhythmia evaluation,Metoprolol 25mg 1-0-0,Avoid caffeine
+palpitations and sweat,Arrhythmia evaluation,Metoprolol 25mg 1-0-0,Avoid caffeine
+chest tightness,Angina Pectoris,Aspirin 75mg 1-0-0,Immediate ER if pain worsens
+palpitations and sweat,Arrhythmia evaluation,Metoprolol 25mg 1-0-0,Avoid caffeine
+body pain and cold,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+hard to breathe,Bronchitis,Salbutamol Inhaler PRN,Use inhaler if wheezing
+fever and headache,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+chest tightness,Angina Pectoris,Aspirin 75mg 1-0-0,Immediate ER if pain worsens
+fever and headache,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+stomach pain and vomiting,Acute Gastroenteritis,Pantoprazole 40mg 1-0-0,Oral rehydration salts
+fever and headache,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+fever and headache,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+chest tightness,Angina Pectoris,Aspirin 75mg 1-0-0,Immediate ER if pain worsens
+migraine,Migraine,Sumatriptan 50mg PRN,Dark room rest
+tonsils hurting,Streptococcal Pharyngitis,Azithromycin 500mg 1-0-0,Complete antibiotic course
+palpitations and sweat,Arrhythmia evaluation,Metoprolol 25mg 1-0-0,Avoid caffeine
+palpitations and sweat,Arrhythmia evaluation,Metoprolol 25mg 1-0-0,Avoid caffeine
+body pain and cold,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+chest tightness,Angina Pectoris,Aspirin 75mg 1-0-0,Immediate ER if pain worsens
+body pain and cold,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+hard to breathe,Bronchitis,Salbutamol Inhaler PRN,Use inhaler if wheezing
+hard to breathe,Bronchitis,Salbutamol Inhaler PRN,Use inhaler if wheezing
+body pain and cold,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+chest tightness,Angina Pectoris,Aspirin 75mg 1-0-0,Immediate ER if pain worsens
+body pain and cold,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+palpitations and sweat,Arrhythmia evaluation,Metoprolol 25mg 1-0-0,Avoid caffeine
+nausea and diarrhea,Acute Gastroenteritis,Ondansetron 4mg 1-0-1,Light diet (rice gruel)
+cough and throat pain,Acute Bronchitis,Amoxicillin 500mg 1-1-1,Warm saline gargles
+fever and headache,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+cough and throat pain,Acute Bronchitis,Amoxicillin 500mg 1-1-1,Warm saline gargles
+chest tightness,Angina Pectoris,Aspirin 75mg 1-0-0,Immediate ER if pain worsens
+gastric pain,Dyspepsia,Pantoprazole 40mg 1-0-0,Avoid spicy food
+cough and throat pain,Acute Bronchitis,Amoxicillin 500mg 1-1-1,Warm saline gargles
+hard to breathe,Bronchitis,Salbutamol Inhaler PRN,Use inhaler if wheezing
+stomach pain and vomiting,Acute Gastroenteritis,Pantoprazole 40mg 1-0-0,Oral rehydration salts
+fever and headache,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+tonsils hurting,Streptococcal Pharyngitis,Azithromycin 500mg 1-0-0,Complete antibiotic course
+gastric pain,Dyspepsia,Pantoprazole 40mg 1-0-0,Avoid spicy food
+chest tightness,Angina Pectoris,Aspirin 75mg 1-0-0,Immediate ER if pain worsens
+fever and headache,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+cough and throat pain,Acute Bronchitis,Amoxicillin 500mg 1-1-1,Warm saline gargles
+hard to breathe,Bronchitis,Salbutamol Inhaler PRN,Use inhaler if wheezing
+migraine,Migraine,Sumatriptan 50mg PRN,Dark room rest
+nausea and diarrhea,Acute Gastroenteritis,Ondansetron 4mg 1-0-1,Light diet (rice gruel)
+tonsils hurting,Streptococcal Pharyngitis,Azithromycin 500mg 1-0-0,Complete antibiotic course
+gastric pain,Dyspepsia,Pantoprazole 40mg 1-0-0,Avoid spicy food
+nausea and diarrhea,Acute Gastroenteritis,Ondansetron 4mg 1-0-1,Light diet (rice gruel)
+fever and headache,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+hard to breathe,Bronchitis,Salbutamol Inhaler PRN,Use inhaler if wheezing
+hard to breathe,Bronchitis,Salbutamol Inhaler PRN,Use inhaler if wheezing
+cough and throat pain,Acute Bronchitis,Amoxicillin 500mg 1-1-1,Warm saline gargles
+palpitations and sweat,Arrhythmia evaluation,Metoprolol 25mg 1-0-0,Avoid caffeine
+cough and throat pain,Acute Bronchitis,Amoxicillin 500mg 1-1-1,Warm saline gargles
+palpitations and sweat,Arrhythmia evaluation,Metoprolol 25mg 1-0-0,Avoid caffeine
+palpitations and sweat,Arrhythmia evaluation,Metoprolol 25mg 1-0-0,Avoid caffeine
+tonsils hurting,Streptococcal Pharyngitis,Azithromycin 500mg 1-0-0,Complete antibiotic course
+cough and throat pain,Acute Bronchitis,Amoxicillin 500mg 1-1-1,Warm saline gargles
+migraine,Migraine,Sumatriptan 50mg PRN,Dark room rest
+gastric pain,Dyspepsia,Pantoprazole 40mg 1-0-0,Avoid spicy food
+body pain and cold,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+body pain and cold,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+cough and throat pain,Acute Bronchitis,Amoxicillin 500mg 1-1-1,Warm saline gargles
+cough and throat pain,Acute Bronchitis,Amoxicillin 500mg 1-1-1,Warm saline gargles
+nausea and diarrhea,Acute Gastroenteritis,Ondansetron 4mg 1-0-1,Light diet (rice gruel)
+gastric pain,Dyspepsia,Pantoprazole 40mg 1-0-0,Avoid spicy food
+gastric pain,Dyspepsia,Pantoprazole 40mg 1-0-0,Avoid spicy food
+tonsils hurting,Streptococcal Pharyngitis,Azithromycin 500mg 1-0-0,Complete antibiotic course
+cough and throat pain,Acute Bronchitis,Amoxicillin 500mg 1-1-1,Warm saline gargles
+gastric pain,Dyspepsia,Pantoprazole 40mg 1-0-0,Avoid spicy food
+nausea and diarrhea,Acute Gastroenteritis,Ondansetron 4mg 1-0-1,Light diet (rice gruel)
+palpitations and sweat,Arrhythmia evaluation,Metoprolol 25mg 1-0-0,Avoid caffeine
+hard to breathe,Bronchitis,Salbutamol Inhaler PRN,Use inhaler if wheezing
+hard to breathe,Bronchitis,Salbutamol Inhaler PRN,Use inhaler if wheezing
+palpitations and sweat,Arrhythmia evaluation,Metoprolol 25mg 1-0-0,Avoid caffeine
+chest tightness,Angina Pectoris,Aspirin 75mg 1-0-0,Immediate ER if pain worsens
+nausea and diarrhea,Acute Gastroenteritis,Ondansetron 4mg 1-0-1,Light diet (rice gruel)
+gastric pain,Dyspepsia,Pantoprazole 40mg 1-0-0,Avoid spicy food
+nausea and diarrhea,Acute Gastroenteritis,Ondansetron 4mg 1-0-1,Light diet (rice gruel)
+palpitations and sweat,Arrhythmia evaluation,Metoprolol 25mg 1-0-0,Avoid caffeine
+migraine,Migraine,Sumatriptan 50mg PRN,Dark room rest
+stomach pain and vomiting,Acute Gastroenteritis,Pantoprazole 40mg 1-0-0,Oral rehydration salts
+fever and headache,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+palpitations and sweat,Arrhythmia evaluation,Metoprolol 25mg 1-0-0,Avoid caffeine
+gastric pain,Dyspepsia,Pantoprazole 40mg 1-0-0,Avoid spicy food
+cough and throat pain,Acute Bronchitis,Amoxicillin 500mg 1-1-1,Warm saline gargles
+cough and throat pain,Acute Bronchitis,Amoxicillin 500mg 1-1-1,Warm saline gargles
+tonsils hurting,Streptococcal Pharyngitis,Azithromycin 500mg 1-0-0,Complete antibiotic course
+palpitations and sweat,Arrhythmia evaluation,Metoprolol 25mg 1-0-0,Avoid caffeine
+tonsils hurting,Streptococcal Pharyngitis,Azithromycin 500mg 1-0-0,Complete antibiotic course
+palpitations and sweat,Arrhythmia evaluation,Metoprolol 25mg 1-0-0,Avoid caffeine
+nausea and diarrhea,Acute Gastroenteritis,Ondansetron 4mg 1-0-1,Light diet (rice gruel)
+fever and headache,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+nausea and diarrhea,Acute Gastroenteritis,Ondansetron 4mg 1-0-1,Light diet (rice gruel)
+stomach pain and vomiting,Acute Gastroenteritis,Pantoprazole 40mg 1-0-0,Oral rehydration salts
+hard to breathe,Bronchitis,Salbutamol Inhaler PRN,Use inhaler if wheezing
+body pain and cold,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+palpitations and sweat,Arrhythmia evaluation,Metoprolol 25mg 1-0-0,Avoid caffeine
+stomach pain and vomiting,Acute Gastroenteritis,Pantoprazole 40mg 1-0-0,Oral rehydration salts
+hard to breathe,Bronchitis,Salbutamol Inhaler PRN,Use inhaler if wheezing
+gastric pain,Dyspepsia,Pantoprazole 40mg 1-0-0,Avoid spicy food
+chest tightness,Angina Pectoris,Aspirin 75mg 1-0-0,Immediate ER if pain worsens
+fever and headache,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+tonsils hurting,Streptococcal Pharyngitis,Azithromycin 500mg 1-0-0,Complete antibiotic course
+tonsils hurting,Streptococcal Pharyngitis,Azithromycin 500mg 1-0-0,Complete antibiotic course
+nausea and diarrhea,Acute Gastroenteritis,Ondansetron 4mg 1-0-1,Light diet (rice gruel)
+cough and throat pain,Acute Bronchitis,Amoxicillin 500mg 1-1-1,Warm saline gargles
+hard to breathe,Bronchitis,Salbutamol Inhaler PRN,Use inhaler if wheezing
+chest tightness,Angina Pectoris,Aspirin 75mg 1-0-0,Immediate ER if pain worsens
+stomach pain and vomiting,Acute Gastroenteritis,Pantoprazole 40mg 1-0-0,Oral rehydration salts
+fever and headache,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+hard to breathe,Bronchitis,Salbutamol Inhaler PRN,Use inhaler if wheezing
+chest tightness,Angina Pectoris,Aspirin 75mg 1-0-0,Immediate ER if pain worsens
+body pain and cold,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+palpitations and sweat,Arrhythmia evaluation,Metoprolol 25mg 1-0-0,Avoid caffeine
+tonsils hurting,Streptococcal Pharyngitis,Azithromycin 500mg 1-0-0,Complete antibiotic course
+stomach pain and vomiting,Acute Gastroenteritis,Pantoprazole 40mg 1-0-0,Oral rehydration salts
+tonsils hurting,Streptococcal Pharyngitis,Azithromycin 500mg 1-0-0,Complete antibiotic course
+stomach pain and vomiting,Acute Gastroenteritis,Pantoprazole 40mg 1-0-0,Oral rehydration salts
+nausea and diarrhea,Acute Gastroenteritis,Ondansetron 4mg 1-0-1,Light diet (rice gruel)
+cough and throat pain,Acute Bronchitis,Amoxicillin 500mg 1-1-1,Warm saline gargles
+stomach pain and vomiting,Acute Gastroenteritis,Pantoprazole 40mg 1-0-0,Oral rehydration salts
+tonsils hurting,Streptococcal Pharyngitis,Azithromycin 500mg 1-0-0,Complete antibiotic course
+nausea and diarrhea,Acute Gastroenteritis,Ondansetron 4mg 1-0-1,Light diet (rice gruel)
+stomach pain and vomiting,Acute Gastroenteritis,Pantoprazole 40mg 1-0-0,Oral rehydration salts
+body pain and cold,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+cough and throat pain,Acute Bronchitis,Amoxicillin 500mg 1-1-1,Warm saline gargles
+stomach pain and vomiting,Acute Gastroenteritis,Pantoprazole 40mg 1-0-0,Oral rehydration salts
+nausea and diarrhea,Acute Gastroenteritis,Ondansetron 4mg 1-0-1,Light diet (rice gruel)
+gastric pain,Dyspepsia,Pantoprazole 40mg 1-0-0,Avoid spicy food
+hard to breathe,Bronchitis,Salbutamol Inhaler PRN,Use inhaler if wheezing
+migraine,Migraine,Sumatriptan 50mg PRN,Dark room rest
+chest tightness,Angina Pectoris,Aspirin 75mg 1-0-0,Immediate ER if pain worsens
+migraine,Migraine,Sumatriptan 50mg PRN,Dark room rest
+gastric pain,Dyspepsia,Pantoprazole 40mg 1-0-0,Avoid spicy food
+migraine,Migraine,Sumatriptan 50mg PRN,Dark room rest
+gastric pain,Dyspepsia,Pantoprazole 40mg 1-0-0,Avoid spicy food
+fever and headache,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+gastric pain,Dyspepsia,Pantoprazole 40mg 1-0-0,Avoid spicy food
+gastric pain,Dyspepsia,Pantoprazole 40mg 1-0-0,Avoid spicy food
+gastric pain,Dyspepsia,Pantoprazole 40mg 1-0-0,Avoid spicy food
+body pain and cold,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+hard to breathe,Bronchitis,Salbutamol Inhaler PRN,Use inhaler if wheezing
+palpitations and sweat,Arrhythmia evaluation,Metoprolol 25mg 1-0-0,Avoid caffeine
+stomach pain and vomiting,Acute Gastroenteritis,Pantoprazole 40mg 1-0-0,Oral rehydration salts
+chest tightness,Angina Pectoris,Aspirin 75mg 1-0-0,Immediate ER if pain worsens
+cough and throat pain,Acute Bronchitis,Amoxicillin 500mg 1-1-1,Warm saline gargles
+hard to breathe,Bronchitis,Salbutamol Inhaler PRN,Use inhaler if wheezing
+tonsils hurting,Streptococcal Pharyngitis,Azithromycin 500mg 1-0-0,Complete antibiotic course
+palpitations and sweat,Arrhythmia evaluation,Metoprolol 25mg 1-0-0,Avoid caffeine
+fever and headache,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+fever and headache,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+gastric pain,Dyspepsia,Pantoprazole 40mg 1-0-0,Avoid spicy food
+hard to breathe,Bronchitis,Salbutamol Inhaler PRN,Use inhaler if wheezing
+nausea and diarrhea,Acute Gastroenteritis,Ondansetron 4mg 1-0-1,Light diet (rice gruel)
+migraine,Migraine,Sumatriptan 50mg PRN,Dark room rest
+tonsils hurting,Streptococcal Pharyngitis,Azithromycin 500mg 1-0-0,Complete antibiotic course
+fever and headache,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+chest tightness,Angina Pectoris,Aspirin 75mg 1-0-0,Immediate ER if pain worsens
+fever and headache,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+cough and throat pain,Acute Bronchitis,Amoxicillin 500mg 1-1-1,Warm saline gargles
+stomach pain and vomiting,Acute Gastroenteritis,Pantoprazole 40mg 1-0-0,Oral rehydration salts
+fever and headache,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+cough and throat pain,Acute Bronchitis,Amoxicillin 500mg 1-1-1,Warm saline gargles
+hard to breathe,Bronchitis,Salbutamol Inhaler PRN,Use inhaler if wheezing
+hard to breathe,Bronchitis,Salbutamol Inhaler PRN,Use inhaler if wheezing
+palpitations and sweat,Arrhythmia evaluation,Metoprolol 25mg 1-0-0,Avoid caffeine
+fever and headache,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+chest tightness,Angina Pectoris,Aspirin 75mg 1-0-0,Immediate ER if pain worsens
+fever and headache,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+chest tightness,Angina Pectoris,Aspirin 75mg 1-0-0,Immediate ER if pain worsens
+body pain and cold,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+gastric pain,Dyspepsia,Pantoprazole 40mg 1-0-0,Avoid spicy food
+palpitations and sweat,Arrhythmia evaluation,Metoprolol 25mg 1-0-0,Avoid caffeine
+body pain and cold,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+fever and headache,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+palpitations and sweat,Arrhythmia evaluation,Metoprolol 25mg 1-0-0,Avoid caffeine
+body pain and cold,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+migraine,Migraine,Sumatriptan 50mg PRN,Dark room rest
+fever and headache,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+body pain and cold,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+migraine,Migraine,Sumatriptan 50mg PRN,Dark room rest
+migraine,Migraine,Sumatriptan 50mg PRN,Dark room rest
+hard to breathe,Bronchitis,Salbutamol Inhaler PRN,Use inhaler if wheezing
+fever and headache,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+migraine,Migraine,Sumatriptan 50mg PRN,Dark room rest
+hard to breathe,Bronchitis,Salbutamol Inhaler PRN,Use inhaler if wheezing
+body pain and cold,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+cough and throat pain,Acute Bronchitis,Amoxicillin 500mg 1-1-1,Warm saline gargles
+fever and headache,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+palpitations and sweat,Arrhythmia evaluation,Metoprolol 25mg 1-0-0,Avoid caffeine
+chest tightness,Angina Pectoris,Aspirin 75mg 1-0-0,Immediate ER if pain worsens
+chest tightness,Angina Pectoris,Aspirin 75mg 1-0-0,Immediate ER if pain worsens
+body pain and cold,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+nausea and diarrhea,Acute Gastroenteritis,Ondansetron 4mg 1-0-1,Light diet (rice gruel)
+nausea and diarrhea,Acute Gastroenteritis,Ondansetron 4mg 1-0-1,Light diet (rice gruel)
+body pain and cold,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+migraine,Migraine,Sumatriptan 50mg PRN,Dark room rest
+fever and headache,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+chest tightness,Angina Pectoris,Aspirin 75mg 1-0-0,Immediate ER if pain worsens
+chest tightness,Angina Pectoris,Aspirin 75mg 1-0-0,Immediate ER if pain worsens
+migraine,Migraine,Sumatriptan 50mg PRN,Dark room rest
+chest tightness,Angina Pectoris,Aspirin 75mg 1-0-0,Immediate ER if pain worsens
+palpitations and sweat,Arrhythmia evaluation,Metoprolol 25mg 1-0-0,Avoid caffeine
+fever and headache,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+stomach pain and vomiting,Acute Gastroenteritis,Pantoprazole 40mg 1-0-0,Oral rehydration salts
+chest tightness,Angina Pectoris,Aspirin 75mg 1-0-0,Immediate ER if pain worsens
+body pain and cold,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+palpitations and sweat,Arrhythmia evaluation,Metoprolol 25mg 1-0-0,Avoid caffeine
+chest tightness,Angina Pectoris,Aspirin 75mg 1-0-0,Immediate ER if pain worsens
+gastric pain,Dyspepsia,Pantoprazole 40mg 1-0-0,Avoid spicy food
+palpitations and sweat,Arrhythmia evaluation,Metoprolol 25mg 1-0-0,Avoid caffeine
+hard to breathe,Bronchitis,Salbutamol Inhaler PRN,Use inhaler if wheezing
+stomach pain and vomiting,Acute Gastroenteritis,Pantoprazole 40mg 1-0-0,Oral rehydration salts
+tonsils hurting,Streptococcal Pharyngitis,Azithromycin 500mg 1-0-0,Complete antibiotic course
+body pain and cold,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+body pain and cold,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+fever and headache,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+palpitations and sweat,Arrhythmia evaluation,Metoprolol 25mg 1-0-0,Avoid caffeine
+migraine,Migraine,Sumatriptan 50mg PRN,Dark room rest
+body pain and cold,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+palpitations and sweat,Arrhythmia evaluation,Metoprolol 25mg 1-0-0,Avoid caffeine
+palpitations and sweat,Arrhythmia evaluation,Metoprolol 25mg 1-0-0,Avoid caffeine
+gastric pain,Dyspepsia,Pantoprazole 40mg 1-0-0,Avoid spicy food
+cough and throat pain,Acute Bronchitis,Amoxicillin 500mg 1-1-1,Warm saline gargles
+cough and throat pain,Acute Bronchitis,Amoxicillin 500mg 1-1-1,Warm saline gargles
+tonsils hurting,Streptococcal Pharyngitis,Azithromycin 500mg 1-0-0,Complete antibiotic course
+hard to breathe,Bronchitis,Salbutamol Inhaler PRN,Use inhaler if wheezing
+tonsils hurting,Streptococcal Pharyngitis,Azithromycin 500mg 1-0-0,Complete antibiotic course
+chest tightness,Angina Pectoris,Aspirin 75mg 1-0-0,Immediate ER if pain worsens
+migraine,Migraine,Sumatriptan 50mg PRN,Dark room rest
+chest tightness,Angina Pectoris,Aspirin 75mg 1-0-0,Immediate ER if pain worsens
+nausea and diarrhea,Acute Gastroenteritis,Ondansetron 4mg 1-0-1,Light diet (rice gruel)
+chest tightness,Angina Pectoris,Aspirin 75mg 1-0-0,Immediate ER if pain worsens
+fever and headache,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+chest tightness,Angina Pectoris,Aspirin 75mg 1-0-0,Immediate ER if pain worsens
+tonsils hurting,Streptococcal Pharyngitis,Azithromycin 500mg 1-0-0,Complete antibiotic course
+body pain and cold,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+body pain and cold,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+cough and throat pain,Acute Bronchitis,Amoxicillin 500mg 1-1-1,Warm saline gargles
+migraine,Migraine,Sumatriptan 50mg PRN,Dark room rest
+migraine,Migraine,Sumatriptan 50mg PRN,Dark room rest
+fever and headache,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+tonsils hurting,Streptococcal Pharyngitis,Azithromycin 500mg 1-0-0,Complete antibiotic course
+cough and throat pain,Acute Bronchitis,Amoxicillin 500mg 1-1-1,Warm saline gargles
+gastric pain,Dyspepsia,Pantoprazole 40mg 1-0-0,Avoid spicy food
+nausea and diarrhea,Acute Gastroenteritis,Ondansetron 4mg 1-0-1,Light diet (rice gruel)
+migraine,Migraine,Sumatriptan 50mg PRN,Dark room rest
+body pain and cold,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+chest tightness,Angina Pectoris,Aspirin 75mg 1-0-0,Immediate ER if pain worsens
+chest tightness,Angina Pectoris,Aspirin 75mg 1-0-0,Immediate ER if pain worsens
+cough and throat pain,Acute Bronchitis,Amoxicillin 500mg 1-1-1,Warm saline gargles
+tonsils hurting,Streptococcal Pharyngitis,Azithromycin 500mg 1-0-0,Complete antibiotic course
+tonsils hurting,Streptococcal Pharyngitis,Azithromycin 500mg 1-0-0,Complete antibiotic course
+hard to breathe,Bronchitis,Salbutamol Inhaler PRN,Use inhaler if wheezing
+stomach pain and vomiting,Acute Gastroenteritis,Pantoprazole 40mg 1-0-0,Oral rehydration salts
+migraine,Migraine,Sumatriptan 50mg PRN,Dark room rest
+tonsils hurting,Streptococcal Pharyngitis,Azithromycin 500mg 1-0-0,Complete antibiotic course
+body pain and cold,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+cough and throat pain,Acute Bronchitis,Amoxicillin 500mg 1-1-1,Warm saline gargles
+nausea and diarrhea,Acute Gastroenteritis,Ondansetron 4mg 1-0-1,Light diet (rice gruel)
+hard to breathe,Bronchitis,Salbutamol Inhaler PRN,Use inhaler if wheezing
+palpitations and sweat,Arrhythmia evaluation,Metoprolol 25mg 1-0-0,Avoid caffeine
+fever and headache,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+nausea and diarrhea,Acute Gastroenteritis,Ondansetron 4mg 1-0-1,Light diet (rice gruel)
+palpitations and sweat,Arrhythmia evaluation,Metoprolol 25mg 1-0-0,Avoid caffeine
+gastric pain,Dyspepsia,Pantoprazole 40mg 1-0-0,Avoid spicy food
+chest tightness,Angina Pectoris,Aspirin 75mg 1-0-0,Immediate ER if pain worsens
+fever and headache,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+migraine,Migraine,Sumatriptan 50mg PRN,Dark room rest
+body pain and cold,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+fever and headache,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+stomach pain and vomiting,Acute Gastroenteritis,Pantoprazole 40mg 1-0-0,Oral rehydration salts
+palpitations and sweat,Arrhythmia evaluation,Metoprolol 25mg 1-0-0,Avoid caffeine
+migraine,Migraine,Sumatriptan 50mg PRN,Dark room rest
+stomach pain and vomiting,Acute Gastroenteritis,Pantoprazole 40mg 1-0-0,Oral rehydration salts
+chest tightness,Angina Pectoris,Aspirin 75mg 1-0-0,Immediate ER if pain worsens
+stomach pain and vomiting,Acute Gastroenteritis,Pantoprazole 40mg 1-0-0,Oral rehydration salts
+hard to breathe,Bronchitis,Salbutamol Inhaler PRN,Use inhaler if wheezing
+hard to breathe,Bronchitis,Salbutamol Inhaler PRN,Use inhaler if wheezing
+gastric pain,Dyspepsia,Pantoprazole 40mg 1-0-0,Avoid spicy food
+cough and throat pain,Acute Bronchitis,Amoxicillin 500mg 1-1-1,Warm saline gargles
+nausea and diarrhea,Acute Gastroenteritis,Ondansetron 4mg 1-0-1,Light diet (rice gruel)
+nausea and diarrhea,Acute Gastroenteritis,Ondansetron 4mg 1-0-1,Light diet (rice gruel)
+migraine,Migraine,Sumatriptan 50mg PRN,Dark room rest
+chest tightness,Angina Pectoris,Aspirin 75mg 1-0-0,Immediate ER if pain worsens
+tonsils hurting,Streptococcal Pharyngitis,Azithromycin 500mg 1-0-0,Complete antibiotic course
+gastric pain,Dyspepsia,Pantoprazole 40mg 1-0-0,Avoid spicy food
+hard to breathe,Bronchitis,Salbutamol Inhaler PRN,Use inhaler if wheezing
+migraine,Migraine,Sumatriptan 50mg PRN,Dark room rest
+tonsils hurting,Streptococcal Pharyngitis,Azithromycin 500mg 1-0-0,Complete antibiotic course
+nausea and diarrhea,Acute Gastroenteritis,Ondansetron 4mg 1-0-1,Light diet (rice gruel)
+cough and throat pain,Acute Bronchitis,Amoxicillin 500mg 1-1-1,Warm saline gargles
+stomach pain and vomiting,Acute Gastroenteritis,Pantoprazole 40mg 1-0-0,Oral rehydration salts
+hard to breathe,Bronchitis,Salbutamol Inhaler PRN,Use inhaler if wheezing
+migraine,Migraine,Sumatriptan 50mg PRN,Dark room rest
+fever and headache,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+tonsils hurting,Streptococcal Pharyngitis,Azithromycin 500mg 1-0-0,Complete antibiotic course
+stomach pain and vomiting,Acute Gastroenteritis,Pantoprazole 40mg 1-0-0,Oral rehydration salts
+hard to breathe,Bronchitis,Salbutamol Inhaler PRN,Use inhaler if wheezing
+nausea and diarrhea,Acute Gastroenteritis,Ondansetron 4mg 1-0-1,Light diet (rice gruel)
+chest tightness,Angina Pectoris,Aspirin 75mg 1-0-0,Immediate ER if pain worsens
+tonsils hurting,Streptococcal Pharyngitis,Azithromycin 500mg 1-0-0,Complete antibiotic course
+nausea and diarrhea,Acute Gastroenteritis,Ondansetron 4mg 1-0-1,Light diet (rice gruel)
+hard to breathe,Bronchitis,Salbutamol Inhaler PRN,Use inhaler if wheezing
+tonsils hurting,Streptococcal Pharyngitis,Azithromycin 500mg 1-0-0,Complete antibiotic course
+gastric pain,Dyspepsia,Pantoprazole 40mg 1-0-0,Avoid spicy food
+stomach pain and vomiting,Acute Gastroenteritis,Pantoprazole 40mg 1-0-0,Oral rehydration salts
+hard to breathe,Bronchitis,Salbutamol Inhaler PRN,Use inhaler if wheezing
+gastric pain,Dyspepsia,Pantoprazole 40mg 1-0-0,Avoid spicy food
+palpitations and sweat,Arrhythmia evaluation,Metoprolol 25mg 1-0-0,Avoid caffeine
+migraine,Migraine,Sumatriptan 50mg PRN,Dark room rest
+stomach pain and vomiting,Acute Gastroenteritis,Pantoprazole 40mg 1-0-0,Oral rehydration salts
+tonsils hurting,Streptococcal Pharyngitis,Azithromycin 500mg 1-0-0,Complete antibiotic course
+chest tightness,Angina Pectoris,Aspirin 75mg 1-0-0,Immediate ER if pain worsens
+nausea and diarrhea,Acute Gastroenteritis,Ondansetron 4mg 1-0-1,Light diet (rice gruel)
+fever and headache,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+nausea and diarrhea,Acute Gastroenteritis,Ondansetron 4mg 1-0-1,Light diet (rice gruel)
+tonsils hurting,Streptococcal Pharyngitis,Azithromycin 500mg 1-0-0,Complete antibiotic course
+nausea and diarrhea,Acute Gastroenteritis,Ondansetron 4mg 1-0-1,Light diet (rice gruel)
+migraine,Migraine,Sumatriptan 50mg PRN,Dark room rest
+hard to breathe,Bronchitis,Salbutamol Inhaler PRN,Use inhaler if wheezing
+gastric pain,Dyspepsia,Pantoprazole 40mg 1-0-0,Avoid spicy food
+fever and headache,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+body pain and cold,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+tonsils hurting,Streptococcal Pharyngitis,Azithromycin 500mg 1-0-0,Complete antibiotic course
+cough and throat pain,Acute Bronchitis,Amoxicillin 500mg 1-1-1,Warm saline gargles
+body pain and cold,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+nausea and diarrhea,Acute Gastroenteritis,Ondansetron 4mg 1-0-1,Light diet (rice gruel)
+tonsils hurting,Streptococcal Pharyngitis,Azithromycin 500mg 1-0-0,Complete antibiotic course
+gastric pain,Dyspepsia,Pantoprazole 40mg 1-0-0,Avoid spicy food
+palpitations and sweat,Arrhythmia evaluation,Metoprolol 25mg 1-0-0,Avoid caffeine
+gastric pain,Dyspepsia,Pantoprazole 40mg 1-0-0,Avoid spicy food
+cough and throat pain,Acute Bronchitis,Amoxicillin 500mg 1-1-1,Warm saline gargles
+fever and headache,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+gastric pain,Dyspepsia,Pantoprazole 40mg 1-0-0,Avoid spicy food
+chest tightness,Angina Pectoris,Aspirin 75mg 1-0-0,Immediate ER if pain worsens
+palpitations and sweat,Arrhythmia evaluation,Metoprolol 25mg 1-0-0,Avoid caffeine
+body pain and cold,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+hard to breathe,Bronchitis,Salbutamol Inhaler PRN,Use inhaler if wheezing
+migraine,Migraine,Sumatriptan 50mg PRN,Dark room rest
+chest tightness,Angina Pectoris,Aspirin 75mg 1-0-0,Immediate ER if pain worsens
+palpitations and sweat,Arrhythmia evaluation,Metoprolol 25mg 1-0-0,Avoid caffeine
+hard to breathe,Bronchitis,Salbutamol Inhaler PRN,Use inhaler if wheezing
+hard to breathe,Bronchitis,Salbutamol Inhaler PRN,Use inhaler if wheezing
+tonsils hurting,Streptococcal Pharyngitis,Azithromycin 500mg 1-0-0,Complete antibiotic course
+palpitations and sweat,Arrhythmia evaluation,Metoprolol 25mg 1-0-0,Avoid caffeine
+fever and headache,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+nausea and diarrhea,Acute Gastroenteritis,Ondansetron 4mg 1-0-1,Light diet (rice gruel)
+cough and throat pain,Acute Bronchitis,Amoxicillin 500mg 1-1-1,Warm saline gargles
+cough and throat pain,Acute Bronchitis,Amoxicillin 500mg 1-1-1,Warm saline gargles
+body pain and cold,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+body pain and cold,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+cough and throat pain,Acute Bronchitis,Amoxicillin 500mg 1-1-1,Warm saline gargles
+gastric pain,Dyspepsia,Pantoprazole 40mg 1-0-0,Avoid spicy food
+fever and headache,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+gastric pain,Dyspepsia,Pantoprazole 40mg 1-0-0,Avoid spicy food
+gastric pain,Dyspepsia,Pantoprazole 40mg 1-0-0,Avoid spicy food
+migraine,Migraine,Sumatriptan 50mg PRN,Dark room rest
+stomach pain and vomiting,Acute Gastroenteritis,Pantoprazole 40mg 1-0-0,Oral rehydration salts
+nausea and diarrhea,Acute Gastroenteritis,Ondansetron 4mg 1-0-1,Light diet (rice gruel)
+migraine,Migraine,Sumatriptan 50mg PRN,Dark room rest
+tonsils hurting,Streptococcal Pharyngitis,Azithromycin 500mg 1-0-0,Complete antibiotic course
+stomach pain and vomiting,Acute Gastroenteritis,Pantoprazole 40mg 1-0-0,Oral rehydration salts
+stomach pain and vomiting,Acute Gastroenteritis,Pantoprazole 40mg 1-0-0,Oral rehydration salts
+palpitations and sweat,Arrhythmia evaluation,Metoprolol 25mg 1-0-0,Avoid caffeine
+fever and headache,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+fever and headache,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+stomach pain and vomiting,Acute Gastroenteritis,Pantoprazole 40mg 1-0-0,Oral rehydration salts
+gastric pain,Dyspepsia,Pantoprazole 40mg 1-0-0,Avoid spicy food
+palpitations and sweat,Arrhythmia evaluation,Metoprolol 25mg 1-0-0,Avoid caffeine
+nausea and diarrhea,Acute Gastroenteritis,Ondansetron 4mg 1-0-1,Light diet (rice gruel)
+stomach pain and vomiting,Acute Gastroenteritis,Pantoprazole 40mg 1-0-0,Oral rehydration salts
+chest tightness,Angina Pectoris,Aspirin 75mg 1-0-0,Immediate ER if pain worsens
+body pain and cold,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+body pain and cold,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+migraine,Migraine,Sumatriptan 50mg PRN,Dark room rest
+tonsils hurting,Streptococcal Pharyngitis,Azithromycin 500mg 1-0-0,Complete antibiotic course
+body pain and cold,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+hard to breathe,Bronchitis,Salbutamol Inhaler PRN,Use inhaler if wheezing
+migraine,Migraine,Sumatriptan 50mg PRN,Dark room rest
+body pain and cold,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+tonsils hurting,Streptococcal Pharyngitis,Azithromycin 500mg 1-0-0,Complete antibiotic course
+gastric pain,Dyspepsia,Pantoprazole 40mg 1-0-0,Avoid spicy food
+gastric pain,Dyspepsia,Pantoprazole 40mg 1-0-0,Avoid spicy food
+fever and headache,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+fever and headache,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+nausea and diarrhea,Acute Gastroenteritis,Ondansetron 4mg 1-0-1,Light diet (rice gruel)
+stomach pain and vomiting,Acute Gastroenteritis,Pantoprazole 40mg 1-0-0,Oral rehydration salts
+chest tightness,Angina Pectoris,Aspirin 75mg 1-0-0,Immediate ER if pain worsens
+fever and headache,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+palpitations and sweat,Arrhythmia evaluation,Metoprolol 25mg 1-0-0,Avoid caffeine
+body pain and cold,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+palpitations and sweat,Arrhythmia evaluation,Metoprolol 25mg 1-0-0,Avoid caffeine
+tonsils hurting,Streptococcal Pharyngitis,Azithromycin 500mg 1-0-0,Complete antibiotic course
+fever and headache,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+chest tightness,Angina Pectoris,Aspirin 75mg 1-0-0,Immediate ER if pain worsens
+tonsils hurting,Streptococcal Pharyngitis,Azithromycin 500mg 1-0-0,Complete antibiotic course
+hard to breathe,Bronchitis,Salbutamol Inhaler PRN,Use inhaler if wheezing
+hard to breathe,Bronchitis,Salbutamol Inhaler PRN,Use inhaler if wheezing
+palpitations and sweat,Arrhythmia evaluation,Metoprolol 25mg 1-0-0,Avoid caffeine
+stomach pain and vomiting,Acute Gastroenteritis,Pantoprazole 40mg 1-0-0,Oral rehydration salts
+migraine,Migraine,Sumatriptan 50mg PRN,Dark room rest
+stomach pain and vomiting,Acute Gastroenteritis,Pantoprazole 40mg 1-0-0,Oral rehydration salts
+gastric pain,Dyspepsia,Pantoprazole 40mg 1-0-0,Avoid spicy food
+nausea and diarrhea,Acute Gastroenteritis,Ondansetron 4mg 1-0-1,Light diet (rice gruel)
+stomach pain and vomiting,Acute Gastroenteritis,Pantoprazole 40mg 1-0-0,Oral rehydration salts
+nausea and diarrhea,Acute Gastroenteritis,Ondansetron 4mg 1-0-1,Light diet (rice gruel)
+nausea and diarrhea,Acute Gastroenteritis,Ondansetron 4mg 1-0-1,Light diet (rice gruel)
+chest tightness,Angina Pectoris,Aspirin 75mg 1-0-0,Immediate ER if pain worsens
+fever and headache,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+chest tightness,Angina Pectoris,Aspirin 75mg 1-0-0,Immediate ER if pain worsens
+nausea and diarrhea,Acute Gastroenteritis,Ondansetron 4mg 1-0-1,Light diet (rice gruel)
+tonsils hurting,Streptococcal Pharyngitis,Azithromycin 500mg 1-0-0,Complete antibiotic course
+hard to breathe,Bronchitis,Salbutamol Inhaler PRN,Use inhaler if wheezing
+nausea and diarrhea,Acute Gastroenteritis,Ondansetron 4mg 1-0-1,Light diet (rice gruel)
+chest tightness,Angina Pectoris,Aspirin 75mg 1-0-0,Immediate ER if pain worsens
+tonsils hurting,Streptococcal Pharyngitis,Azithromycin 500mg 1-0-0,Complete antibiotic course
+chest tightness,Angina Pectoris,Aspirin 75mg 1-0-0,Immediate ER if pain worsens
+stomach pain and vomiting,Acute Gastroenteritis,Pantoprazole 40mg 1-0-0,Oral rehydration salts
+body pain and cold,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+palpitations and sweat,Arrhythmia evaluation,Metoprolol 25mg 1-0-0,Avoid caffeine
+migraine,Migraine,Sumatriptan 50mg PRN,Dark room rest
+gastric pain,Dyspepsia,Pantoprazole 40mg 1-0-0,Avoid spicy food
+chest tightness,Angina Pectoris,Aspirin 75mg 1-0-0,Immediate ER if pain worsens
+migraine,Migraine,Sumatriptan 50mg PRN,Dark room rest
+cough and throat pain,Acute Bronchitis,Amoxicillin 500mg 1-1-1,Warm saline gargles
+chest tightness,Angina Pectoris,Aspirin 75mg 1-0-0,Immediate ER if pain worsens
+body pain and cold,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+migraine,Migraine,Sumatriptan 50mg PRN,Dark room rest
+gastric pain,Dyspepsia,Pantoprazole 40mg 1-0-0,Avoid spicy food
+nausea and diarrhea,Acute Gastroenteritis,Ondansetron 4mg 1-0-1,Light diet (rice gruel)
+chest tightness,Angina Pectoris,Aspirin 75mg 1-0-0,Immediate ER if pain worsens
+fever and headache,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+palpitations and sweat,Arrhythmia evaluation,Metoprolol 25mg 1-0-0,Avoid caffeine
+body pain and cold,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+migraine,Migraine,Sumatriptan 50mg PRN,Dark room rest
+body pain and cold,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+tonsils hurting,Streptococcal Pharyngitis,Azithromycin 500mg 1-0-0,Complete antibiotic course
+gastric pain,Dyspepsia,Pantoprazole 40mg 1-0-0,Avoid spicy food
+palpitations and sweat,Arrhythmia evaluation,Metoprolol 25mg 1-0-0,Avoid caffeine
+nausea and diarrhea,Acute Gastroenteritis,Ondansetron 4mg 1-0-1,Light diet (rice gruel)
+chest tightness,Angina Pectoris,Aspirin 75mg 1-0-0,Immediate ER if pain worsens
+chest tightness,Angina Pectoris,Aspirin 75mg 1-0-0,Immediate ER if pain worsens
+chest tightness,Angina Pectoris,Aspirin 75mg 1-0-0,Immediate ER if pain worsens
+palpitations and sweat,Arrhythmia evaluation,Metoprolol 25mg 1-0-0,Avoid caffeine
+fever and headache,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+cough and throat pain,Acute Bronchitis,Amoxicillin 500mg 1-1-1,Warm saline gargles
+hard to breathe,Bronchitis,Salbutamol Inhaler PRN,Use inhaler if wheezing
+stomach pain and vomiting,Acute Gastroenteritis,Pantoprazole 40mg 1-0-0,Oral rehydration salts
+migraine,Migraine,Sumatriptan 50mg PRN,Dark room rest
+fever and headache,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+nausea and diarrhea,Acute Gastroenteritis,Ondansetron 4mg 1-0-1,Light diet (rice gruel)
+migraine,Migraine,Sumatriptan 50mg PRN,Dark room rest
+chest tightness,Angina Pectoris,Aspirin 75mg 1-0-0,Immediate ER if pain worsens
+body pain and cold,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+nausea and diarrhea,Acute Gastroenteritis,Ondansetron 4mg 1-0-1,Light diet (rice gruel)
+migraine,Migraine,Sumatriptan 50mg PRN,Dark room rest
+gastric pain,Dyspepsia,Pantoprazole 40mg 1-0-0,Avoid spicy food
+chest tightness,Angina Pectoris,Aspirin 75mg 1-0-0,Immediate ER if pain worsens
+migraine,Migraine,Sumatriptan 50mg PRN,Dark room rest
+body pain and cold,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+gastric pain,Dyspepsia,Pantoprazole 40mg 1-0-0,Avoid spicy food
+chest tightness,Angina Pectoris,Aspirin 75mg 1-0-0,Immediate ER if pain worsens
+cough and throat pain,Acute Bronchitis,Amoxicillin 500mg 1-1-1,Warm saline gargles
+fever and headache,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+tonsils hurting,Streptococcal Pharyngitis,Azithromycin 500mg 1-0-0,Complete antibiotic course
+stomach pain and vomiting,Acute Gastroenteritis,Pantoprazole 40mg 1-0-0,Oral rehydration salts
+palpitations and sweat,Arrhythmia evaluation,Metoprolol 25mg 1-0-0,Avoid caffeine
+stomach pain and vomiting,Acute Gastroenteritis,Pantoprazole 40mg 1-0-0,Oral rehydration salts
+nausea and diarrhea,Acute Gastroenteritis,Ondansetron 4mg 1-0-1,Light diet (rice gruel)
+stomach pain and vomiting,Acute Gastroenteritis,Pantoprazole 40mg 1-0-0,Oral rehydration salts
+chest tightness,Angina Pectoris,Aspirin 75mg 1-0-0,Immediate ER if pain worsens
+cough and throat pain,Acute Bronchitis,Amoxicillin 500mg 1-1-1,Warm saline gargles
+tonsils hurting,Streptococcal Pharyngitis,Azithromycin 500mg 1-0-0,Complete antibiotic course
+fever and headache,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+fever and headache,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+body pain and cold,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+palpitations and sweat,Arrhythmia evaluation,Metoprolol 25mg 1-0-0,Avoid caffeine
+migraine,Migraine,Sumatriptan 50mg PRN,Dark room rest
+cough and throat pain,Acute Bronchitis,Amoxicillin 500mg 1-1-1,Warm saline gargles
+migraine,Migraine,Sumatriptan 50mg PRN,Dark room rest
+tonsils hurting,Streptococcal Pharyngitis,Azithromycin 500mg 1-0-0,Complete antibiotic course
+stomach pain and vomiting,Acute Gastroenteritis,Pantoprazole 40mg 1-0-0,Oral rehydration salts
+fever and headache,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+tonsils hurting,Streptococcal Pharyngitis,Azithromycin 500mg 1-0-0,Complete antibiotic course
+stomach pain and vomiting,Acute Gastroenteritis,Pantoprazole 40mg 1-0-0,Oral rehydration salts
+fever and headache,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+stomach pain and vomiting,Acute Gastroenteritis,Pantoprazole 40mg 1-0-0,Oral rehydration salts
+palpitations and sweat,Arrhythmia evaluation,Metoprolol 25mg 1-0-0,Avoid caffeine
+cough and throat pain,Acute Bronchitis,Amoxicillin 500mg 1-1-1,Warm saline gargles
+gastric pain,Dyspepsia,Pantoprazole 40mg 1-0-0,Avoid spicy food
+nausea and diarrhea,Acute Gastroenteritis,Ondansetron 4mg 1-0-1,Light diet (rice gruel)
+tonsils hurting,Streptococcal Pharyngitis,Azithromycin 500mg 1-0-0,Complete antibiotic course
+tonsils hurting,Streptococcal Pharyngitis,Azithromycin 500mg 1-0-0,Complete antibiotic course
+gastric pain,Dyspepsia,Pantoprazole 40mg 1-0-0,Avoid spicy food
+hard to breathe,Bronchitis,Salbutamol Inhaler PRN,Use inhaler if wheezing
+chest tightness,Angina Pectoris,Aspirin 75mg 1-0-0,Immediate ER if pain worsens
+palpitations and sweat,Arrhythmia evaluation,Metoprolol 25mg 1-0-0,Avoid caffeine
+palpitations and sweat,Arrhythmia evaluation,Metoprolol 25mg 1-0-0,Avoid caffeine
+gastric pain,Dyspepsia,Pantoprazole 40mg 1-0-0,Avoid spicy food
+migraine,Migraine,Sumatriptan 50mg PRN,Dark room rest
+stomach pain and vomiting,Acute Gastroenteritis,Pantoprazole 40mg 1-0-0,Oral rehydration salts
+chest tightness,Angina Pectoris,Aspirin 75mg 1-0-0,Immediate ER if pain worsens
+cough and throat pain,Acute Bronchitis,Amoxicillin 500mg 1-1-1,Warm saline gargles
+cough and throat pain,Acute Bronchitis,Amoxicillin 500mg 1-1-1,Warm saline gargles
+gastric pain,Dyspepsia,Pantoprazole 40mg 1-0-0,Avoid spicy food
+palpitations and sweat,Arrhythmia evaluation,Metoprolol 25mg 1-0-0,Avoid caffeine
+cough and throat pain,Acute Bronchitis,Amoxicillin 500mg 1-1-1,Warm saline gargles
+hard to breathe,Bronchitis,Salbutamol Inhaler PRN,Use inhaler if wheezing
+tonsils hurting,Streptococcal Pharyngitis,Azithromycin 500mg 1-0-0,Complete antibiotic course
+body pain and cold,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+nausea and diarrhea,Acute Gastroenteritis,Ondansetron 4mg 1-0-1,Light diet (rice gruel)
+gastric pain,Dyspepsia,Pantoprazole 40mg 1-0-0,Avoid spicy food
+migraine,Migraine,Sumatriptan 50mg PRN,Dark room rest
+stomach pain and vomiting,Acute Gastroenteritis,Pantoprazole 40mg 1-0-0,Oral rehydration salts
+nausea and diarrhea,Acute Gastroenteritis,Ondansetron 4mg 1-0-1,Light diet (rice gruel)
+stomach pain and vomiting,Acute Gastroenteritis,Pantoprazole 40mg 1-0-0,Oral rehydration salts
+fever and headache,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+nausea and diarrhea,Acute Gastroenteritis,Ondansetron 4mg 1-0-1,Light diet (rice gruel)
+body pain and cold,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+palpitations and sweat,Arrhythmia evaluation,Metoprolol 25mg 1-0-0,Avoid caffeine
+hard to breathe,Bronchitis,Salbutamol Inhaler PRN,Use inhaler if wheezing
+tonsils hurting,Streptococcal Pharyngitis,Azithromycin 500mg 1-0-0,Complete antibiotic course
+tonsils hurting,Streptococcal Pharyngitis,Azithromycin 500mg 1-0-0,Complete antibiotic course
+hard to breathe,Bronchitis,Salbutamol Inhaler PRN,Use inhaler if wheezing
+chest tightness,Angina Pectoris,Aspirin 75mg 1-0-0,Immediate ER if pain worsens
+fever and headache,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+stomach pain and vomiting,Acute Gastroenteritis,Pantoprazole 40mg 1-0-0,Oral rehydration salts
+body pain and cold,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+cough and throat pain,Acute Bronchitis,Amoxicillin 500mg 1-1-1,Warm saline gargles
+nausea and diarrhea,Acute Gastroenteritis,Ondansetron 4mg 1-0-1,Light diet (rice gruel)
+fever and headache,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+gastric pain,Dyspepsia,Pantoprazole 40mg 1-0-0,Avoid spicy food
+nausea and diarrhea,Acute Gastroenteritis,Ondansetron 4mg 1-0-1,Light diet (rice gruel)
+body pain and cold,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+migraine,Migraine,Sumatriptan 50mg PRN,Dark room rest
+migraine,Migraine,Sumatriptan 50mg PRN,Dark room rest
+fever and headache,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+palpitations and sweat,Arrhythmia evaluation,Metoprolol 25mg 1-0-0,Avoid caffeine
+body pain and cold,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+body pain and cold,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+hard to breathe,Bronchitis,Salbutamol Inhaler PRN,Use inhaler if wheezing
+palpitations and sweat,Arrhythmia evaluation,Metoprolol 25mg 1-0-0,Avoid caffeine
+stomach pain and vomiting,Acute Gastroenteritis,Pantoprazole 40mg 1-0-0,Oral rehydration salts
+stomach pain and vomiting,Acute Gastroenteritis,Pantoprazole 40mg 1-0-0,Oral rehydration salts
+cough and throat pain,Acute Bronchitis,Amoxicillin 500mg 1-1-1,Warm saline gargles
+tonsils hurting,Streptococcal Pharyngitis,Azithromycin 500mg 1-0-0,Complete antibiotic course
+migraine,Migraine,Sumatriptan 50mg PRN,Dark room rest
+gastric pain,Dyspepsia,Pantoprazole 40mg 1-0-0,Avoid spicy food
+stomach pain and vomiting,Acute Gastroenteritis,Pantoprazole 40mg 1-0-0,Oral rehydration salts
+palpitations and sweat,Arrhythmia evaluation,Metoprolol 25mg 1-0-0,Avoid caffeine
+body pain and cold,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+gastric pain,Dyspepsia,Pantoprazole 40mg 1-0-0,Avoid spicy food
+stomach pain and vomiting,Acute Gastroenteritis,Pantoprazole 40mg 1-0-0,Oral rehydration salts
+body pain and cold,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+stomach pain and vomiting,Acute Gastroenteritis,Pantoprazole 40mg 1-0-0,Oral rehydration salts
+migraine,Migraine,Sumatriptan 50mg PRN,Dark room rest
+nausea and diarrhea,Acute Gastroenteritis,Ondansetron 4mg 1-0-1,Light diet (rice gruel)
+stomach pain and vomiting,Acute Gastroenteritis,Pantoprazole 40mg 1-0-0,Oral rehydration salts
+palpitations and sweat,Arrhythmia evaluation,Metoprolol 25mg 1-0-0,Avoid caffeine
+stomach pain and vomiting,Acute Gastroenteritis,Pantoprazole 40mg 1-0-0,Oral rehydration salts
+tonsils hurting,Streptococcal Pharyngitis,Azithromycin 500mg 1-0-0,Complete antibiotic course
+gastric pain,Dyspepsia,Pantoprazole 40mg 1-0-0,Avoid spicy food
+gastric pain,Dyspepsia,Pantoprazole 40mg 1-0-0,Avoid spicy food
+migraine,Migraine,Sumatriptan 50mg PRN,Dark room rest
+palpitations and sweat,Arrhythmia evaluation,Metoprolol 25mg 1-0-0,Avoid caffeine
+hard to breathe,Bronchitis,Salbutamol Inhaler PRN,Use inhaler if wheezing
+palpitations and sweat,Arrhythmia evaluation,Metoprolol 25mg 1-0-0,Avoid caffeine
+gastric pain,Dyspepsia,Pantoprazole 40mg 1-0-0,Avoid spicy food
+tonsils hurting,Streptococcal Pharyngitis,Azithromycin 500mg 1-0-0,Complete antibiotic course
+nausea and diarrhea,Acute Gastroenteritis,Ondansetron 4mg 1-0-1,Light diet (rice gruel)
+migraine,Migraine,Sumatriptan 50mg PRN,Dark room rest
+hard to breathe,Bronchitis,Salbutamol Inhaler PRN,Use inhaler if wheezing
+tonsils hurting,Streptococcal Pharyngitis,Azithromycin 500mg 1-0-0,Complete antibiotic course
+tonsils hurting,Streptococcal Pharyngitis,Azithromycin 500mg 1-0-0,Complete antibiotic course
+fever and headache,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+migraine,Migraine,Sumatriptan 50mg PRN,Dark room rest
+palpitations and sweat,Arrhythmia evaluation,Metoprolol 25mg 1-0-0,Avoid caffeine
+body pain and cold,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+nausea and diarrhea,Acute Gastroenteritis,Ondansetron 4mg 1-0-1,Light diet (rice gruel)
+body pain and cold,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+palpitations and sweat,Arrhythmia evaluation,Metoprolol 25mg 1-0-0,Avoid caffeine
+palpitations and sweat,Arrhythmia evaluation,Metoprolol 25mg 1-0-0,Avoid caffeine
+migraine,Migraine,Sumatriptan 50mg PRN,Dark room rest
+palpitations and sweat,Arrhythmia evaluation,Metoprolol 25mg 1-0-0,Avoid caffeine
+gastric pain,Dyspepsia,Pantoprazole 40mg 1-0-0,Avoid spicy food
+fever and headache,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+hard to breathe,Bronchitis,Salbutamol Inhaler PRN,Use inhaler if wheezing
+palpitations and sweat,Arrhythmia evaluation,Metoprolol 25mg 1-0-0,Avoid caffeine
+body pain and cold,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+palpitations and sweat,Arrhythmia evaluation,Metoprolol 25mg 1-0-0,Avoid caffeine
+fever and headache,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+gastric pain,Dyspepsia,Pantoprazole 40mg 1-0-0,Avoid spicy food
+gastric pain,Dyspepsia,Pantoprazole 40mg 1-0-0,Avoid spicy food
+stomach pain and vomiting,Acute Gastroenteritis,Pantoprazole 40mg 1-0-0,Oral rehydration salts
+gastric pain,Dyspepsia,Pantoprazole 40mg 1-0-0,Avoid spicy food
+stomach pain and vomiting,Acute Gastroenteritis,Pantoprazole 40mg 1-0-0,Oral rehydration salts
+tonsils hurting,Streptococcal Pharyngitis,Azithromycin 500mg 1-0-0,Complete antibiotic course
+nausea and diarrhea,Acute Gastroenteritis,Ondansetron 4mg 1-0-1,Light diet (rice gruel)
+cough and throat pain,Acute Bronchitis,Amoxicillin 500mg 1-1-1,Warm saline gargles
+gastric pain,Dyspepsia,Pantoprazole 40mg 1-0-0,Avoid spicy food
+hard to breathe,Bronchitis,Salbutamol Inhaler PRN,Use inhaler if wheezing
+chest tightness,Angina Pectoris,Aspirin 75mg 1-0-0,Immediate ER if pain worsens
+tonsils hurting,Streptococcal Pharyngitis,Azithromycin 500mg 1-0-0,Complete antibiotic course
+gastric pain,Dyspepsia,Pantoprazole 40mg 1-0-0,Avoid spicy food
+nausea and diarrhea,Acute Gastroenteritis,Ondansetron 4mg 1-0-1,Light diet (rice gruel)
+stomach pain and vomiting,Acute Gastroenteritis,Pantoprazole 40mg 1-0-0,Oral rehydration salts
+body pain and cold,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+chest tightness,Angina Pectoris,Aspirin 75mg 1-0-0,Immediate ER if pain worsens
+nausea and diarrhea,Acute Gastroenteritis,Ondansetron 4mg 1-0-1,Light diet (rice gruel)
+nausea and diarrhea,Acute Gastroenteritis,Ondansetron 4mg 1-0-1,Light diet (rice gruel)
+gastric pain,Dyspepsia,Pantoprazole 40mg 1-0-0,Avoid spicy food
+tonsils hurting,Streptococcal Pharyngitis,Azithromycin 500mg 1-0-0,Complete antibiotic course
+chest tightness,Angina Pectoris,Aspirin 75mg 1-0-0,Immediate ER if pain worsens
+migraine,Migraine,Sumatriptan 50mg PRN,Dark room rest
+cough and throat pain,Acute Bronchitis,Amoxicillin 500mg 1-1-1,Warm saline gargles
+migraine,Migraine,Sumatriptan 50mg PRN,Dark room rest
+chest tightness,Angina Pectoris,Aspirin 75mg 1-0-0,Immediate ER if pain worsens
+migraine,Migraine,Sumatriptan 50mg PRN,Dark room rest
+gastric pain,Dyspepsia,Pantoprazole 40mg 1-0-0,Avoid spicy food
+fever and headache,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+stomach pain and vomiting,Acute Gastroenteritis,Pantoprazole 40mg 1-0-0,Oral rehydration salts
+fever and headache,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+palpitations and sweat,Arrhythmia evaluation,Metoprolol 25mg 1-0-0,Avoid caffeine
+migraine,Migraine,Sumatriptan 50mg PRN,Dark room rest
+palpitations and sweat,Arrhythmia evaluation,Metoprolol 25mg 1-0-0,Avoid caffeine
+body pain and cold,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+hard to breathe,Bronchitis,Salbutamol Inhaler PRN,Use inhaler if wheezing
+body pain and cold,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+chest tightness,Angina Pectoris,Aspirin 75mg 1-0-0,Immediate ER if pain worsens
+nausea and diarrhea,Acute Gastroenteritis,Ondansetron 4mg 1-0-1,Light diet (rice gruel)
+stomach pain and vomiting,Acute Gastroenteritis,Pantoprazole 40mg 1-0-0,Oral rehydration salts
+migraine,Migraine,Sumatriptan 50mg PRN,Dark room rest
+tonsils hurting,Streptococcal Pharyngitis,Azithromycin 500mg 1-0-0,Complete antibiotic course
+hard to breathe,Bronchitis,Salbutamol Inhaler PRN,Use inhaler if wheezing
+cough and throat pain,Acute Bronchitis,Amoxicillin 500mg 1-1-1,Warm saline gargles
+cough and throat pain,Acute Bronchitis,Amoxicillin 500mg 1-1-1,Warm saline gargles
+cough and throat pain,Acute Bronchitis,Amoxicillin 500mg 1-1-1,Warm saline gargles
+migraine,Migraine,Sumatriptan 50mg PRN,Dark room rest
+cough and throat pain,Acute Bronchitis,Amoxicillin 500mg 1-1-1,Warm saline gargles
+gastric pain,Dyspepsia,Pantoprazole 40mg 1-0-0,Avoid spicy food
+fever and headache,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+hard to breathe,Bronchitis,Salbutamol Inhaler PRN,Use inhaler if wheezing
+fever and headache,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+nausea and diarrhea,Acute Gastroenteritis,Ondansetron 4mg 1-0-1,Light diet (rice gruel)
+hard to breathe,Bronchitis,Salbutamol Inhaler PRN,Use inhaler if wheezing
+fever and headache,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+hard to breathe,Bronchitis,Salbutamol Inhaler PRN,Use inhaler if wheezing
+nausea and diarrhea,Acute Gastroenteritis,Ondansetron 4mg 1-0-1,Light diet (rice gruel)
+palpitations and sweat,Arrhythmia evaluation,Metoprolol 25mg 1-0-0,Avoid caffeine
+gastric pain,Dyspepsia,Pantoprazole 40mg 1-0-0,Avoid spicy food
+migraine,Migraine,Sumatriptan 50mg PRN,Dark room rest
+migraine,Migraine,Sumatriptan 50mg PRN,Dark room rest
+cough and throat pain,Acute Bronchitis,Amoxicillin 500mg 1-1-1,Warm saline gargles
+gastric pain,Dyspepsia,Pantoprazole 40mg 1-0-0,Avoid spicy food
+body pain and cold,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+cough and throat pain,Acute Bronchitis,Amoxicillin 500mg 1-1-1,Warm saline gargles
+chest tightness,Angina Pectoris,Aspirin 75mg 1-0-0,Immediate ER if pain worsens
+gastric pain,Dyspepsia,Pantoprazole 40mg 1-0-0,Avoid spicy food
+fever and headache,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+hard to breathe,Bronchitis,Salbutamol Inhaler PRN,Use inhaler if wheezing
+body pain and cold,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+gastric pain,Dyspepsia,Pantoprazole 40mg 1-0-0,Avoid spicy food
+nausea and diarrhea,Acute Gastroenteritis,Ondansetron 4mg 1-0-1,Light diet (rice gruel)
+chest tightness,Angina Pectoris,Aspirin 75mg 1-0-0,Immediate ER if pain worsens
+nausea and diarrhea,Acute Gastroenteritis,Ondansetron 4mg 1-0-1,Light diet (rice gruel)
+migraine,Migraine,Sumatriptan 50mg PRN,Dark room rest
+migraine,Migraine,Sumatriptan 50mg PRN,Dark room rest
+cough and throat pain,Acute Bronchitis,Amoxicillin 500mg 1-1-1,Warm saline gargles
+fever and headache,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+body pain and cold,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+stomach pain and vomiting,Acute Gastroenteritis,Pantoprazole 40mg 1-0-0,Oral rehydration salts
+chest tightness,Angina Pectoris,Aspirin 75mg 1-0-0,Immediate ER if pain worsens
+chest tightness,Angina Pectoris,Aspirin 75mg 1-0-0,Immediate ER if pain worsens
+gastric pain,Dyspepsia,Pantoprazole 40mg 1-0-0,Avoid spicy food
+cough and throat pain,Acute Bronchitis,Amoxicillin 500mg 1-1-1,Warm saline gargles
+migraine,Migraine,Sumatriptan 50mg PRN,Dark room rest
+cough and throat pain,Acute Bronchitis,Amoxicillin 500mg 1-1-1,Warm saline gargles
+hard to breathe,Bronchitis,Salbutamol Inhaler PRN,Use inhaler if wheezing
+gastric pain,Dyspepsia,Pantoprazole 40mg 1-0-0,Avoid spicy food
+gastric pain,Dyspepsia,Pantoprazole 40mg 1-0-0,Avoid spicy food
+body pain and cold,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+fever and headache,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+palpitations and sweat,Arrhythmia evaluation,Metoprolol 25mg 1-0-0,Avoid caffeine
+tonsils hurting,Streptococcal Pharyngitis,Azithromycin 500mg 1-0-0,Complete antibiotic course
+tonsils hurting,Streptococcal Pharyngitis,Azithromycin 500mg 1-0-0,Complete antibiotic course
+gastric pain,Dyspepsia,Pantoprazole 40mg 1-0-0,Avoid spicy food
+cough and throat pain,Acute Bronchitis,Amoxicillin 500mg 1-1-1,Warm saline gargles
+hard to breathe,Bronchitis,Salbutamol Inhaler PRN,Use inhaler if wheezing
+body pain and cold,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+stomach pain and vomiting,Acute Gastroenteritis,Pantoprazole 40mg 1-0-0,Oral rehydration salts
+tonsils hurting,Streptococcal Pharyngitis,Azithromycin 500mg 1-0-0,Complete antibiotic course
+body pain and cold,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+gastric pain,Dyspepsia,Pantoprazole 40mg 1-0-0,Avoid spicy food
+fever and headache,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+nausea and diarrhea,Acute Gastroenteritis,Ondansetron 4mg 1-0-1,Light diet (rice gruel)
+hard to breathe,Bronchitis,Salbutamol Inhaler PRN,Use inhaler if wheezing
+migraine,Migraine,Sumatriptan 50mg PRN,Dark room rest
+body pain and cold,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+fever and headache,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+stomach pain and vomiting,Acute Gastroenteritis,Pantoprazole 40mg 1-0-0,Oral rehydration salts
+palpitations and sweat,Arrhythmia evaluation,Metoprolol 25mg 1-0-0,Avoid caffeine
+migraine,Migraine,Sumatriptan 50mg PRN,Dark room rest
+gastric pain,Dyspepsia,Pantoprazole 40mg 1-0-0,Avoid spicy food
+palpitations and sweat,Arrhythmia evaluation,Metoprolol 25mg 1-0-0,Avoid caffeine
+stomach pain and vomiting,Acute Gastroenteritis,Pantoprazole 40mg 1-0-0,Oral rehydration salts
+fever and headache,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+tonsils hurting,Streptococcal Pharyngitis,Azithromycin 500mg 1-0-0,Complete antibiotic course
+palpitations and sweat,Arrhythmia evaluation,Metoprolol 25mg 1-0-0,Avoid caffeine
+gastric pain,Dyspepsia,Pantoprazole 40mg 1-0-0,Avoid spicy food
+migraine,Migraine,Sumatriptan 50mg PRN,Dark room rest
+cough and throat pain,Acute Bronchitis,Amoxicillin 500mg 1-1-1,Warm saline gargles
+chest tightness,Angina Pectoris,Aspirin 75mg 1-0-0,Immediate ER if pain worsens
+body pain and cold,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+tonsils hurting,Streptococcal Pharyngitis,Azithromycin 500mg 1-0-0,Complete antibiotic course
+palpitations and sweat,Arrhythmia evaluation,Metoprolol 25mg 1-0-0,Avoid caffeine
+nausea and diarrhea,Acute Gastroenteritis,Ondansetron 4mg 1-0-1,Light diet (rice gruel)
+body pain and cold,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+cough and throat pain,Acute Bronchitis,Amoxicillin 500mg 1-1-1,Warm saline gargles
+stomach pain and vomiting,Acute Gastroenteritis,Pantoprazole 40mg 1-0-0,Oral rehydration salts
+chest tightness,Angina Pectoris,Aspirin 75mg 1-0-0,Immediate ER if pain worsens
+fever and headache,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+cough and throat pain,Acute Bronchitis,Amoxicillin 500mg 1-1-1,Warm saline gargles
+cough and throat pain,Acute Bronchitis,Amoxicillin 500mg 1-1-1,Warm saline gargles
+stomach pain and vomiting,Acute Gastroenteritis,Pantoprazole 40mg 1-0-0,Oral rehydration salts
+hard to breathe,Bronchitis,Salbutamol Inhaler PRN,Use inhaler if wheezing
+stomach pain and vomiting,Acute Gastroenteritis,Pantoprazole 40mg 1-0-0,Oral rehydration salts
+hard to breathe,Bronchitis,Salbutamol Inhaler PRN,Use inhaler if wheezing
+hard to breathe,Bronchitis,Salbutamol Inhaler PRN,Use inhaler if wheezing
+tonsils hurting,Streptococcal Pharyngitis,Azithromycin 500mg 1-0-0,Complete antibiotic course
+tonsils hurting,Streptococcal Pharyngitis,Azithromycin 500mg 1-0-0,Complete antibiotic course
+migraine,Migraine,Sumatriptan 50mg PRN,Dark room rest
+palpitations and sweat,Arrhythmia evaluation,Metoprolol 25mg 1-0-0,Avoid caffeine
+palpitations and sweat,Arrhythmia evaluation,Metoprolol 25mg 1-0-0,Avoid caffeine
+gastric pain,Dyspepsia,Pantoprazole 40mg 1-0-0,Avoid spicy food
+fever and headache,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+palpitations and sweat,Arrhythmia evaluation,Metoprolol 25mg 1-0-0,Avoid caffeine
+tonsils hurting,Streptococcal Pharyngitis,Azithromycin 500mg 1-0-0,Complete antibiotic course
+migraine,Migraine,Sumatriptan 50mg PRN,Dark room rest
+migraine,Migraine,Sumatriptan 50mg PRN,Dark room rest
+hard to breathe,Bronchitis,Salbutamol Inhaler PRN,Use inhaler if wheezing
+gastric pain,Dyspepsia,Pantoprazole 40mg 1-0-0,Avoid spicy food
+stomach pain and vomiting,Acute Gastroenteritis,Pantoprazole 40mg 1-0-0,Oral rehydration salts
+fever and headache,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+hard to breathe,Bronchitis,Salbutamol Inhaler PRN,Use inhaler if wheezing
+stomach pain and vomiting,Acute Gastroenteritis,Pantoprazole 40mg 1-0-0,Oral rehydration salts
+palpitations and sweat,Arrhythmia evaluation,Metoprolol 25mg 1-0-0,Avoid caffeine
+gastric pain,Dyspepsia,Pantoprazole 40mg 1-0-0,Avoid spicy food
+hard to breathe,Bronchitis,Salbutamol Inhaler PRN,Use inhaler if wheezing
+body pain and cold,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+palpitations and sweat,Arrhythmia evaluation,Metoprolol 25mg 1-0-0,Avoid caffeine
+stomach pain and vomiting,Acute Gastroenteritis,Pantoprazole 40mg 1-0-0,Oral rehydration salts
+fever and headache,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+stomach pain and vomiting,Acute Gastroenteritis,Pantoprazole 40mg 1-0-0,Oral rehydration salts
+hard to breathe,Bronchitis,Salbutamol Inhaler PRN,Use inhaler if wheezing
+hard to breathe,Bronchitis,Salbutamol Inhaler PRN,Use inhaler if wheezing
+cough and throat pain,Acute Bronchitis,Amoxicillin 500mg 1-1-1,Warm saline gargles
+fever and headache,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+nausea and diarrhea,Acute Gastroenteritis,Ondansetron 4mg 1-0-1,Light diet (rice gruel)
+palpitations and sweat,Arrhythmia evaluation,Metoprolol 25mg 1-0-0,Avoid caffeine
+migraine,Migraine,Sumatriptan 50mg PRN,Dark room rest
+fever and headache,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+migraine,Migraine,Sumatriptan 50mg PRN,Dark room rest
+fever and headache,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+fever and headache,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+stomach pain and vomiting,Acute Gastroenteritis,Pantoprazole 40mg 1-0-0,Oral rehydration salts
+fever and headache,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+cough and throat pain,Acute Bronchitis,Amoxicillin 500mg 1-1-1,Warm saline gargles
+nausea and diarrhea,Acute Gastroenteritis,Ondansetron 4mg 1-0-1,Light diet (rice gruel)
+hard to breathe,Bronchitis,Salbutamol Inhaler PRN,Use inhaler if wheezing
+chest tightness,Angina Pectoris,Aspirin 75mg 1-0-0,Immediate ER if pain worsens
+migraine,Migraine,Sumatriptan 50mg PRN,Dark room rest
+hard to breathe,Bronchitis,Salbutamol Inhaler PRN,Use inhaler if wheezing
+chest tightness,Angina Pectoris,Aspirin 75mg 1-0-0,Immediate ER if pain worsens
+nausea and diarrhea,Acute Gastroenteritis,Ondansetron 4mg 1-0-1,Light diet (rice gruel)
+nausea and diarrhea,Acute Gastroenteritis,Ondansetron 4mg 1-0-1,Light diet (rice gruel)
+migraine,Migraine,Sumatriptan 50mg PRN,Dark room rest
+migraine,Migraine,Sumatriptan 50mg PRN,Dark room rest
+nausea and diarrhea,Acute Gastroenteritis,Ondansetron 4mg 1-0-1,Light diet (rice gruel)
+chest tightness,Angina Pectoris,Aspirin 75mg 1-0-0,Immediate ER if pain worsens
+fever and headache,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+palpitations and sweat,Arrhythmia evaluation,Metoprolol 25mg 1-0-0,Avoid caffeine
+gastric pain,Dyspepsia,Pantoprazole 40mg 1-0-0,Avoid spicy food
+body pain and cold,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+gastric pain,Dyspepsia,Pantoprazole 40mg 1-0-0,Avoid spicy food
+hard to breathe,Bronchitis,Salbutamol Inhaler PRN,Use inhaler if wheezing
+stomach pain and vomiting,Acute Gastroenteritis,Pantoprazole 40mg 1-0-0,Oral rehydration salts
+hard to breathe,Bronchitis,Salbutamol Inhaler PRN,Use inhaler if wheezing
+stomach pain and vomiting,Acute Gastroenteritis,Pantoprazole 40mg 1-0-0,Oral rehydration salts
+chest tightness,Angina Pectoris,Aspirin 75mg 1-0-0,Immediate ER if pain worsens
+stomach pain and vomiting,Acute Gastroenteritis,Pantoprazole 40mg 1-0-0,Oral rehydration salts
+migraine,Migraine,Sumatriptan 50mg PRN,Dark room rest
+palpitations and sweat,Arrhythmia evaluation,Metoprolol 25mg 1-0-0,Avoid caffeine
+palpitations and sweat,Arrhythmia evaluation,Metoprolol 25mg 1-0-0,Avoid caffeine
+migraine,Migraine,Sumatriptan 50mg PRN,Dark room rest
+cough and throat pain,Acute Bronchitis,Amoxicillin 500mg 1-1-1,Warm saline gargles
+gastric pain,Dyspepsia,Pantoprazole 40mg 1-0-0,Avoid spicy food
+chest tightness,Angina Pectoris,Aspirin 75mg 1-0-0,Immediate ER if pain worsens
+gastric pain,Dyspepsia,Pantoprazole 40mg 1-0-0,Avoid spicy food
+cough and throat pain,Acute Bronchitis,Amoxicillin 500mg 1-1-1,Warm saline gargles
+cough and throat pain,Acute Bronchitis,Amoxicillin 500mg 1-1-1,Warm saline gargles
+hard to breathe,Bronchitis,Salbutamol Inhaler PRN,Use inhaler if wheezing
+nausea and diarrhea,Acute Gastroenteritis,Ondansetron 4mg 1-0-1,Light diet (rice gruel)
+hard to breathe,Bronchitis,Salbutamol Inhaler PRN,Use inhaler if wheezing
+nausea and diarrhea,Acute Gastroenteritis,Ondansetron 4mg 1-0-1,Light diet (rice gruel)
+body pain and cold,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+stomach pain and vomiting,Acute Gastroenteritis,Pantoprazole 40mg 1-0-0,Oral rehydration salts
+nausea and diarrhea,Acute Gastroenteritis,Ondansetron 4mg 1-0-1,Light diet (rice gruel)
+gastric pain,Dyspepsia,Pantoprazole 40mg 1-0-0,Avoid spicy food
+migraine,Migraine,Sumatriptan 50mg PRN,Dark room rest
+hard to breathe,Bronchitis,Salbutamol Inhaler PRN,Use inhaler if wheezing
+chest tightness,Angina Pectoris,Aspirin 75mg 1-0-0,Immediate ER if pain worsens
+stomach pain and vomiting,Acute Gastroenteritis,Pantoprazole 40mg 1-0-0,Oral rehydration salts
+body pain and cold,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+nausea and diarrhea,Acute Gastroenteritis,Ondansetron 4mg 1-0-1,Light diet (rice gruel)
+body pain and cold,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+chest tightness,Angina Pectoris,Aspirin 75mg 1-0-0,Immediate ER if pain worsens
+cough and throat pain,Acute Bronchitis,Amoxicillin 500mg 1-1-1,Warm saline gargles
+palpitations and sweat,Arrhythmia evaluation,Metoprolol 25mg 1-0-0,Avoid caffeine
+chest tightness,Angina Pectoris,Aspirin 75mg 1-0-0,Immediate ER if pain worsens
+tonsils hurting,Streptococcal Pharyngitis,Azithromycin 500mg 1-0-0,Complete antibiotic course
+chest tightness,Angina Pectoris,Aspirin 75mg 1-0-0,Immediate ER if pain worsens
+body pain and cold,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+migraine,Migraine,Sumatriptan 50mg PRN,Dark room rest
+hard to breathe,Bronchitis,Salbutamol Inhaler PRN,Use inhaler if wheezing
+migraine,Migraine,Sumatriptan 50mg PRN,Dark room rest
+body pain and cold,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+hard to breathe,Bronchitis,Salbutamol Inhaler PRN,Use inhaler if wheezing
+tonsils hurting,Streptococcal Pharyngitis,Azithromycin 500mg 1-0-0,Complete antibiotic course
+palpitations and sweat,Arrhythmia evaluation,Metoprolol 25mg 1-0-0,Avoid caffeine
+stomach pain and vomiting,Acute Gastroenteritis,Pantoprazole 40mg 1-0-0,Oral rehydration salts
+gastric pain,Dyspepsia,Pantoprazole 40mg 1-0-0,Avoid spicy food
+body pain and cold,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+nausea and diarrhea,Acute Gastroenteritis,Ondansetron 4mg 1-0-1,Light diet (rice gruel)
+body pain and cold,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+body pain and cold,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+hard to breathe,Bronchitis,Salbutamol Inhaler PRN,Use inhaler if wheezing
+fever and headache,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+chest tightness,Angina Pectoris,Aspirin 75mg 1-0-0,Immediate ER if pain worsens
+fever and headache,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+tonsils hurting,Streptococcal Pharyngitis,Azithromycin 500mg 1-0-0,Complete antibiotic course
+nausea and diarrhea,Acute Gastroenteritis,Ondansetron 4mg 1-0-1,Light diet (rice gruel)
+palpitations and sweat,Arrhythmia evaluation,Metoprolol 25mg 1-0-0,Avoid caffeine
+cough and throat pain,Acute Bronchitis,Amoxicillin 500mg 1-1-1,Warm saline gargles
+tonsils hurting,Streptococcal Pharyngitis,Azithromycin 500mg 1-0-0,Complete antibiotic course
+cough and throat pain,Acute Bronchitis,Amoxicillin 500mg 1-1-1,Warm saline gargles
+cough and throat pain,Acute Bronchitis,Amoxicillin 500mg 1-1-1,Warm saline gargles
+palpitations and sweat,Arrhythmia evaluation,Metoprolol 25mg 1-0-0,Avoid caffeine
+migraine,Migraine,Sumatriptan 50mg PRN,Dark room rest
+fever and headache,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+body pain and cold,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+stomach pain and vomiting,Acute Gastroenteritis,Pantoprazole 40mg 1-0-0,Oral rehydration salts
+cough and throat pain,Acute Bronchitis,Amoxicillin 500mg 1-1-1,Warm saline gargles
+nausea and diarrhea,Acute Gastroenteritis,Ondansetron 4mg 1-0-1,Light diet (rice gruel)
+tonsils hurting,Streptococcal Pharyngitis,Azithromycin 500mg 1-0-0,Complete antibiotic course
+migraine,Migraine,Sumatriptan 50mg PRN,Dark room rest
+cough and throat pain,Acute Bronchitis,Amoxicillin 500mg 1-1-1,Warm saline gargles
+migraine,Migraine,Sumatriptan 50mg PRN,Dark room rest
+migraine,Migraine,Sumatriptan 50mg PRN,Dark room rest
+cough and throat pain,Acute Bronchitis,Amoxicillin 500mg 1-1-1,Warm saline gargles
+hard to breathe,Bronchitis,Salbutamol Inhaler PRN,Use inhaler if wheezing
+chest tightness,Angina Pectoris,Aspirin 75mg 1-0-0,Immediate ER if pain worsens
+nausea and diarrhea,Acute Gastroenteritis,Ondansetron 4mg 1-0-1,Light diet (rice gruel)
+body pain and cold,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+body pain and cold,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+nausea and diarrhea,Acute Gastroenteritis,Ondansetron 4mg 1-0-1,Light diet (rice gruel)
+hard to breathe,Bronchitis,Salbutamol Inhaler PRN,Use inhaler if wheezing
+body pain and cold,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+migraine,Migraine,Sumatriptan 50mg PRN,Dark room rest
+palpitations and sweat,Arrhythmia evaluation,Metoprolol 25mg 1-0-0,Avoid caffeine
+tonsils hurting,Streptococcal Pharyngitis,Azithromycin 500mg 1-0-0,Complete antibiotic course
+fever and headache,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+body pain and cold,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+nausea and diarrhea,Acute Gastroenteritis,Ondansetron 4mg 1-0-1,Light diet (rice gruel)
+palpitations and sweat,Arrhythmia evaluation,Metoprolol 25mg 1-0-0,Avoid caffeine
+cough and throat pain,Acute Bronchitis,Amoxicillin 500mg 1-1-1,Warm saline gargles
+chest tightness,Angina Pectoris,Aspirin 75mg 1-0-0,Immediate ER if pain worsens
+nausea and diarrhea,Acute Gastroenteritis,Ondansetron 4mg 1-0-1,Light diet (rice gruel)
+migraine,Migraine,Sumatriptan 50mg PRN,Dark room rest
+chest tightness,Angina Pectoris,Aspirin 75mg 1-0-0,Immediate ER if pain worsens
+tonsils hurting,Streptococcal Pharyngitis,Azithromycin 500mg 1-0-0,Complete antibiotic course
+tonsils hurting,Streptococcal Pharyngitis,Azithromycin 500mg 1-0-0,Complete antibiotic course
+hard to breathe,Bronchitis,Salbutamol Inhaler PRN,Use inhaler if wheezing
+stomach pain and vomiting,Acute Gastroenteritis,Pantoprazole 40mg 1-0-0,Oral rehydration salts
+hard to breathe,Bronchitis,Salbutamol Inhaler PRN,Use inhaler if wheezing
+palpitations and sweat,Arrhythmia evaluation,Metoprolol 25mg 1-0-0,Avoid caffeine
+chest tightness,Angina Pectoris,Aspirin 75mg 1-0-0,Immediate ER if pain worsens
+stomach pain and vomiting,Acute Gastroenteritis,Pantoprazole 40mg 1-0-0,Oral rehydration salts
+cough and throat pain,Acute Bronchitis,Amoxicillin 500mg 1-1-1,Warm saline gargles
+migraine,Migraine,Sumatriptan 50mg PRN,Dark room rest
+chest tightness,Angina Pectoris,Aspirin 75mg 1-0-0,Immediate ER if pain worsens
+hard to breathe,Bronchitis,Salbutamol Inhaler PRN,Use inhaler if wheezing
+fever and headache,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+gastric pain,Dyspepsia,Pantoprazole 40mg 1-0-0,Avoid spicy food
+stomach pain and vomiting,Acute Gastroenteritis,Pantoprazole 40mg 1-0-0,Oral rehydration salts
+stomach pain and vomiting,Acute Gastroenteritis,Pantoprazole 40mg 1-0-0,Oral rehydration salts
+migraine,Migraine,Sumatriptan 50mg PRN,Dark room rest
+body pain and cold,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+tonsils hurting,Streptococcal Pharyngitis,Azithromycin 500mg 1-0-0,Complete antibiotic course
+tonsils hurting,Streptococcal Pharyngitis,Azithromycin 500mg 1-0-0,Complete antibiotic course
+fever and headache,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+palpitations and sweat,Arrhythmia evaluation,Metoprolol 25mg 1-0-0,Avoid caffeine
+palpitations and sweat,Arrhythmia evaluation,Metoprolol 25mg 1-0-0,Avoid caffeine
+cough and throat pain,Acute Bronchitis,Amoxicillin 500mg 1-1-1,Warm saline gargles
+chest tightness,Angina Pectoris,Aspirin 75mg 1-0-0,Immediate ER if pain worsens
+gastric pain,Dyspepsia,Pantoprazole 40mg 1-0-0,Avoid spicy food
+nausea and diarrhea,Acute Gastroenteritis,Ondansetron 4mg 1-0-1,Light diet (rice gruel)
+body pain and cold,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+hard to breathe,Bronchitis,Salbutamol Inhaler PRN,Use inhaler if wheezing
+nausea and diarrhea,Acute Gastroenteritis,Ondansetron 4mg 1-0-1,Light diet (rice gruel)
+nausea and diarrhea,Acute Gastroenteritis,Ondansetron 4mg 1-0-1,Light diet (rice gruel)
+stomach pain and vomiting,Acute Gastroenteritis,Pantoprazole 40mg 1-0-0,Oral rehydration salts
+fever and headache,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+tonsils hurting,Streptococcal Pharyngitis,Azithromycin 500mg 1-0-0,Complete antibiotic course
+cough and throat pain,Acute Bronchitis,Amoxicillin 500mg 1-1-1,Warm saline gargles
+palpitations and sweat,Arrhythmia evaluation,Metoprolol 25mg 1-0-0,Avoid caffeine
+gastric pain,Dyspepsia,Pantoprazole 40mg 1-0-0,Avoid spicy food
+fever and headache,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+stomach pain and vomiting,Acute Gastroenteritis,Pantoprazole 40mg 1-0-0,Oral rehydration salts
+hard to breathe,Bronchitis,Salbutamol Inhaler PRN,Use inhaler if wheezing
+cough and throat pain,Acute Bronchitis,Amoxicillin 500mg 1-1-1,Warm saline gargles
+stomach pain and vomiting,Acute Gastroenteritis,Pantoprazole 40mg 1-0-0,Oral rehydration salts
+gastric pain,Dyspepsia,Pantoprazole 40mg 1-0-0,Avoid spicy food
+tonsils hurting,Streptococcal Pharyngitis,Azithromycin 500mg 1-0-0,Complete antibiotic course
+tonsils hurting,Streptococcal Pharyngitis,Azithromycin 500mg 1-0-0,Complete antibiotic course
+tonsils hurting,Streptococcal Pharyngitis,Azithromycin 500mg 1-0-0,Complete antibiotic course
+fever and headache,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+fever and headache,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+palpitations and sweat,Arrhythmia evaluation,Metoprolol 25mg 1-0-0,Avoid caffeine
+palpitations and sweat,Arrhythmia evaluation,Metoprolol 25mg 1-0-0,Avoid caffeine
+hard to breathe,Bronchitis,Salbutamol Inhaler PRN,Use inhaler if wheezing
+gastric pain,Dyspepsia,Pantoprazole 40mg 1-0-0,Avoid spicy food
+cough and throat pain,Acute Bronchitis,Amoxicillin 500mg 1-1-1,Warm saline gargles
+migraine,Migraine,Sumatriptan 50mg PRN,Dark room rest
+migraine,Migraine,Sumatriptan 50mg PRN,Dark room rest
+stomach pain and vomiting,Acute Gastroenteritis,Pantoprazole 40mg 1-0-0,Oral rehydration salts
+tonsils hurting,Streptococcal Pharyngitis,Azithromycin 500mg 1-0-0,Complete antibiotic course
+cough and throat pain,Acute Bronchitis,Amoxicillin 500mg 1-1-1,Warm saline gargles
+nausea and diarrhea,Acute Gastroenteritis,Ondansetron 4mg 1-0-1,Light diet (rice gruel)
+fever and headache,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+chest tightness,Angina Pectoris,Aspirin 75mg 1-0-0,Immediate ER if pain worsens
+body pain and cold,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+hard to breathe,Bronchitis,Salbutamol Inhaler PRN,Use inhaler if wheezing
+tonsils hurting,Streptococcal Pharyngitis,Azithromycin 500mg 1-0-0,Complete antibiotic course
+tonsils hurting,Streptococcal Pharyngitis,Azithromycin 500mg 1-0-0,Complete antibiotic course
+gastric pain,Dyspepsia,Pantoprazole 40mg 1-0-0,Avoid spicy food
+tonsils hurting,Streptococcal Pharyngitis,Azithromycin 500mg 1-0-0,Complete antibiotic course
+fever and headache,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+fever and headache,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+body pain and cold,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+nausea and diarrhea,Acute Gastroenteritis,Ondansetron 4mg 1-0-1,Light diet (rice gruel)
+cough and throat pain,Acute Bronchitis,Amoxicillin 500mg 1-1-1,Warm saline gargles
+tonsils hurting,Streptococcal Pharyngitis,Azithromycin 500mg 1-0-0,Complete antibiotic course
+migraine,Migraine,Sumatriptan 50mg PRN,Dark room rest
+palpitations and sweat,Arrhythmia evaluation,Metoprolol 25mg 1-0-0,Avoid caffeine
+gastric pain,Dyspepsia,Pantoprazole 40mg 1-0-0,Avoid spicy food
+gastric pain,Dyspepsia,Pantoprazole 40mg 1-0-0,Avoid spicy food
+migraine,Migraine,Sumatriptan 50mg PRN,Dark room rest
+stomach pain and vomiting,Acute Gastroenteritis,Pantoprazole 40mg 1-0-0,Oral rehydration salts
+migraine,Migraine,Sumatriptan 50mg PRN,Dark room rest
+stomach pain and vomiting,Acute Gastroenteritis,Pantoprazole 40mg 1-0-0,Oral rehydration salts
+chest tightness,Angina Pectoris,Aspirin 75mg 1-0-0,Immediate ER if pain worsens
+palpitations and sweat,Arrhythmia evaluation,Metoprolol 25mg 1-0-0,Avoid caffeine
+gastric pain,Dyspepsia,Pantoprazole 40mg 1-0-0,Avoid spicy food
+migraine,Migraine,Sumatriptan 50mg PRN,Dark room rest
+chest tightness,Angina Pectoris,Aspirin 75mg 1-0-0,Immediate ER if pain worsens
+hard to breathe,Bronchitis,Salbutamol Inhaler PRN,Use inhaler if wheezing
+cough and throat pain,Acute Bronchitis,Amoxicillin 500mg 1-1-1,Warm saline gargles
+chest tightness,Angina Pectoris,Aspirin 75mg 1-0-0,Immediate ER if pain worsens
+cough and throat pain,Acute Bronchitis,Amoxicillin 500mg 1-1-1,Warm saline gargles
+migraine,Migraine,Sumatriptan 50mg PRN,Dark room rest
+nausea and diarrhea,Acute Gastroenteritis,Ondansetron 4mg 1-0-1,Light diet (rice gruel)
+chest tightness,Angina Pectoris,Aspirin 75mg 1-0-0,Immediate ER if pain worsens
+palpitations and sweat,Arrhythmia evaluation,Metoprolol 25mg 1-0-0,Avoid caffeine
+migraine,Migraine,Sumatriptan 50mg PRN,Dark room rest
+tonsils hurting,Streptococcal Pharyngitis,Azithromycin 500mg 1-0-0,Complete antibiotic course
+fever and headache,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+chest tightness,Angina Pectoris,Aspirin 75mg 1-0-0,Immediate ER if pain worsens
+palpitations and sweat,Arrhythmia evaluation,Metoprolol 25mg 1-0-0,Avoid caffeine
+hard to breathe,Bronchitis,Salbutamol Inhaler PRN,Use inhaler if wheezing
+tonsils hurting,Streptococcal Pharyngitis,Azithromycin 500mg 1-0-0,Complete antibiotic course
+hard to breathe,Bronchitis,Salbutamol Inhaler PRN,Use inhaler if wheezing
+migraine,Migraine,Sumatriptan 50mg PRN,Dark room rest
+fever and headache,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+chest tightness,Angina Pectoris,Aspirin 75mg 1-0-0,Immediate ER if pain worsens
+chest tightness,Angina Pectoris,Aspirin 75mg 1-0-0,Immediate ER if pain worsens
+nausea and diarrhea,Acute Gastroenteritis,Ondansetron 4mg 1-0-1,Light diet (rice gruel)
+gastric pain,Dyspepsia,Pantoprazole 40mg 1-0-0,Avoid spicy food
+nausea and diarrhea,Acute Gastroenteritis,Ondansetron 4mg 1-0-1,Light diet (rice gruel)
+migraine,Migraine,Sumatriptan 50mg PRN,Dark room rest
+migraine,Migraine,Sumatriptan 50mg PRN,Dark room rest
+fever and headache,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+nausea and diarrhea,Acute Gastroenteritis,Ondansetron 4mg 1-0-1,Light diet (rice gruel)
+palpitations and sweat,Arrhythmia evaluation,Metoprolol 25mg 1-0-0,Avoid caffeine
+palpitations and sweat,Arrhythmia evaluation,Metoprolol 25mg 1-0-0,Avoid caffeine
+fever and headache,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+gastric pain,Dyspepsia,Pantoprazole 40mg 1-0-0,Avoid spicy food
+palpitations and sweat,Arrhythmia evaluation,Metoprolol 25mg 1-0-0,Avoid caffeine
+stomach pain and vomiting,Acute Gastroenteritis,Pantoprazole 40mg 1-0-0,Oral rehydration salts
+cough and throat pain,Acute Bronchitis,Amoxicillin 500mg 1-1-1,Warm saline gargles
+fever and headache,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration
+fever and headache,Viral Fever / URI,Paracetamol 650mg 1-0-1,Rest and hydration

@@ -1,0 +1,202 @@
+{% extends "base.html" %}
+
+{% block title %}Doctor Dashboard{% endblock %}
+
+{% block content %}
+<div class="container-fluid px-0">
+    <!-- Header Block -->
+    <div class="row mb-4 align-items-center">
+        <div class="col-md-8">
+            <h2 class="fw-bold mb-1">Dr. {{ request.user.last_name|default:request.user.username }}</h2>
+            <p class="text-secondary">Logged into the SmartCare AI System ({{ doctor.department.name }} Ward).</p>
+        </div>
+        <div class="col-md-4 text-md-end mt-3 mt-md-0">
+            <div class="d-inline-flex align-items-center gap-2 px-3 py-2 bg-white rounded-3 border">
+                <span class="small text-muted fw-semibold me-2">Availability:</span>
+                <span class="badge {% if doctor.availability_status %}bg-success{% else %}bg-secondary{% endif %} rounded-pill px-2.5 py-1.5 me-2">
+                    {% if doctor.availability_status %}Active Shift{% else %}Off Shift{% endif %}
+                </span>
+                <a href="{% url 'toggle_availability' %}" class="btn btn-sm btn-outline-primary fw-semibold" style="border-radius: 8px;">
+                    Toggle Status
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Emergencies Highlight Panel -->
+    {% if emergencies %}
+    <div class="row mb-4">
+        <div class="col-12">
+            <div class="glass-card border-danger bg-danger-subtle bg-opacity-10 p-4">
+                <div class="d-flex align-items-center gap-3 mb-3">
+                    <span class="badge bg-danger rounded-pill px-3 py-1.5 text-uppercase fw-bold" style="font-size: 11px; letter-spacing: 0.5px;">Emergency Flag Active</span>
+                    <h5 class="fw-bold text-danger-emphasis mb-0">High-Priority Trauma Actions Required</h5>
+                </div>
+                <div class="d-flex flex-column gap-2">
+                    {% for eq in emergencies %}
+                    <div class="d-flex flex-wrap justify-content-between align-items-center p-3 bg-white border border-danger-subtle rounded-3 shadow-sm">
+                        <div>
+                            <strong class="text-dark">{{ eq.appointment.patient.user.first_name }} {{ eq.appointment.patient.user.last_name }}</strong>
+                            <span class="text-secondary small ms-2">Token #{{ eq.appointment.token_number }} | Age: {{ eq.appointment.patient.age }}</span>
+                            <div class="small mt-1 text-muted" title="{{ eq.appointment.patient.medical_history|default:'None recorded' }}"><i class="bi bi-journal-medical me-1"></i><strong>History:</strong> {{ eq.appointment.patient.medical_history|default:"None recorded"|truncatechars:60 }}</div>
+                        </div>
+                        <div class="d-flex align-items-center gap-3">
+                            <span class="badge bg-danger-subtle text-danger border border-danger-subtle px-2.5 py-1.5 rounded-pill fw-semibold">Emergency Position: {{ eq.appointment.queue_position }}</span>
+                            <a href="{% url 'complete_appointment' eq.appointment.id %}" class="btn btn-sm btn-danger px-3" style="border-radius: 8px;">
+                                <i class="bi bi-check-circle me-1"></i>Resolve Triage
+                            </a>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+
+    <!-- Widgets Row -->
+    <div class="row g-4 mb-4">
+        <!-- Today's Queue Widget -->
+        <div class="col-md-6 col-lg-4">
+            <div class="glass-card widget-card">
+                <div class="widget-icon">
+                    <i class="fa-solid fa-people-group"></i>
+                </div>
+                <h6 class="text-muted fw-semibold text-uppercase small mb-1">Queue Backlog</h6>
+                <h3 class="fw-bold">{{ pending_count }}</h3>
+                <p class="text-secondary small mb-0">Active waiting patient tokens</p>
+            </div>
+        </div>
+        
+        <!-- Completed Outpatients Widget -->
+        <div class="col-md-6 col-lg-4">
+            <div class="glass-card widget-card">
+                <div class="widget-icon" style="color: #10b981; background-color: #d1fae5;">
+                    <i class="fa-solid fa-circle-check"></i>
+                </div>
+                <h6 class="text-muted fw-semibold text-uppercase small mb-1">Completed Today</h6>
+                <h3 class="fw-bold">{{ completed_count }}</h3>
+                <p class="text-secondary small mb-0">Successfully consulted patients</p>
+            </div>
+        </div>
+
+        <!-- Total Schedules Widget -->
+        <div class="col-md-12 col-lg-4">
+            <div class="glass-card widget-card">
+                <div class="widget-icon" style="color: #0ea5e9; background-color: #e0f2fe;">
+                    <i class="fa-solid fa-hospital-user"></i>
+                </div>
+                <h6 class="text-muted fw-semibold text-uppercase small mb-1">Daily Capacity</h6>
+                <h3 class="fw-bold">{{ appointments.count }}</h3>
+                <p class="text-secondary small mb-0">Total scheduled slots registered</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Active Consultation Table -->
+    <div class="row g-4">
+        <div class="col-12">
+            <div class="glass-card">
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                    <h5 class="fw-bold mb-0">Active Consultation Queue</h5>
+                    <a href="{% url 'todays_patients' %}" class="btn btn-sm btn-outline-primary fw-semibold px-3 py-2" style="border-radius: 10px;">
+                        View Today's Registry
+                    </a>
+                </div>
+
+                {% if appointments %}
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Token</th>
+                                    <th>Patient</th>
+                                    <th>Age/Gender</th>
+                                    <th>Medical History</th>
+                                    <th>Queue Position</th>
+                                    <th>Wait Time</th>
+                                    <th>Type</th>
+                                    <th>Triage</th>
+                                    <th>Status</th>
+                                    <th class="text-center">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for app in appointments %}
+                                <tr>
+                                    <td class="fw-bold text-primary">#{{ app.token_number }}</td>
+                                    <td class="fw-semibold">{% if app.patient.user.first_name %}{{ app.patient.user.first_name }} {{ app.patient.user.last_name }}{% else %}{{ app.patient.user.username }}{% endif %}</td>
+                                    <td>{{ app.patient.age }} / {{ app.patient.gender }}</td>
+                                    <td class="small text-muted" title="{{ app.patient.medical_history|default:'None recorded' }}">{{ app.patient.medical_history|default:"None recorded"|truncatechars:35 }}</td>
+                                    <td>
+                                        {% if app.status == 'Pending' %}
+                                            <span class="badge bg-secondary rounded-pill px-2.5 py-1.5">{{ app.queue_position }}</span>
+                                        {% else %}
+                                            N/A
+                                        {% endif %}
+                                    </td>
+                                    <td>
+                                        {% if app.status == 'Pending' and app.queue_entry %}
+                                            <strong class="text-info">{{ app.queue_entry.formatted_wait_time }}</strong>
+                                        {% else %}
+                                            N/A
+                                        {% endif %}
+                                    </td>
+                                    <td>
+                                        {% if app.consultation_medium == 'Video-Call' %}
+                                            <span class="badge bg-purple-subtle text-purple border border-purple-subtle px-2.5 py-1.5 animate-pulse" style="background: rgba(139, 92, 246, 0.1); color: #8b5cf6; border-radius: 12px; font-size: 11px; border: 1px solid rgba(139,92,246,0.25);">
+                                                <i class="bi bi-camera-video-fill me-1"></i>Video Call
+                                            </span>
+                                        {% else %}
+                                            <span class="badge bg-primary-subtle text-primary border border-primary-subtle px-2.5 py-1.5" style="background: rgba(13, 110, 253, 0.1); color: #0d6efd; border-radius: 12px; font-size: 11px; border: 1px solid rgba(13,110,253,0.25);">
+                                                <i class="bi bi-building me-1"></i>In-Hospital
+                                            </span>
+                                        {% endif %}
+                                    </td>
+                                    <td>
+                                        {% if app.queue_entry %}
+                                            <span class="badge {% if app.queue_entry.priority_level == 'Emergency' %}bg-danger{% elif app.queue_entry.priority_level == 'Urgent' %}bg-warning text-dark{% else %}bg-success{% endif %}">
+                                                {{ app.queue_entry.priority_level }}
+                                            </span>
+                                        {% else %}
+                                            Normal
+                                        {% endif %}
+                                    </td>
+                                    <td>
+                                        <span class="status-badge {% if app.status == 'Pending' %}badge-pending{% elif app.status == 'Completed' %}badge-completed{% else %}badge-cancelled{% endif %}">
+                                            {{ app.status }}
+                                        </span>
+                                    </td>
+                                    <td class="text-center">
+                                        {% if app.status == 'Pending' %}
+                                            <div class="d-flex justify-content-center align-items-center gap-2 flex-nowrap">
+                                                <a href="{% url 'start_telehealth' app.id %}" class="btn btn-sm btn-primary border-0 px-3" style="background: linear-gradient(135deg, var(--primary), var(--secondary)); border-radius: 8px; white-space: nowrap;" title="Start Live Video Call">
+                                                    <i class="bi bi-camera-video-fill me-1"></i>Video Call
+                                                </a>
+                                                <a href="{% url 'complete_appointment' app.id %}" class="btn btn-sm btn-success border-0 px-3" style="border-radius: 8px; white-space: nowrap;" title="Complete Consultation">
+                                                    <i class="bi bi-check-circle me-1"></i>Resolve
+                                                </a>
+                                                <a href="{% url 'patient_details' app.id %}" class="btn btn-sm btn-outline-info border-0 px-2.5" style="border-radius: 8px; white-space: nowrap;" title="View Details">
+                                                    <i class="bi bi-eye-fill"></i>
+                                                </a>
+                                            </div>
+                                        {% else %}
+                                            <span class="text-muted small">Updated</span>
+                                        {% endif %}
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                {% else %}
+                    <div class="text-center py-5">
+                        <i class="bi bi-people text-muted" style="font-size: 3rem;"></i>
+                        <p class="text-secondary mt-3 mb-0">No patient appointments recorded for today.</p>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

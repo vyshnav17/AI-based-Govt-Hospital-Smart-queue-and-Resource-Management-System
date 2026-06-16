@@ -1,0 +1,439 @@
+{% extends 'base.html' %}
+{% block title %}Write Prescription{% endblock %}
+
+{% block content %}
+<div class="container-fluid px-0">
+    <!-- Back to Dashboard -->
+    <div class="mb-4">
+        <a href="{% url 'doctor_dashboard' %}" class="btn btn-outline-secondary py-2 px-3" style="border-radius: 12px; font-weight: 500;">
+            <i class="bi bi-arrow-left me-2"></i>Back to Doctor Dashboard
+        </a>
+    </div>
+
+    <div class="row g-4">
+        <!-- LEFT COLUMN: Standard Digital Prescription Form -->
+        <div class="col-lg-7">
+            <div class="glass-card shadow-lg p-5" style="border: 1px solid rgba(13, 110, 253, 0.2); background: rgba(255, 255, 255, 0.95); height: 100%;">
+                <!-- Header -->
+                <div class="d-flex align-items-center gap-3 mb-4 pb-4 border-bottom" style="border-color: rgba(0,0,0,0.05) !important;">
+                    <div class="p-3 bg-primary-subtle text-primary rounded-4" style="font-size: 28px; width: 64px; height: 64px; display: flex; justify-content: center; align-items: center;">
+                        <i class="fa-solid fa-file-medical"></i>
+                    </div>
+                    <div>
+                        <span class="badge bg-primary-subtle text-primary mb-1 fw-bold text-uppercase" style="letter-spacing: 0.5px;">Consultation Completion</span>
+                        <h2 class="fw-bold mb-0 text-dark" style="letter-spacing: -0.5px;">Write Digital Prescription</h2>
+                    </div>
+                </div>
+
+                <!-- Patient and Token Info -->
+                <div class="row g-3 p-3 bg-light rounded-4 mb-4" style="border: 1px solid rgba(0,0,0,0.04);">
+                    <div class="col-sm-6">
+                        <span class="text-secondary d-block font-size-sm" style="font-size: 13px;">PATIENT NAME</span>
+                        <strong class="text-dark fs-5">{{ appointment.patient.user.first_name }} {{ appointment.patient.user.last_name }}</strong>
+                        <span class="text-muted d-block" style="font-size: 13px;">Age: {{ appointment.patient.age }} | Gender: {{ appointment.patient.gender }}</span>
+                    </div>
+                    <div class="col-sm-6 text-sm-end">
+                        <span class="text-secondary d-block font-size-sm" style="font-size: 13px;">TOKEN DETAILS</span>
+                        <strong class="text-primary fs-5">Token #{{ appointment.token_number }}</strong>
+                        <span class="text-muted d-block" style="font-size: 13px;">Dept: {{ appointment.department.name }}</span>
+                    </div>
+                </div>
+
+                <!-- Prescription Form -->
+                <form method="POST" id="prescription-form">
+                    {% csrf_token %}
+                    
+                    {% for field in form %}
+                        <div class="mb-4">
+                            <label class="form-label fw-semibold text-secondary" for="{{ field.id_for_label }}">
+                                {{ field.label }}
+                                {% if field.field.required %}<span class="text-danger">*</span>{% endif %}
+                            </label>
+                            {{ field }}
+                            {% if field.help_text %}
+                                <div class="form-text text-muted" style="font-size: 12px;">{{ field.help_text }}</div>
+                            {% endif %}
+                            {% if field.errors %}
+                                <div class="text-danger mt-1" style="font-size: 13px;">
+                                    <i class="bi bi-exclamation-circle-fill me-1"></i>{{ field.errors.as_text }}
+                                </div>
+                            {% endif %}
+                        </div>
+                    {% endfor %}
+
+                    <!-- Submit Buttons -->
+                    <div class="d-flex align-items-center gap-3 mt-5 pt-3 border-top" style="border-color: rgba(0,0,0,0.05) !important;">
+                        <button type="submit" class="btn btn-custom-primary py-3 px-5 flex-grow-1" style="border-radius: 12px; font-weight: 600; font-size: 16px;">
+                            <i class="fa-solid fa-file-signature me-2"></i>Complete & Register Prescription
+                        </button>
+                        <a href="{% url 'doctor_dashboard' %}" class="btn btn-outline-danger py-3 px-4" style="border-radius: 12px; font-weight: 600; font-size: 16px;">
+                            Cancel
+                        </a>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- RIGHT COLUMN: SmartCare AI Clinician Assistant Sidebar -->
+        <div class="col-lg-5">
+            <div class="glass-card shadow-lg p-4" style="border: 2px solid #8b5cf6 !important; background: rgba(243, 244, 246, 0.95); height: 100%; border-radius: 20px;">
+                <!-- Header -->
+                <div class="d-flex align-items-center gap-3 mb-3 pb-3 border-bottom border-secondary-subtle">
+                    <div class="p-3 bg-purple text-white rounded-4 d-flex justify-content-center align-items-center" 
+                         style="background: linear-gradient(135deg, #8b5cf6, #ec4899); font-size: 24px; width: 56px; height: 56px; box-shadow: 0 4px 15px rgba(139, 92, 246, 0.35);">
+                        <i class="fa-solid fa-wand-magic-sparkles animate-sparkle"></i>
+                    </div>
+                    <div>
+                        <span class="badge bg-purple-subtle text-purple mb-1 fw-bold text-uppercase" style="letter-spacing: 0.5px; background: rgba(139, 92, 246, 0.15); color: #7c3aed;">Decision Support</span>
+                        <h4 class="fw-bold mb-0 text-dark" style="letter-spacing: -0.5px;">AI Clinician Co-Pilot</h4>
+                    </div>
+                </div>
+
+                <p class="text-secondary mb-3" style="font-size: 13.5px;">
+                    Describe the patient's complaints or findings below. Our clinical Llama AI will generate diagnostic models, suggest optimal medication and duration lists, and auto-populate your form!
+                </p>
+
+                <!-- Input symptoms -->
+                <div class="mb-3">
+                    <div class="d-flex justify-content-between align-items-center mb-1">
+                        <label for="aiSymptomsInput" class="form-label fw-bold text-secondary mb-0" style="font-size: 13px;">SYMPTOMS / CLINICAL PRESENTATION</label>
+                        <button type="button" class="btn btn-sm text-white fw-bold d-flex align-items-center" id="btnRecordScribe" style="border-radius: 8px; background: linear-gradient(135deg, #ef4444, #f43f5e); border: none; box-shadow: 0 4px 10px rgba(239, 68, 68, 0.3); transition: all 0.2s ease;">
+                            <i class="fa-solid fa-microphone me-1"></i><span>Start Voice Scribe</span>
+                        </button>
+                    </div>
+                    <textarea id="aiSymptomsInput" class="form-control" rows="3" 
+                              placeholder="e.g. Patient has a severe chest cough with greenish sputum, mild fever (100.5F), throat congestion, and fatigue for 3 days..." 
+                              style="border-radius: 12px; font-size: 13.5px; border-color: rgba(139, 92, 246, 0.25);"></textarea>
+                    <div id="scribeRecordingStatus" class="form-text text-danger d-none mt-2 fw-bold animate-pulse" style="font-size: 13px;">
+                        <i class="fa-solid fa-record-vinyl me-1 fa-spin"></i>Listening to clinical observations... Tap button to stop.
+                    </div>
+                </div>
+
+                <!-- Generate Button -->
+                <button type="button" class="btn btn-purple w-100 py-3 mb-4 text-white d-flex align-items-center justify-content-center gap-2" 
+                        id="btnGeneratePrescription" 
+                        style="background: linear-gradient(135deg, #7c3aed, #db2777); border-radius: 12px; font-weight: 600; font-size: 14.5px; border: none; box-shadow: 0 4px 12px rgba(124, 58, 237, 0.3);">
+                    <i class="fa-solid fa-wand-magic-sparkles"></i>
+                    <span>Generate Clinical Recommendation</span>
+                </button>
+
+                <!-- AI Recommendation Preview Card -->
+                <div id="aiRecommendationCard" class="d-none" style="transition: all 0.3s ease;">
+                    <div class="p-3 bg-white border border-purple-subtle rounded-4 mb-4" 
+                         style="border-color: rgba(139, 92, 246, 0.3) !important; border-radius: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.02);">
+                        <span class="badge mb-3 px-2.5 py-1.5 status-badge" style="background-color: rgba(139, 92, 246, 0.1); color: #7c3aed; border: 1px solid rgba(139, 92, 246, 0.2);">
+                            🔮 AI Generation Ready
+                        </span>
+
+                        <div class="mb-3">
+                            <span class="text-muted d-block fw-bold text-uppercase" style="font-size: 11px; letter-spacing: 0.5px;">Proposed Diagnosis</span>
+                            <p id="aiDiagPreview" class="text-dark mb-0 fw-semibold" style="font-size: 13.5px;"></p>
+                        </div>
+
+                        <div class="mb-3">
+                            <span class="text-muted d-block fw-bold text-uppercase" style="font-size: 11px; letter-spacing: 0.5px;">Recommended Regimen</span>
+                            <pre id="aiMedPreview" class="text-dark mb-0 fw-semibold" style="font-size: 13px; font-family: inherit; white-space: pre-line;"></pre>
+                        </div>
+
+                        <div class="mb-3">
+                            <span class="text-muted d-block fw-bold text-uppercase" style="font-size: 11px; letter-spacing: 0.5px;">Patient Instructions</span>
+                            <p id="aiInstPreview" class="text-dark mb-0 fw-semibold" style="font-size: 13.5px;"></p>
+                        </div>
+
+                        <button type="button" class="btn btn-success w-100 py-2.5 mt-2 d-flex align-items-center justify-content-center gap-2" 
+                                id="btnAutofillForm" 
+                                style="border-radius: 10px; font-weight: 600; font-size: 14px; background-color: #10b981; border: none; box-shadow: 0 4px 10px rgba(16, 185, 129, 0.25);">
+                            <i class="fa-solid fa-bolt-lightning"></i>
+                            <span>Auto-Fill Prescription Form</span>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Loading Spinner / Typing Effect Card -->
+                <div id="aiLoadingCard" class="d-none text-center py-4 bg-white border border-purple-subtle rounded-4 mb-4" 
+                     style="border-color: rgba(139, 92, 246, 0.2) !important; border-radius: 16px;">
+                    <div class="spinner-grow text-purple mb-3" role="status" style="color: #7c3aed;">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
+                    <h6 class="fw-bold text-dark mb-1">SmartCare AI is Consulting Llama</h6>
+                    <p class="text-secondary mb-0 small px-3" id="loadingStatusText">Analyzing symptom logs and mapping medication libraries...</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const btnGenerate = document.getElementById("btnGeneratePrescription");
+        const btnAutofill = document.getElementById("btnAutofillForm");
+        const inputSymptoms = document.getElementById("aiSymptomsInput");
+        
+        const cardRec = document.getElementById("aiRecommendationCard");
+        const cardLoading = document.getElementById("aiLoadingCard");
+        const loadingText = document.getElementById("loadingStatusText");
+
+        const previewDiag = document.getElementById("aiDiagPreview");
+        const previewMed = document.getElementById("aiMedPreview");
+        const previewInst = document.getElementById("aiInstPreview");
+
+        // Custom style injected dynamically for form glow highlights
+        const styleSheet = document.createElement("style");
+        styleSheet.innerText = `
+            @keyframes borderGlow {
+                0% { border-color: rgba(16, 185, 129, 0.3); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.2); }
+                50% { border-color: #10b981; box-shadow: 0 0 15px 4px rgba(16, 185, 129, 0.4); }
+                100% { border-color: rgba(13, 110, 253, 0.2); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+            }
+            .form-fill-glow {
+                animation: borderGlow 1.8s ease-in-out forwards;
+            }
+            .animate-sparkle {
+                animation: pulseSparkle 1.8s infinite ease-in-out;
+            }
+            @keyframes pulseSparkle {
+                0% { transform: scale(1); opacity: 1; }
+                50% { transform: scale(1.18); opacity: 0.85; }
+                100% { transform: scale(1); opacity: 1; }
+            }
+            .animate-pulse {
+                animation: pulseText 1.5s infinite;
+            }
+            @keyframes pulseText {
+                0% { opacity: 1; }
+                50% { opacity: 0.5; }
+                100% { opacity: 1; }
+            }
+        `;
+        document.head.appendChild(styleSheet);
+
+        let generatedData = null;
+
+        // --- AI Voice Scribe Logic ---
+        const btnRecordScribe = document.getElementById("btnRecordScribe");
+        const recordStatus = document.getElementById("scribeRecordingStatus");
+        let mediaRecorder = null;
+        let audioChunks = [];
+        let isRecording = false;
+
+        btnRecordScribe.addEventListener("click", async () => {
+            if (isRecording) {
+                if (mediaRecorder && mediaRecorder.state === 'recording') {
+                    mediaRecorder.stop();
+                }
+                return;
+            }
+
+            try {
+                const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+                mediaRecorder = new MediaRecorder(stream);
+                audioChunks = [];
+
+                mediaRecorder.ondataavailable = e => {
+                    if (e.data.size > 0) audioChunks.push(e.data);
+                };
+
+                mediaRecorder.onstop = () => {
+                    isRecording = false;
+                    btnRecordScribe.innerHTML = '<i class="fa-solid fa-microphone me-1"></i><span>Start Voice Scribe</span>';
+                    btnRecordScribe.style.background = 'linear-gradient(135deg, #ef4444, #f43f5e)';
+                    recordStatus.classList.add("d-none");
+                    
+                    // Stop tracks to release mic
+                    stream.getTracks().forEach(track => track.stop());
+
+                    // Visual feedback
+                    inputSymptoms.value = "Transcribing audio... Please wait.";
+                    inputSymptoms.disabled = true;
+                    btnGenerate.disabled = true;
+
+                    const audioBlob = new Blob(audioChunks, { type: 'audio/webm' });
+                    const formData = new FormData();
+                    formData.append('audio', audioBlob, 'scribe_audio.webm');
+
+                    fetch('/api/ai-scribe-transcribe/', {
+                        method: 'POST',
+                        headers: {
+                            'X-CSRFToken': '{{ csrf_token }}'
+                        },
+                        body: formData
+                    })
+                    .then(res => res.json())
+                    .then(data => {
+                        inputSymptoms.disabled = false;
+                        btnGenerate.disabled = false;
+                        if (data.transcript) {
+                            inputSymptoms.value = data.transcript;
+                            inputSymptoms.classList.remove("form-fill-glow");
+                            void inputSymptoms.offsetWidth; // Reflow
+                            inputSymptoms.classList.add("form-fill-glow");
+                            
+                            // Auto-click generate if they want a seamless experience!
+                            setTimeout(() => {
+                                if(confirm("Transcription successful. Generate clinical recommendation (SOAP Note)?")) {
+                                    btnGenerate.click();
+                                }
+                            }, 500);
+                        } else {
+                            inputSymptoms.value = "";
+                            alert("Transcription Error: " + (data.error || "Unknown"));
+                        }
+                    })
+                    .catch(e => {
+                        console.error(e);
+                        inputSymptoms.disabled = false;
+                        btnGenerate.disabled = false;
+                        inputSymptoms.value = "";
+                        alert("Network error during transcription.");
+                    });
+                };
+
+                mediaRecorder.start();
+                isRecording = true;
+                btnRecordScribe.innerHTML = '<i class="fa-solid fa-stop me-1"></i><span>Stop Scribe</span>';
+                btnRecordScribe.style.background = '#64748b'; // Slate grey for stop
+                recordStatus.classList.remove("d-none");
+                inputSymptoms.value = ""; // clear previous
+                
+            } catch (err) {
+                console.error("Mic access denied or error:", err);
+                alert("Microphone access is required for the AI Voice Scribe.");
+            }
+        });
+        // ------------------------------
+
+        btnGenerate.addEventListener("click", function() {
+            const symptoms = inputSymptoms.value.trim();
+            if (!symptoms) {
+                alert("Please describe patient symptoms to get recommendations.");
+                return;
+            }
+
+            // UI state: loading
+            cardRec.classList.add("d-none");
+            cardLoading.classList.remove("d-none");
+            btnGenerate.disabled = true;
+
+            const statusStages = [
+                "Analyzing symptom logs...",
+                "Mapping clinical databases...",
+                "Consulting Llama medical models...",
+                "Formulating safe dosage regimens..."
+            ];
+            let stageIndex = 0;
+            const statusInterval = setInterval(() => {
+                stageIndex = (stageIndex + 1) % statusStages.length;
+                loadingText.textContent = statusStages[stageIndex];
+            }, 1200);
+
+            // Fetch from API
+            fetch("{% url 'ai_prescription_suggest' %}", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "X-CSRFToken": "{{ csrf_token }}"
+                },
+                body: JSON.stringify({
+                    symptoms: symptoms,
+                    appointment_id: "{{ appointment.id }}"
+                })
+            })
+            .then(res => {
+                if (!res.ok) throw new Error("Suggestion failed");
+                return res.json();
+            })
+            .then(data => {
+                clearInterval(statusInterval);
+                cardLoading.classList.add("d-none");
+                cardRec.classList.remove("d-none");
+                btnGenerate.disabled = false;
+
+                // Set preview
+                previewDiag.textContent = data.diagnosis;
+                previewMed.textContent = data.medications;
+                previewInst.textContent = data.instructions || "None provided";
+
+                generatedData = data;
+
+                // Play pleasant subtle success synth chime
+                try {
+                    const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+                    if (audioCtx) {
+                        const osc = audioCtx.createOscillator();
+                        const gain = audioCtx.createGain();
+                        osc.connect(gain);
+                        gain.connect(audioCtx.destination);
+                        osc.type = 'sine';
+                        osc.frequency.setValueAtTime(659.25, audioCtx.currentTime); // E5
+                        gain.gain.setValueAtTime(0.08, audioCtx.currentTime);
+                        osc.start();
+                        osc.stop(audioCtx.currentTime + 0.15);
+                        setTimeout(() => {
+                            const osc2 = audioCtx.createOscillator();
+                            const gain2 = audioCtx.createGain();
+                            osc2.connect(gain2);
+                            gain2.connect(audioCtx.destination);
+                            osc2.type = 'sine';
+                            osc2.frequency.setValueAtTime(987.77, audioCtx.currentTime); // B5
+                            gain2.gain.setValueAtTime(0.08, audioCtx.currentTime);
+                            osc2.start();
+                            osc2.stop(audioCtx.currentTime + 0.22);
+                        }, 130);
+                    }
+                } catch(e) {}
+            })
+            .catch(err => {
+                clearInterval(statusInterval);
+                cardLoading.classList.add("d-none");
+                btnGenerate.disabled = false;
+                alert("SmartCare AI was unable to reach its Llama models. Please try again.");
+            });
+        });
+
+        btnAutofill.addEventListener("click", function() {
+            if (!generatedData) return;
+
+            const inputDiag = document.querySelector("[name='diagnosis']");
+            const inputMed = document.querySelector("[name='medications']");
+            const inputInst = document.querySelector("[name='instructions']");
+
+            if (inputDiag) {
+                inputDiag.value = generatedData.diagnosis;
+                inputDiag.classList.remove("form-fill-glow");
+                void inputDiag.offsetWidth; // Trigger reflow
+                inputDiag.classList.add("form-fill-glow");
+            }
+            if (inputMed) {
+                inputMed.value = generatedData.medications;
+                inputMed.classList.remove("form-fill-glow");
+                void inputMed.offsetWidth; // Trigger reflow
+                inputMed.classList.add("form-fill-glow");
+            }
+            if (inputInst) {
+                inputInst.value = generatedData.instructions;
+                inputInst.classList.remove("form-fill-glow");
+                void inputInst.offsetWidth; // Trigger reflow
+                inputInst.classList.add("form-fill-glow");
+            }
+
+            // Play nice energetic pop audio synth tone
+            try {
+                const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+                if (audioCtx) {
+                    const osc = audioCtx.createOscillator();
+                    const gain = audioCtx.createGain();
+                    osc.connect(gain);
+                    gain.connect(audioCtx.destination);
+                    osc.type = 'sine';
+                    osc.frequency.setValueAtTime(880, audioCtx.currentTime); // A5
+                    gain.gain.setValueAtTime(0.06, audioCtx.currentTime);
+                    osc.start();
+                    osc.stop(audioCtx.currentTime + 0.15);
+                }
+            } catch(e) {}
+        });
+    });
+</script>
+{% endblock %}

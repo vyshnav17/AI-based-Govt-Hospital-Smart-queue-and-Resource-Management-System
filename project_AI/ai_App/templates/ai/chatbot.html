@@ -1,0 +1,440 @@
+{% extends "base.html" %}
+
+{% block title %}SmartCare AI Assistant{% endblock %}
+
+{% block content %}
+<div class="container-fluid px-0 h-100 d-flex flex-column" style="min-height: calc(100vh - 116px);">
+    <style>
+        /* --- AI Assistant Theme Styles --- */
+        .chat-layout {
+            display: flex;
+            flex: 1;
+            gap: 24px;
+        }
+
+        .chat-main {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(16, 185, 129, 0.15);
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.02);
+            overflow: hidden;
+            height: calc(100vh - 160px);
+        }
+
+        .chat-header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 20px 24px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            border-bottom: 1.5px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .chat-header-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.15);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 24px;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+            animation: pulseGlow 3s infinite ease-in-out;
+        }
+
+        @keyframes pulseGlow {
+            0% { transform: scale(1); box-shadow: 0 0 10px rgba(255, 255, 255, 0.2); }
+            50% { transform: scale(1.05); box-shadow: 0 0 20px rgba(255, 255, 255, 0.45); }
+            100% { transform: scale(1); box-shadow: 0 0 10px rgba(255, 255, 255, 0.2); }
+        }
+
+        .chat-messages {
+            flex: 1;
+            padding: 24px;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            background-color: #f8fafc;
+        }
+
+        .message-bubble {
+            max-width: 75%;
+            padding: 14px 20px;
+            border-radius: 18px;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            position: relative;
+        }
+
+        .message-user {
+            align-self: flex-end;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            border-bottom-right-radius: 4px;
+            box-shadow: 0 4px 12px rgba(13, 110, 253, 0.15);
+        }
+
+        .message-ai {
+            align-self: flex-start;
+            background: white;
+            color: var(--dark);
+            border: 1px solid rgba(226, 232, 240, 0.8);
+            border-bottom-left-radius: 4px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.01);
+        }
+
+        .chat-input-area {
+            background: white;
+            padding: 20px 24px;
+            border-top: 1px solid rgba(226, 232, 240, 0.8);
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .chat-input {
+            height: 50px;
+            background: #f8fafc;
+            border: 1.5px solid rgba(226, 232, 240, 0.8);
+            border-radius: 12px;
+            padding: 0 20px;
+            color: var(--dark);
+            flex: 1;
+            transition: all 0.3s ease;
+        }
+
+        .chat-input:focus {
+            background: white;
+            border-color: var(--primary);
+            box-shadow: 0 0 15px rgba(13, 110, 253, 0.15);
+            outline: none;
+        }
+
+        .btn-send {
+            width: 50px;
+            height: 50px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            border: none;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 20px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(13, 110, 253, 0.2);
+        }
+
+        .btn-send:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(13, 110, 253, 0.35);
+        }
+
+        /* --- Custom Action Cards Sidebar --- */
+        .ai-sidebar {
+            width: 320px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            height: calc(100vh - 160px);
+            overflow-y: auto;
+        }
+
+        .action-chip {
+            background: white;
+            border: 1px solid rgba(16, 185, 129, 0.15);
+            border-radius: 14px;
+            padding: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-align: left;
+            width: 100%;
+        }
+
+        .action-chip:hover {
+            transform: translateY(-2px);
+            border-color: var(--primary);
+            box-shadow: 0 8px 20px rgba(13, 110, 253, 0.08);
+            background-color: var(--primary-light);
+            color: var(--primary) !important;
+        }
+
+        .action-chip-icon {
+            width: 38px;
+            height: 38px;
+            border-radius: 10px;
+            background: var(--primary-light);
+            color: var(--primary);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 16px;
+            flex-shrink: 0;
+        }
+
+        .action-chip:hover .action-chip-icon {
+            background: var(--primary);
+            color: white;
+        }
+
+        /* --- Typing Indicator --- */
+        .typing-bubble {
+            display: flex;
+            align-self: flex-start;
+            background: white;
+            border: 1px solid rgba(226, 232, 240, 0.8);
+            border-radius: 18px;
+            border-bottom-left-radius: 4px;
+            padding: 14px 20px;
+            gap: 6px;
+            align-items: center;
+        }
+
+        .typing-dot {
+            width: 8px;
+            height: 8px;
+            background-color: #94a3b8;
+            border-radius: 50%;
+            animation: bounce 1.4s infinite ease-in-out both;
+        }
+
+        .typing-dot:nth-child(1) { animation-delay: -0.32s; }
+        .typing-dot:nth-child(2) { animation-delay: -0.16s; }
+
+        @keyframes bounce {
+            0%, 80%, 100% { transform: scale(0); }
+            40% { transform: scale(1); }
+        }
+
+        @media (max-width: 991px) {
+            .chat-layout {
+                flex-direction: column;
+            }
+            .ai-sidebar {
+                width: 100%;
+                height: auto;
+            }
+            .chat-main {
+                height: 500px;
+            }
+        }
+    </style>
+
+    <div class="row mb-4">
+        <div class="col-12">
+            <h2 class="fw-bold mb-1">SmartCare AI Assistant</h2>
+            <p class="text-secondary">Real-time triage allocations, waiting queue predictions, and resource logs integrated instantly.</p>
+        </div>
+    </div>
+
+    <!-- Chat Hub Layout -->
+    <div class="chat-layout">
+        <!-- Main Chat Panel -->
+        <div class="chat-main">
+            <!-- Header -->
+            <div class="chat-header">
+                <div class="chat-header-icon">
+                    <i class="bi bi-robot"></i>
+                </div>
+                <div>
+                    <h5 class="fw-bold mb-0">SmartCare AI Core</h5>
+                    <span class="small" style="color: #cbd5e1;"><i class="bi bi-circle-fill text-success me-1.5" style="font-size: 8px;"></i>Live RAG Active</span>
+                </div>
+            </div>
+
+            <!-- Messages Area -->
+            <div class="chat-messages" id="chatMessages">
+                <!-- Welcome Message -->
+                <div class="message-bubble message-ai">
+                    Hello! I am your <strong>SmartCare AI Assistant</strong>. I am fully integrated into our real-time hospital queues, active physician shifts, and emergency bed registries.
+                    <br><br>
+                    How can I assist you with hospital operations, token waits, or ward services today?
+                </div>
+                
+                <!-- Render Past Chat History -->
+                {% for chat in chats %}
+                    {% if chat.role == 'user' %}
+                        <div class="message-bubble message-user">
+                            {{ chat.content }}
+                        </div>
+                    {% elif chat.role == 'assistant' %}
+                        <div class="message-bubble message-ai from-history" data-raw-content="{{ chat.content }}">
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+
+            <!-- Input area -->
+            <div class="chat-input-area">
+                {% csrf_token %}
+                <input type="text" class="chat-input" id="chatInput" placeholder="Type your queue or resource query..." onkeydown="if(event.key === 'Enter') sendMessage();">
+                <button class="btn-send" onclick="sendMessage()" id="sendBtn">
+                    <i class="bi bi-send-fill"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- AI Sidebar Actions -->
+        <div class="ai-sidebar">
+            <h6 class="text-uppercase fw-bold text-secondary mb-1 px-2" style="font-size: 11px; letter-spacing: 0.5px;">Quick System Queries</h6>
+            
+            <button class="action-chip" onclick="quickQuery('Generate today\'s hospital summary')">
+                <div class="action-chip-icon"><i class="fa-solid fa-file-medical"></i></div>
+                <div>
+                    <h6 class="fw-bold text-dark mb-0" style="font-size: 13.5px;">Hospital Summary</h6>
+                    <span class="text-muted small">Daily queue & bed diagnostics</span>
+                </div>
+            </button>
+
+            <button class="action-chip" onclick="quickQuery('Which doctors are available now?')">
+                <div class="action-chip-icon" style="color: #0ea5e9; background-color: #e0f2fe;"><i class="fa-solid fa-user-doctor"></i></div>
+                <div>
+                    <h6 class="fw-bold text-dark mb-0" style="font-size: 13.5px;">Active Physicians</h6>
+                    <span class="text-muted small">Live shift status</span>
+                </div>
+            </button>
+
+            <button class="action-chip" onclick="quickQuery('How crowded is cardiology today?')">
+                <div class="action-chip-icon" style="color: #f59e0b; background-color: #fef3c7;"><i class="fa-solid fa-chart-simple"></i></div>
+                <div>
+                    <h6 class="fw-bold text-dark mb-0" style="font-size: 13.5px;">OPD Crowd Load</h6>
+                    <span class="text-muted small">Cardiology wait predictions</span>
+                </div>
+            </button>
+
+            <button class="action-chip" onclick="quickQuery('Are ICU beds available?')">
+                <div class="action-chip-icon" style="color: #10b981; background-color: #d1fae5;"><i class="fa-solid fa-bed-pulse"></i></div>
+                <div>
+                    <h6 class="fw-bold text-dark mb-0" style="font-size: 13.5px;">ICU Bed Occupancies</h6>
+                    <span class="text-muted small">Emergency ward tracking</span>
+                </div>
+            </button>
+
+            <button class="action-chip" onclick="quickQuery('Which department should I visit for fever?')">
+                <div class="action-chip-icon" style="color: #8b5cf6; background-color: #f3e8ff;"><i class="fa-solid fa-route"></i></div>
+                <div>
+                    <h6 class="fw-bold text-dark mb-0" style="font-size: 13.5px;">Department Finder</h6>
+                    <span class="text-muted small">Smart symptoms navigation</span>
+                </div>
+            </button>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    // Fetch dynamic CSRF Token
+    function getCSRFToken() {
+        const tokenElement = document.querySelector('[name=csrfmiddlewaretoken]');
+        if (tokenElement) {
+            return tokenElement.value;
+        }
+        return '';
+    }
+
+    const chatMessages = document.getElementById("chatMessages");
+    const chatInput = document.getElementById("chatInput");
+
+    // Auto scroll function
+    function scrollToBottom() {
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+    
+    // Format existing messages on load
+    document.addEventListener("DOMContentLoaded", function() {
+        const aiBubbles = document.querySelectorAll('.message-ai.from-history');
+        aiBubbles.forEach(bubble => {
+            const rawText = bubble.getAttribute('data-raw-content');
+            bubble.innerHTML = formatAIResponse(rawText);
+        });
+        scrollToBottom();
+    });
+
+    // Trigger quick chips
+    function quickQuery(queryText) {
+        chatInput.value = queryText;
+        sendMessage();
+    }
+
+    // Main sendMessage handler
+    function sendMessage() {
+        const messageText = chatInput.value.trim();
+        if (!messageText) return;
+
+        // Render User Bubble
+        const userBubble = document.createElement("div");
+        userBubble.className = "message-bubble message-user";
+        userBubble.innerText = messageText;
+        chatMessages.appendChild(userBubble);
+        chatInput.value = "";
+        scrollToBottom();
+
+        // Render Typing Indicator
+        const typingBubble = document.createElement("div");
+        typingBubble.className = "typing-bubble";
+        typingBubble.id = "typingIndicator";
+        typingBubble.innerHTML = `
+            <div class="typing-dot"></div>
+            <div class="typing-dot"></div>
+            <div class="typing-dot"></div>
+        `;
+        chatMessages.appendChild(typingBubble);
+        scrollToBottom();
+
+        // Dispatch API Ask Post
+        fetch("{% url 'ask_ai' %}", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "X-CSRFToken": getCSRFToken()
+            },
+            body: JSON.stringify({ message: messageText })
+        })
+        .then(response => response.json())
+        .then(data => {
+            // Remove indicator
+            const indicator = document.getElementById("typingIndicator");
+            if (indicator) indicator.remove();
+
+            // Render AI response bubble
+            const aiBubble = document.createElement("div");
+            aiBubble.className = "message-bubble message-ai";
+            
+            // Render markdown or formatted elements nicely
+            aiBubble.innerHTML = formatAIResponse(data.response);
+            chatMessages.appendChild(aiBubble);
+            scrollToBottom();
+        })
+        .catch(err => {
+            const indicator = document.getElementById("typingIndicator");
+            if (indicator) indicator.remove();
+
+            const errorBubble = document.createElement("div");
+            errorBubble.className = "message-bubble message-ai text-danger";
+            errorBubble.innerText = "Connection error. Failed to retrieve active session parameters from AI core.";
+            chatMessages.appendChild(errorBubble);
+            scrollToBottom();
+        });
+    }
+
+    // Basic Markdown parser for beautiful AI formatting (bold lists and headers)
+    function formatAIResponse(text) {
+        return text
+            .replace(/\n/g, '<br>')
+            .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+            .replace(/### (.*?)(<br>|$)/g, '<h5 class="fw-bold text-primary mt-2">$1</h5>')
+            .replace(/- (.*?)(<br>|$)/g, '<li class="ms-3">$1</li>');
+    }
+</script>
+{% endblock %}

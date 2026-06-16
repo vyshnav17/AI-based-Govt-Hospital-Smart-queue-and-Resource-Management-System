@@ -1,0 +1,416 @@
+{% extends 'base.html' %}
+{% block title %}Admin Panel - Dashboard{% endblock %}
+
+{% block content %}
+<div class="container-fluid px-0">
+    <div class="row mb-4">
+        <div class="col-12">
+            <h2 class="fw-bold" style="color: var(--kims-blue);">Admin Control Center</h2>
+            <p class="text-secondary">Track active triage backlogs, physician shifts, emergency bed occupations, and department analytics.</p>
+        </div>
+    </div>
+
+    <!-- Stats Widgets -->
+    <div class="row g-4 mb-5">
+        <div class="col-md-6 col-lg-3">
+            <div class="kims-card">
+                <div class="d-flex align-items-center">
+                    <div class="bg-primary text-white rounded p-3 me-3"><i class="fa-solid fa-users fs-4"></i></div>
+                    <div>
+                        <h6 class="text-muted mb-1">Outpatients Today</h6>
+                        <h3 class="fw-bold mb-0">{{ total_patients_today|default:"0" }}</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6 col-lg-3">
+            <div class="kims-card">
+                <div class="d-flex align-items-center">
+                    <div class="bg-info text-white rounded p-3 me-3"><i class="fa-solid fa-user-doctor fs-4"></i></div>
+                    <div>
+                        <h6 class="text-muted mb-1">Active Doctors</h6>
+                        <h3 class="fw-bold mb-0">{{ active_doctors|default:"0" }}</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6 col-lg-3">
+            <div class="kims-card">
+                <div class="d-flex align-items-center">
+                    <div class="bg-success text-white rounded p-3 me-3"><i class="fa-solid fa-bed fs-4"></i></div>
+                    <div>
+                        <h6 class="text-muted mb-1">Available Beds</h6>
+                        <h3 class="fw-bold mb-0">{{ available_beds|default:"0" }}</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6 col-lg-3">
+            <div class="kims-card">
+                <div class="d-flex align-items-center">
+                    <div class="bg-danger text-white rounded p-3 me-3"><i class="fa-solid fa-truck-medical fs-4"></i></div>
+                    <div>
+                        <h6 class="text-muted mb-1">Emergencies</h6>
+                        <h3 class="fw-bold mb-0">{{ emergencies|default:"0" }}</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SmartCare AI Predictive Resource Allocation -->
+    <div class="kims-card mb-5 border-0 shadow-sm" style="background: linear-gradient(135deg, #f8fafc, #eff6ff);">
+        <div class="d-flex justify-content-between align-items-center border-bottom pb-3 mb-3">
+            <div>
+                <h5 class="fw-bold text-dark mb-1"><i class="fa-solid fa-brain text-primary me-2"></i>SmartCare AI Resource Predictor</h5>
+                <p class="text-secondary small mb-0">Analyzes current metrics and seasonal trends to forecast 7-day hospital load.</p>
+            </div>
+            <button class="btn btn-primary shadow-sm" id="btnGenerateForecast" style="font-weight: 600; border-radius: 8px;">
+                <i class="fa-solid fa-chart-line me-2"></i>Generate 7-Day Forecast
+            </button>
+        </div>
+        
+        <div class="row d-none" id="aiForecastResults">
+            <div class="col-md-8">
+                <h6 class="fw-bold text-dark">AI Forecast Summary</h6>
+                <p class="text-secondary mb-4" id="aiForecastSummary"></p>
+                
+                <h6 class="fw-bold text-dark mb-2">Recommended Actions</h6>
+                <ul class="list-group list-group-flush bg-transparent" id="aiForecastActions">
+                    <!-- Actions will be injected here -->
+                </ul>
+            </div>
+            <div class="col-md-4 d-flex flex-column justify-content-center align-items-center border-start">
+                <h6 class="text-muted text-uppercase small fw-bold mb-2">Predicted Risk Level</h6>
+                <div id="aiRiskBadge" class="badge rounded-pill fs-5 py-2 px-4 bg-secondary">Unknown</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Detailed Tabs -->
+    <div class="kims-card mt-5">
+        <ul class="nav nav-tabs" id="adminTabs" role="tablist">
+            <li class="nav-item" role="presentation">
+                <button class="nav-link active fw-bold" id="patients-tab" data-bs-toggle="tab" data-bs-target="#patients" type="button" role="tab">All Patients</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link fw-bold" id="staff-tab" data-bs-toggle="tab" data-bs-target="#staff" type="button" role="tab">Hospital Staff</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link fw-bold" id="appointments-tab" data-bs-toggle="tab" data-bs-target="#appointments" type="button" role="tab">Appointment Logs</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link fw-bold" id="beds-tab" data-bs-toggle="tab" data-bs-target="#beds" type="button" role="tab">Bed Occupancy</button>
+            </li>
+        </ul>
+        <div class="tab-content pt-4" id="adminTabsContent">
+            <!-- Patients Tab -->
+            <div class="tab-pane fade show active" id="patients" role="tabpanel">
+                <div class="table-responsive">
+                    <table class="table table-hover align-middle">
+                        <thead class="table-light">
+                            <tr><th>ID</th><th>Name</th><th>Age</th><th>Gender</th><th>Phone</th></tr>
+                        </thead>
+                        <tbody>
+                            {% for p in patients %}
+                            <tr>
+                                <td>#{{ p.id }}</td>
+                                <td>
+                                    <a href="#" class="text-decoration-none fw-bold text-primary" data-bs-toggle="modal" data-bs-target="#patientDetailModal-{{ p.id }}" title="Click to view full medical history">
+                                        {{ p.user.get_full_name|default:p.user.username }}
+                                    </a>
+                                </td>
+                                <td>{{ p.age }}</td>
+                                <td>{{ p.gender }}</td>
+                                <td>{{ p.phone }}</td>
+                            </tr>
+                            {% empty %}
+                            <tr><td colspan="5" class="text-center text-muted py-3">No patients registered yet.</td></tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                
+                <!-- Patient Modals Extracted from Table to avoid HTML rendering bugs -->
+                {% for p in patients %}
+                <div class="modal fade" id="patientDetailModal-{{ p.id }}" tabindex="-1" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered modal-lg">
+                        <div class="modal-content border-0 shadow">
+                            <div class="modal-header bg-light border-0">
+                                <h5 class="modal-title fw-bold text-dark"><i class="fa-solid fa-user-injured text-primary me-2"></i>Patient Details: {{ p.user.get_full_name|default:p.user.username }}</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body p-4">
+                                <div class="row g-4">
+                                    <div class="col-md-5">
+                                        <h6 class="fw-bold text-muted text-uppercase small mb-3">Demographics</h6>
+                                        <ul class="list-unstyled mb-0">
+                                            <li class="mb-2"><strong>System ID:</strong> #{{ p.id }}</li>
+                                            <li class="mb-2"><strong>Age:</strong> {{ p.age }} Years</li>
+                                            <li class="mb-2"><strong>Gender:</strong> {{ p.gender }}</li>
+                                            <li class="mb-2"><strong>Phone:</strong> {{ p.phone }}</li>
+                                            <li class="mb-2"><strong>Email:</strong> {{ p.user.email|default:"N/A" }}</li>
+                                            <li class="mb-0"><strong>Address:</strong> {{ p.address|default:"N/A" }}</li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-md-7 border-start">
+                                        <h6 class="fw-bold text-muted text-uppercase small mb-3">Full Medical History</h6>
+                                        <div class="p-3 rounded text-dark" style="background-color: #f8fafc; min-height: 150px; border-left: 4px solid var(--kims-blue);">
+                                            {{ p.medical_history|default:"No medical history recorded in the system." }}
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Past Consultations Section -->
+                                <div class="mt-4 pt-3 border-top">
+                                    <h6 class="fw-bold text-muted text-uppercase small mb-3">Past Consultations & Prescriptions</h6>
+                                    {% if p.appointments.all %}
+                                        <div class="table-responsive" style="max-height: 250px; overflow-y: auto;">
+                                            <table class="table table-sm table-hover border">
+                                                <thead class="table-light sticky-top">
+                                                    <tr>
+                                                        <th style="width: 20%;">Date</th>
+                                                        <th style="width: 25%;">Doctor / Dept</th>
+                                                        <th style="width: 55%;">Diagnosis & Prescription</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    {% for app in p.appointments.all|dictsortreversed:"appointment_date" %}
+                                                    <tr>
+                                                        <td class="small fw-semibold">{{ app.appointment_date }}</td>
+                                                        <td class="small">
+                                                            <strong>Dr. {{ app.doctor.user.get_full_name|default:app.doctor.user.username }}</strong><br>
+                                                            <span class="text-muted">{{ app.department.name }}</span>
+                                                        </td>
+                                                        <td class="small">
+                                                            {% if app.prescription %}
+                                                                <div class="mb-1"><strong>Dx:</strong> {{ app.prescription.diagnosis|default:"N/A" }}</div>
+                                                                <div class="text-secondary"><strong>Rx:</strong> {{ app.prescription.medications|default:"N/A" }}</div>
+                                                            {% else %}
+                                                                <span class="text-muted fst-italic">No prescription recorded</span>
+                                                            {% endif %}
+                                                        </td>
+                                                    </tr>
+                                                    {% endfor %}
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    {% else %}
+                                        <div class="p-3 bg-light rounded text-center">
+                                            <i class="bi bi-file-medical text-muted fs-4"></i>
+                                            <p class="text-muted small mb-0 mt-2">No past consultations found for this patient.</p>
+                                        </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <div class="modal-footer border-0 bg-light">
+                                <button type="button" class="btn btn-secondary px-4 rounded-pill" data-bs-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            
+            <!-- Staff Tab -->
+            <div class="tab-pane fade" id="staff" role="tabpanel">
+                <div class="row mb-4 align-items-center">
+                    <div class="col-md-6">
+                        <h5 class="mb-0 fw-bold text-primary">Doctors</h5>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="input-group shadow-sm">
+                            <span class="input-group-text bg-white border-end-0"><i class="fa-solid fa-search text-muted"></i></span>
+                            <input type="text" id="staffSearchInput" class="form-control border-start-0 ps-0" placeholder="Search staff by name, department, or phone...">
+                        </div>
+                    </div>
+                </div>
+                <div class="table-responsive mb-4">
+                    <table class="table table-hover align-middle staff-table">
+                        <thead class="table-light"><tr><th>Name</th><th>Department</th><th>Specialty</th><th>Phone</th><th>Status</th></tr></thead>
+                        <tbody>
+                            {% for d in doctors %}
+                            <tr>
+                                <td><span class="fw-bold">Dr. {{ d.user.get_full_name|default:d.user.username }}</span></td>
+                                <td>{{ d.department.name }}</td>
+                                <td>{{ d.specialization }}</td>
+                                <td>{{ d.phone }}</td>
+                                <td>
+                                    {% if d.availability_status %}<span class="badge bg-success">Active</span>{% else %}<span class="badge bg-secondary">Off-Duty</span>{% endif %}
+                                </td>
+                            </tr>
+                            {% empty %}
+                            <tr><td colspan="5" class="text-center text-muted">No doctors found.</td></tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+
+                <h5 class="mb-3 fw-bold text-info">Nurses</h5>
+                <div class="table-responsive">
+                    <table class="table table-hover align-middle staff-table">
+                        <thead class="table-light"><tr><th>Name</th><th>Department/Ward</th><th>Phone</th><th>Status</th></tr></thead>
+                        <tbody>
+                            {% for n in nurses %}
+                            <tr>
+                                <td><span class="fw-bold">Nurse {{ n.user.get_full_name|default:n.user.username }}</span></td>
+                                <td>{{ n.department.name }}</td>
+                                <td>{{ n.phone }}</td>
+                                <td>
+                                    {% if n.shift_status %}<span class="badge bg-success">On Shift</span>{% else %}<span class="badge bg-secondary">Off-Duty</span>{% endif %}
+                                </td>
+                            </tr>
+                            {% empty %}
+                            <tr><td colspan="4" class="text-center text-muted">No nurses found.</td></tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <!-- Appointments Tab -->
+            <div class="tab-pane fade" id="appointments" role="tabpanel">
+                <div class="table-responsive">
+                    <table class="table table-hover align-middle">
+                        <thead class="table-light">
+                            <tr><th>Date</th><th>Token</th><th>Patient</th><th>Doctor</th><th>Type</th><th>Status</th></tr>
+                        </thead>
+                        <tbody>
+                            {% for a in all_appointments|slice:":50" %}
+                            <tr>
+                                <td>{{ a.appointment_date }}</td>
+                                <td><span class="badge bg-primary rounded-pill">#{{ a.token_number }}</span></td>
+                                <td>{{ a.patient.user.get_full_name|default:a.patient.user.username }}</td>
+                                <td>Dr. {{ a.doctor.user.username }}</td>
+                                <td>{{ a.consultation_medium }}</td>
+                                <td>
+                                    {% if a.status == 'Pending' %}<span class="badge bg-warning text-dark">Pending</span>
+                                    {% elif a.status == 'Completed' %}<span class="badge bg-success">Completed</span>
+                                    {% else %}<span class="badge bg-danger">Cancelled</span>{% endif %}
+                                </td>
+                            </tr>
+                            {% empty %}
+                            <tr><td colspan="6" class="text-center text-muted py-3">No appointments logged yet.</td></tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Beds Tab -->
+            <div class="tab-pane fade" id="beds" role="tabpanel">
+                <div class="row g-3">
+                    {% for b in beds %}
+                    <div class="col-md-4 col-lg-3">
+                        <div class="card shadow-sm border-0 {% if b.occupied %}bg-danger-subtle{% else %}bg-success-subtle{% endif %}">
+                            <div class="card-body text-center">
+                                <h5 class="fw-bold mb-1"><i class="fa-solid fa-bed me-2"></i>{{ b.ward_name }} - {{ b.bed_number }}</h5>
+                                {% if b.occupied %}
+                                    <span class="badge bg-danger">Occupied</span>
+                                    {% if b.current_patient %}
+                                    <div class="small mt-2 text-dark fw-semibold">Patient: {{ b.current_patient.user.username }}</div>
+                                    {% endif %}
+                                {% else %}
+                                    <span class="badge bg-success">Available</span>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                    {% empty %}
+                    <div class="col-12 text-center text-muted py-3">No beds configured.</div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const searchInput = document.getElementById("staffSearchInput");
+        if (searchInput) {
+            searchInput.addEventListener("keyup", function() {
+                const query = this.value.toLowerCase();
+                const tables = document.querySelectorAll(".staff-table");
+                
+                tables.forEach(table => {
+                    const rows = table.querySelectorAll("tbody tr");
+                    rows.forEach(row => {
+                        // Skip empty state rows
+                        if(row.querySelector('td[colspan]')) return;
+                        
+                        const text = row.textContent.toLowerCase();
+                        row.style.display = text.includes(query) ? "" : "none";
+                    });
+                });
+            });
+        }
+        
+        // AI Resource Predictor Logic
+        const btnGenerate = document.getElementById("btnGenerateForecast");
+        const resultsDiv = document.getElementById("aiForecastResults");
+        const summaryText = document.getElementById("aiForecastSummary");
+        const actionsList = document.getElementById("aiForecastActions");
+        const riskBadge = document.getElementById("aiRiskBadge");
+        
+        if (btnGenerate) {
+            btnGenerate.addEventListener("click", function() {
+                // UI Loading state
+                btnGenerate.disabled = true;
+                btnGenerate.innerHTML = '<i class="fa-solid fa-spinner fa-spin me-2"></i>Analyzing data...';
+                
+                fetch('/api/ai-resource-predict/')
+                .then(response => response.json())
+                .then(data => {
+                    btnGenerate.disabled = false;
+                    btnGenerate.innerHTML = '<i class="fa-solid fa-rotate-right me-2"></i>Refresh Forecast';
+                    
+                    if (data.error) {
+                        alert("AI Prediction failed: " + data.error);
+                        return;
+                    }
+                    
+                    // Show results
+                    resultsDiv.classList.remove("d-none");
+                    
+                    // Populate summary
+                    summaryText.innerText = data.forecast_summary;
+                    
+                    // Populate actions
+                    actionsList.innerHTML = '';
+                    if (data.recommended_actions && data.recommended_actions.length > 0) {
+                        data.recommended_actions.forEach(action => {
+                            const li = document.createElement("li");
+                            li.className = "list-group-item bg-transparent border-0 px-0 py-1 text-dark";
+                            li.innerHTML = `<i class="fa-solid fa-check-circle text-success me-2"></i>${action}`;
+                            actionsList.appendChild(li);
+                        });
+                    }
+                    
+                    // Populate Risk Level
+                    riskBadge.innerText = data.risk_level + " Risk";
+                    riskBadge.className = "badge rounded-pill fs-5 py-2 px-4 shadow-sm";
+                    if (data.risk_level === "Low") {
+                        riskBadge.classList.add("bg-success");
+                    } else if (data.risk_level === "Medium") {
+                        riskBadge.classList.add("bg-warning", "text-dark");
+                    } else {
+                        riskBadge.classList.add("bg-danger");
+                    }
+                })
+                .catch(err => {
+                    console.error(err);
+                    btnGenerate.disabled = false;
+                    btnGenerate.innerHTML = '<i class="fa-solid fa-chart-line me-2"></i>Generate 7-Day Forecast';
+                    alert("Network error. Could not contact AI service.");
+                });
+            });
+        }
+    });
+</script>
+{% endblock %}

@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+
+{% block title %}Today's Outpatient Registry{% endblock %}
+
+{% block content %}
+<div class="container-fluid px-0">
+    <div class="row mb-4">
+        <div class="col-12">
+            <h2 class="fw-bold mb-1">Today's Patients</h2>
+            <p class="text-secondary">Consult all registered outpatient schedules, live triage tags, and session states.</p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            <div class="glass-card p-4">
+                {% if appointments %}
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Token</th>
+                                    <th>Patient</th>
+                                    <th>Age/Gender</th>
+                                    <th>Triage Priority</th>
+                                    <th>Status</th>
+                                    <th class="text-center">Details</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for app in appointments %}
+                                <tr>
+                                    <td class="fw-bold text-primary">#{{ app.token_number }}</td>
+                                    <td class="fw-semibold">{{ app.patient.user.first_name }} {{ app.patient.user.last_name }}</td>
+                                    <td>{{ app.patient.age }} / {{ app.patient.gender }}</td>
+                                    <td>
+                                        {% if app.queue_entry %}
+                                            <span class="badge {% if app.queue_entry.priority_level == 'Emergency' %}bg-danger{% elif app.queue_entry.priority_level == 'Urgent' %}bg-warning text-dark{% else %}bg-success{% endif %}">
+                                                {{ app.queue_entry.priority_level }}
+                                            </span>
+                                        {% else %}
+                                            Normal
+                                        {% endif %}
+                                    </td>
+                                    <td>
+                                        <span class="status-badge {% if app.status == 'Pending' %}badge-pending{% elif app.status == 'Completed' %}badge-completed{% else %}badge-cancelled{% endif %}">
+                                            {{ app.status }}
+                                        </span>
+                                    </td>
+                                    <td class="text-center">
+                                        <a href="{% url 'patient_details' app.id %}" class="btn btn-sm btn-outline-info border-0 px-2.5" style="border-radius: 8px;" title="View Details">
+                                            <i class="bi bi-eye-fill"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                {% else %}
+                    <div class="text-center py-5">
+                        <i class="bi bi-people text-muted" style="font-size: 3rem;"></i>
+                        <p class="text-secondary mt-3 mb-0">No active outpatient appointments scheduled for today.</p>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

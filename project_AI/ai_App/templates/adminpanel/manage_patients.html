@@ -1,0 +1,148 @@
+{% extends "base.html" %}
+
+{% block title %}Manage Patients{% endblock %}
+
+{% block content %}
+<div class="container-fluid px-0">
+    <div class="row mb-4 align-items-center">
+        <div class="col-md-8">
+            <h2 class="fw-bold mb-1">Patient Outpatient Registry</h2>
+            <p class="text-secondary">Track registered outpatients, demographic profiles, medical addresses, and create registrations.</p>
+        </div>
+        <div class="col-md-4 text-md-end mt-3 mt-md-0">
+            {% if not add_mode and not edit_mode %}
+            <a href="{% url 'add_patient' %}" class="btn-custom-primary">
+                <i class="bi bi-plus-circle me-1"></i>Add Patient Profile
+            </a>
+            {% endif %}
+        </div>
+    </div>
+
+    <!-- Forms Block (Add or Edit Mode) -->
+    {% if add_mode or edit_mode %}
+    <div class="row mb-4" style="max-width: 600px;">
+        <div class="col-12">
+            <div class="glass-card p-4">
+                <h5 class="fw-bold mb-4">{% if add_mode %}Register Patient Account{% else %}Edit Patient Registry{% endif %}</h5>
+                <form method="POST">
+                    {% csrf_token %}
+                    
+                    <!-- Base User Fields -->
+                    <div class="mb-3">
+                        <label class="form-label">Username</label>
+                        {{ user_form.username }}
+                    </div>
+                    {% if add_mode %}
+                    <div class="mb-3">
+                        <label class="form-label">Access Password</label>
+                        <input type="password" name="password" class="form-control" placeholder="Enter secure password" required>
+                    </div>
+                    {% endif %}
+                    
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label">First Name</label>
+                            {{ user_form.first_name }}
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label">Last Name</label>
+                            {{ user_form.last_name }}
+                        </div>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label class="form-label">Email Address</label>
+                        {{ user_form.email }}
+                    </div>
+
+                    <hr class="my-4">
+
+                    <!-- Patient Fields -->
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label">Age</label>
+                            {{ patient_form.age }}
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label class="form-label">Gender</label>
+                            {{ patient_form.gender }}
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Contact Phone</label>
+                        {{ patient_form.phone }}
+                    </div>
+                    <div class="mb-4">
+                        <label class="form-label">Residential Address</label>
+                        {{ patient_form.address }}
+                    </div>
+
+                    <div class="d-flex gap-2 justify-content-end">
+                        <a href="{% url 'manage_patients' %}" class="btn btn-outline-secondary" style="border-radius: 10px;">Cancel</a>
+                        <button type="submit" class="btn btn-primary" style="border-radius: 10px; background: linear-gradient(135deg, var(--primary), var(--secondary)); border: none;">Save Patient</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+
+    <!-- Patients Table -->
+    <div class="row">
+        <div class="col-12">
+            <div class="glass-card">
+                {% if patients %}
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Patient</th>
+                                    <th>Age</th>
+                                    <th>Gender</th>
+                                    <th>Contact Phone</th>
+                                    <th>Residential Address</th>
+                                    <th class="text-center">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for pat in patients %}
+                                <tr>
+                                    <td>
+                                        <div class="d-flex align-items-center gap-3">
+                                            <div class="rounded-circle bg-info-subtle text-info fw-bold d-flex justify-content-center align-items-center" style="width: 40px; height: 40px; font-size: 14px;">
+                                                PAT
+                                            </div>
+                                            <div>
+                                                <h6 class="fw-bold text-dark mb-0">{{ pat.user.first_name }} {{ pat.user.last_name }}</h6>
+                                                <span class="text-secondary small">@{{ pat.user.username }}</span>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td><strong>{{ pat.age }}</strong> Years</td>
+                                    <td>{{ pat.gender }}</td>
+                                    <td>{{ pat.phone }}</td>
+                                    <td class="text-muted text-truncate" style="max-width: 200px;">{{ pat.address }}</td>
+                                    <td class="text-center">
+                                        <a href="{% url 'edit_patient' pat.id %}" class="btn btn-sm btn-outline-primary border-0 me-1" title="Edit">
+                                            <i class="bi bi-pencil-fill"></i>
+                                        </a>
+                                        <a href="{% url 'delete_patient' pat.id %}" class="btn btn-sm btn-outline-danger border-0" onclick="return confirm('Are you sure you want to delete this patient profile? User access keys will be wiped.');" title="Delete">
+                                            <i class="bi bi-trash3-fill"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                {% else %}
+                    <div class="text-center py-5">
+                        <i class="bi bi-people-fill text-muted" style="font-size: 3rem;"></i>
+                        <p class="text-secondary mt-3 mb-0">No outpatients have been registered under this system portal yet.</p>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
